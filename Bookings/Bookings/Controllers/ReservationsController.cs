@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Bookings.Controllers
 {
-    public class BookingsController : Controller
+    public class ReservationsController : Controller
     {
         public IActionResult Index()
         {
