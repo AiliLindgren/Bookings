@@ -1,4 +1,7 @@
-﻿@{
+﻿@model Bookings.Models.Reservation[]
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
     Layout = null;
 }
 
@@ -10,5 +13,12 @@
     <title>Index</title>
 </head>
 <body>
+    <h3>Reservations</h3>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>@item.Contact</li>
+        }
+    </ul>
 </body>
 </html>
