@@ -24,5 +24,21 @@ namespace Bookings.Controllers
             var model = service.GetAll();
             return View(model);
         }
+
+        [Route("create")]
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [Route("create")]
+        [HttpPost]
+        public IActionResult Create(Reservation reservation)
+        {
+            service.AddReservation(reservation);
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

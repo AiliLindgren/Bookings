@@ -14,10 +14,20 @@ namespace Bookings.Models
             new Reservation{ ID = 3, Contact = "Sointu", Date = "23.04.2020", NumberOfVisitors = 6, StartTime = "12.00"}
         };
 
+        int id = 4;
+
         public Reservation[] GetAll()
         {
-
             return myReservations.ToArray();
         }
+
+        public void AddReservation(Reservation reservation)
+        {
+            myReservations.Add(reservation);
+            reservation.ID = id;
+            id++;
+        }
+
+        
     }
 }
