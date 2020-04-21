@@ -7,5 +7,7 @@ namespace Bookings.Models
 {
     public class Calendar
     {
+        public string Name { get; set; }
+
     }
 }
