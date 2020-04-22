@@ -1,4 +1,4 @@
-﻿@model Bookings.Models.Reservation[]
+﻿@model Bookings.Models.ViewModels.ReservationsIndexVM[]
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
@@ -17,7 +17,8 @@
     <ul>
         @foreach (var item in Model)
         {
-            <li>@item.Contact</li>
+        <li>Booking for: @item.NumberOfPeople Date: @item.Date Time: @item.Time Your contact: @item.Contact </li>
+          
         }
     </ul>
 </body>

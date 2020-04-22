@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Bookings.Models;
+using Bookings.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bookings.Controllers
@@ -34,7 +35,7 @@ namespace Bookings.Controllers
 
         [Route("create")]
         [HttpPost]
-        public IActionResult Create(Reservation reservation)
+        public IActionResult Create(ReservationsCreateVM reservation)
         {
             service.AddReservation(reservation);
 

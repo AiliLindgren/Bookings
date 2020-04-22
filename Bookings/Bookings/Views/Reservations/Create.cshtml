@@ -1,4 +1,4 @@
-﻿@model Bookings.Models.Reservation
+﻿@model Bookings.Models.ViewModels.ReservationsCreateVM
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
@@ -23,8 +23,12 @@
         <input asp-for="Date" />
         @*<span asp-validation-for="Email"></span>*@
 
-        <label asp-for="StartTime"></label>
-        <input asp-for="StartTime" />
+        <label asp-for="Time"></label>
+        <input asp-for="Time" />
+
+        <label asp-for="NumberOfPeople"></label>
+        <input asp-for="NumberOfPeople" />
+        @*method for checking out if more than 2 objects have the same StartTime and disable booking if so. *@
 
         <br />
         <input type="submit" value="Add" />
