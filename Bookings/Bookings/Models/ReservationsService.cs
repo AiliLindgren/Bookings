@@ -76,10 +76,10 @@ namespace Bookings.Models
                 .Select(o => new ReservationsIndexVM
                 {
                     Date = o.Date,
-                    Time = o.Time,
+                    StartTime = o.StartTime,
+                    EndTime = o.EndTime,
                     Contact = o.Contact,
                     NumberOfPeople = o.NumberOfPeople,
-
                 })
                 .ToArray();
         }
@@ -107,7 +107,8 @@ namespace Bookings.Models
             {
                 Contact = model.Contact,
                 Date = model.Date,
-                Time = model.Time,
+                StartTime = model.StartTime,
+                EndTime = model.EndTime,
                 NumberOfPeople = model.NumberOfPeople
 
             });
