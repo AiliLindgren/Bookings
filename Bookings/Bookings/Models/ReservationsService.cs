@@ -40,6 +40,17 @@ namespace Bookings.Models
                 .ToArray();
         }
 
+        public ReservationsIndexVM[] GetDay()
+        {
+            return context.Reservation.
+                OrderBy(o => o.Contact)
+                .Select(o => new ReservationsIndexVM
+                {
+                    Date = o.Date
+                })
+                .ToArray();
+        }
+
         public void AddReservation(ReservationsCreateVM model)
         {
             context.Reservation.Add(new Reservation
