@@ -40,5 +40,16 @@ namespace Bookings.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+        [Route("form")]
+        [HttpGet]
+        public IActionResult Form()
+        {
+            var model = service.GetAll();
+           
+            // Show empty form
+            return PartialView("_Create",model);
+            //letar upp partial view 
+        }
+        
     }
 }

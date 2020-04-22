@@ -39,7 +39,7 @@
                 </thead>
 
                 <tbody id="calendar-body">
-                    <input type="text" id="input-popup" />
+                    
                     <script>
                         window.addEventListener("load", function () {
                             // target input
@@ -118,18 +118,8 @@
         <form asp-controller="Reservations" asp-action="create">
             <label asp-for="Contact"></label>
             <input asp-for="Contact" />
-            @*<span asp-validation-for="Name"></span>*@
-
             <label asp-for="Date"></label>
-            <input asp-for="Date" id="input-popup" />
-            <script>
-                        window.addEventListener("load", function () {
-                            // target input
-                            tpick.attach("input-popup");
-                        });
-    
-            @*<span asp-validation-for="Email"></span>*@
-                </script>
+            <input type="text" id="input-popup" />
             <label asp-for="StartTime"></label>
             <input asp-for="StartTime" />
 
