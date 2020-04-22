@@ -30,8 +30,6 @@ namespace Bookings.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            //service.GetAll()
-
             return View();
         }
 

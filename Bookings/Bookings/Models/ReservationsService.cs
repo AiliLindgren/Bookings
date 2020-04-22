@@ -40,6 +40,12 @@ namespace Bookings.Models
                 .ToArray();
         }
 
+        //public int VisitorsAtSameTime(string time)
+        //{
+        //    var visitors = context.Reservation.Where(o => o.Time == time).Select(o => o.NumberOfPeople).Sum();
+        //    return visitors;
+        //}
+
         public ReservationsIndexVM[] GetDay()
         {
             return context.Reservation.
