@@ -6,6 +6,9 @@ NumberOfPeople int not null,
 Contact nvarchar (64) not null,
 )
 
+--Datetime2
+--EndTime field
+
 Insert into Reservation
 Values
 ('22.04.2020', '12.00', 1, 'email@email.com')

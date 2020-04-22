@@ -18,8 +18,10 @@ namespace Bookings.Models.ViewModels
         public int NumberOfPeople { get; set; }
 
         [Required(ErrorMessage = "Enter e-mail address")]
-        [Display (Name = "Email")]
+        [Display(Name = "Email")]
         [EmailAddress]
         public string Contact { get; set; }
+
+
     }
 }

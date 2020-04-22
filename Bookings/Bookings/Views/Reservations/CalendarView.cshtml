@@ -1,0 +1,19 @@
+﻿@model Bookings.Models.ViewModels.CalendarDayVM[]
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CalendarView</title>
+</head>
+<body>
+    @foreach (var item in Model)
+    {
+        <p>@item.IsWeekend @item.IsFull</p>
+    }
+</body>
+</html>
