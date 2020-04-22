@@ -2,10 +2,10 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
-    ViewBag.Title = "Boka";
-    ViewBag.Header = "Boka";
-
+    ViewBag.Title = "Booking";
+    ViewBag.Header = "booking";
 }
+
 <!DOCTYPE html>
 
 <html>
@@ -14,12 +14,14 @@
     <title>Index</title>
 </head>
 <body>
+    @*<button onclick="SayHello()">Hello!</button>*@
     <h3>Reservations</h3>
     <ul>
         @foreach (var item in Model)
         {
             <li>@item.Contact</li>
         }
+        <a asp-controller="Reservations" asp-action="create">Book!</a>
     </ul>
 </body>
 </html>
