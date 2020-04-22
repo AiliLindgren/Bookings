@@ -31,12 +31,15 @@ namespace Bookings.Models
             var date = new DateTime(1988, 04, 01);
 
             var reservations = context.Reservation.ToArray();
+
             var result = new List<CalendarDayVM>();
             for (int i = 0; i < DateTime.DaysInMonth(date.Year, date.Month); i++)
             {
                 var now = date.AddDays(i);
-                result.Add(new CalendarDayVM { IsWeekend = (now.DayOfWeek != DayOfWeek.Saturday && now.DayOfWeek != DayOfWeek.Sunday )});
+                result.Add(new CalendarDayVM { IsWeekend = (now.DayOfWeek != DayOfWeek.Saturday && now.DayOfWeek != DayOfWeek.Sunday)});
             }
+
+             
             //return new CalendarViewVM {IsFull = context.Reservation.Any(o => o.Date == date)};
             return result.ToArray();
         }
