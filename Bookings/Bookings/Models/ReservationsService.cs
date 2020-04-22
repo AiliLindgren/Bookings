@@ -73,14 +73,25 @@ namespace Bookings.Models
         {
             return context.Reservation.
                 OrderBy(o => o.Contact)
-                  .Select(o => new ReservationsIndexVM
-                  {
-                      Date = o.Date,
-                      Time = o.Time,
-                      Contact = o.Contact,
-                      NumberOfPeople = o.NumberOfPeople,
+                .Select(o => new ReservationsIndexVM
+                {
+                    Date = o.Date,
+                    Time = o.Time,
+                    Contact = o.Contact,
+                    NumberOfPeople = o.NumberOfPeople,
 
-                  })
+                })
+                .ToArray();
+        }
+
+        public ReservationsIndexVM[] GetDay()
+        {
+            return context.Reservation.
+                OrderBy(o => o.Contact)
+                .Select(o => new ReservationsIndexVM
+                {
+                    Date = o.Date
+                })
                 .ToArray();
         }
 
