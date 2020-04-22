@@ -76,7 +76,7 @@ namespace Bookings.Models
                 .Select(o => new ReservationsIndexVM
                 {
                     Date = o.Date,
-                    Time = o.Time,
+                    StartTime = o.SartTime,
                     Contact = o.Contact,
                     NumberOfPeople = o.NumberOfPeople,
 
@@ -101,7 +101,7 @@ namespace Bookings.Models
             {
                 Contact = model.Contact,
                 Date = model.Date,
-                Time = model.Time,
+                SartTime = model.StartTime,
                 NumberOfPeople = model.NumberOfPeople
 
             });

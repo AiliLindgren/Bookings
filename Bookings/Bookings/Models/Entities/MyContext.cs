@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Bookings.Models.Entities
 {
-   
     public partial class MyContext : DbContext
     {
         public MyContext()
@@ -37,13 +36,9 @@ namespace Bookings.Models.Entities
                     .IsRequired()
                     .HasMaxLength(64);
 
-                entity.Property(e => e.Date)
-                    .IsRequired()
-                    .HasMaxLength(10);
+                entity.Property(e => e.Date).HasColumnType("date");
 
-                entity.Property(e => e.Time)
-                    .IsRequired()
-                    .HasMaxLength(5);
+                entity.Property(e => e.EndTime).HasColumnType("time(5)");
             });
 
             OnModelCreatingPartial(modelBuilder);
