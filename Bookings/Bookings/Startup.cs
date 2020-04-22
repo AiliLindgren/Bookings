@@ -30,7 +30,8 @@ namespace Bookings
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseStaticFiles();
+            
             app.UseRouting();
 
             app.UseEndpoints(o => o.MapControllers());
