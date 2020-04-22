@@ -29,14 +29,14 @@ namespace Bookings.Models
         {
             return context.Reservation.
                 OrderBy(o => o.Contact)
-                  .Select(o => new ReservationsIndexVM
-                  {
-                      Date = o.Date,
-                      Time = o.Time,
-                      Contact = o.Contact,
-                      NumberOfPeople = o.NumberOfPeople,
+                .Select(o => new ReservationsIndexVM
+                {
+                    Date = o.Date,
+                    Time = o.Time,
+                    Contact = o.Contact,
+                    NumberOfPeople = o.NumberOfPeople,
 
-                  })
+                })
                 .ToArray();
         }
 
@@ -45,7 +45,7 @@ namespace Bookings.Models
             context.Reservation.Add(new Reservation
             {
                 Contact = model.Contact,
-                Date =model.Date,
+                Date = model.Date,
                 Time = model.Time,
                 NumberOfPeople = model.NumberOfPeople
 
