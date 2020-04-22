@@ -30,7 +30,7 @@ namespace Bookings.Models
             //var date = "22.04.1988";
             var date = new DateTime(1988, 04, 01);
 
-            var reservations = context.Reservation.ToArray();
+            var reservations = context.AiliReservation.ToArray();
             var result = new List<CalendarDayVM>();
             for (int i = 0; i < DateTime.DaysInMonth(date.Year, date.Month); i++)
             {
@@ -71,7 +71,7 @@ namespace Bookings.Models
 
         public ReservationsIndexVM[] GetAll()
         {
-            return context.Reservation.
+            return context.AiliReservation.
                 OrderBy(o => o.Contact)
                 .Select(o => new ReservationsIndexVM
                 {
@@ -92,7 +92,7 @@ namespace Bookings.Models
 
         public ReservationsIndexVM[] GetDay()
         {
-            return context.Reservation.
+            return context.AiliReservation.
                 OrderBy(o => o.Contact)
                 .Select(o => new ReservationsIndexVM
                 {
@@ -103,7 +103,7 @@ namespace Bookings.Models
 
         public void AddReservation(ReservationsCreateVM model)
         {
-            context.Reservation.Add(new Reservation
+            context.AiliReservation.Add(new AiliReservation
             {
                 Contact = model.Contact,
                 Date = model.Date,
