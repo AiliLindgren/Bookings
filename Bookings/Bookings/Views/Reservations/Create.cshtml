@@ -121,9 +121,15 @@
             @*<span asp-validation-for="Name"></span>*@
 
             <label asp-for="Date"></label>
-            <input asp-for="Date" />
+            <input asp-for="Date" id="input-popup" />
+            <script>
+                        window.addEventListener("load", function () {
+                            // target input
+                            tpick.attach("input-popup");
+                        });
+    
             @*<span asp-validation-for="Email"></span>*@
-
+                </script>
             <label asp-for="StartTime"></label>
             <input asp-for="StartTime" />
 
