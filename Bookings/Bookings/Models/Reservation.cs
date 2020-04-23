@@ -14,8 +14,9 @@ namespace Bookings.Models
 
         //public TimeSpan EndTime { get; set; }
         public string Date { get; set; }
+        
 
     }
 
-    
+
 }

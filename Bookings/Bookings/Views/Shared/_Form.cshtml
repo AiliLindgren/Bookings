@@ -1,12 +1,11 @@
 ﻿@model Bookings.Models.Reservation[]
-    <div>
-        <h3>Reservations</h3>
-        <ul>
-            @foreach (var item in Model)
-            {
-                <li>@item.Contact</li>
-            }
-            <a asp-controller="Reservations" asp-action="create">Book!</a>
-        </ul>
+    <div class="_Form"
+         <ul>
+        @foreach (var item in Model)
+        {
+            <li>@item.Contact</li>
+        }
+        <a asp-controller="Reservations" asp-action="create">Jag är en partial View test!</a>
+    </ul>
     </div>
     

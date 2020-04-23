@@ -11,6 +11,15 @@
 padding-left:400px;
 
 }
+._Form{
+   
+    display:block;
+    padding-left:100px;
+
+}
+.calbox{
+    display:grid
+}
 /** Dropdown Button */
 .dropbtn {
     background-color: #3498DB;

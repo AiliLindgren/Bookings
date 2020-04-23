@@ -47,9 +47,10 @@ namespace Bookings.Controllers
             var model = service.GetAll();
            
             // Show empty form
-            return PartialView("_Create",model);
+            return PartialView("_Form",model);
             //letar upp partial view 
         }
         
+
     }
 }

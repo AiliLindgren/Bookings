@@ -15,6 +15,8 @@ namespace Bookings.Models
         };
 
         int id = 4;
+        int i = 0;
+        Reservation reservation;
 
         public Reservation[] GetAll()
         {
@@ -27,7 +29,6 @@ namespace Bookings.Models
             reservation.ID = id;
             id++;
         }
-
-        
+       
     }
 }

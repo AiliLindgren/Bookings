@@ -15,13 +15,27 @@
 </head>
 <body>
     @*<button onclick="SayHello()">Hello!</button>*@
+    <partial name="_Form" model="Model" />
     <h3>Reservations</h3>
     <ul>
         @foreach (var item in Model)
         {
-            <li>@item.Contact</li>
+            <li>@item.Date</li>
         }
         <a asp-controller="Reservations" asp-action="create">Book!</a>
     </ul>
+    <div class="calbox"
+        <table style="width:100%">
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <th>@item.Date</th>
+
+
+                </tr>
+            }
+        </table>
+    </div>
 </body>
 </html>
