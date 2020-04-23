@@ -9,15 +9,7 @@ namespace Bookings.Models
 {
     public class ReservationsService
     {
-
-        //static List<Reservation> myReservations = new List<Reservation>
-        //{
-        //    new Reservation{ ID = 1, Contact = "Aili", Date = "21.04.2020", NumberOfVisitors = 1, StartTime = "12.00"},
-        //    new Reservation{ ID = 2, Contact = "Jessica", Date = "22.04.2020", NumberOfVisitors = 1, StartTime = "12.00"},
-        //    new Reservation{ ID = 3, Contact = "Sointu", Date = "23.04.2020", NumberOfVisitors = 6, StartTime = "12.00"}
-        //};
-
-        //int id = 4;
+        TimeSpan testTime = new TimeSpan(15, 00, 00);
 
         MyContext context;
         public ReservationsService(MyContext context)
@@ -35,7 +27,7 @@ namespace Bookings.Models
             for (int i = 0; i < DateTime.DaysInMonth(date.Year, date.Month); i++)
             {
                 var now = date.AddDays(i);
-                result.Add(new CalendarDayVM { IsWeekend = (now.DayOfWeek != DayOfWeek.Saturday && now.DayOfWeek != DayOfWeek.Sunday )});
+                result.Add(new CalendarDayVM { IsWeekend = (now.DayOfWeek != DayOfWeek.Saturday && now.DayOfWeek != DayOfWeek.Sunday) });
             }
             //return new CalendarViewVM {IsFull = context.Reservation.Any(o => o.Date == date)};
             return result.ToArray();
@@ -71,17 +63,18 @@ namespace Bookings.Models
 
         public ReservationsIndexVM[] GetAll()
         {
-            return context.AiliReservation.
-                OrderBy(o => o.Contact)
-                .Select(o => new ReservationsIndexVM
-                {
-                    Date = o.Date,
-                    StartTime = o.StartTime,
-                    EndTime = o.EndTime,
-                    Contact = o.Contact,
-                    NumberOfPeople = o.NumberOfPeople,
-                })
-                .ToArray();
+            return context.AiliReservation
+            .OrderBy(o => o.Date)
+            .Select(o => new ReservationsIndexVM
+            {
+                Date = o.Date,
+                StartTime = o.StartTime,
+                EndTime = o.EndTime,
+                Contact = o.Contact,
+                NumberOfPeople = o.NumberOfPeople,
+                HasSpace = CheckNumberOfPeopleOnSameTime(testTime)
+            })
+            .ToArray();
         }
 
         //public int VisitorsAtSameTime(string time)
@@ -89,6 +82,20 @@ namespace Bookings.Models
         //    var visitors = context.Reservation.Where(o => o.Time == time).Select(o => o.NumberOfPeople).Sum();
         //    return visitors;
         //}
+
+        // Kolla hur många id:n som är kopplade till en viss tid.
+        public bool CheckNumberOfPeopleOnSameTime(TimeSpan testTime)
+        {
+            //var visitors = context.AiliReservation.Where(o => o.StartTime == timeSpan).ToList();
+            //return visitors.Count() <= 5;
+
+            var visitors = context.AiliReservation.Where(o => o.StartTime == testTime).Select(o => o.NumberOfPeople).Sum();
+
+            if (visitors <= 5)
+                return true;
+            else
+                return false;
+        }
 
         public ReservationsIndexVM[] GetDay()
         {

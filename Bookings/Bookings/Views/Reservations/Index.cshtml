@@ -17,7 +17,7 @@
     <ul>
         @foreach (var item in Model)
         {
-        <li>Booking for: @item.NumberOfPeople Date: @item.Date Time: @item.StartTime Your contact: @item.Contact </li>
+        <li>Booking for: @item.NumberOfPeople Date: @item.Date Time: @item.StartTime Your contact: @item.Contact Has space: @if (item.HasSpace) { <b>Yes</b> } </li>
           
         }
     </ul>

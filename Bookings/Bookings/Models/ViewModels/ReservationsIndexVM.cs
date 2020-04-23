@@ -14,5 +14,8 @@ namespace Bookings.Models.ViewModels
         public DateTime CreatedAt { get; set; }
         public string Contact { get; set; }
         public int NumberOfPeople { get; set; }
+
+        public bool HasSpace { get; set; }
+
     }
 }
