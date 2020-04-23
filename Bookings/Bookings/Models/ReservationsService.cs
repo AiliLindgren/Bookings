@@ -75,7 +75,7 @@ namespace Bookings.Models
                 EndTime = o.EndTime,
                 Contact = o.Contact,
                 NumberOfPeople = o.NumberOfPeople,
-                HasSpace = CheckNumberOfPeopleOnSameTime(testTime)
+                HasSpace = CheckIfStartTimeIsFull(testTime)
             })
             .ToArray();
         }
@@ -88,14 +88,14 @@ namespace Bookings.Models
         //}
 
         // Kolla hur många id:n som är kopplade till en viss tid.
-        public bool CheckNumberOfPeopleOnSameTime(TimeSpan testTime)
+        public bool CheckIfStartTimeIsFull(TimeSpan testTime)
         {
             //var visitors = context.AiliReservation.Where(o => o.StartTime == timeSpan).ToList();
             //return visitors.Count() <= 5;
 
             var visitors = context.AiliReservation.Where(o => o.StartTime == testTime).Select(o => o.NumberOfPeople).Sum();
 
-            if (visitors <= 5)
+            if (visitors >= 5)
                 return true;
             else
                 return false;
