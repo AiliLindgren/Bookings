@@ -26,6 +26,10 @@ namespace Bookings.Models
             var result = new List<CalendarDayVM>();
             for (int i = 0; i < DateTime.DaysInMonth(date.Year, date.Month); i++)
             {
+                // we need to give the new date all the class properties: isFull, isWeekend,  List<TimeSlot> . 
+                // the List is full of objects of a TimeSlot: with properties public DateTime Start, DateTime End, int Count
+                // we can start with givin ALL DAYS same instances in the <TimeSlot> List!
+
                 var now = date.AddDays(i);
                 result.Add(new CalendarDayVM { IsWeekend = (now.DayOfWeek != DayOfWeek.Saturday && now.DayOfWeek != DayOfWeek.Sunday) });
             }
@@ -127,7 +131,5 @@ namespace Bookings.Models
             //model.ID = id;
             ////id++;
         }
-
-
     }
 }
