@@ -64,7 +64,6 @@ namespace Bookings.Models
         //    }
         //}
 
-
         public ReservationsIndexVM[] GetAll()
         {
             return context.AiliReservation
