@@ -24,18 +24,35 @@
         }
         <a asp-controller="Reservations" asp-action="create">Book!</a>
     </ul>
-    <div class="calbox"
-        <table style="width:100%">
-            @foreach (var item in Model)
-            {
-                <tr>
 
-                    <th>@item.Date</th>
+    <div class="grid-container">
+        @foreach(var c in Model)
+        {
+        <div class="grid-item">
+            @c.Date
+            <button onclick="myFunction()" class="dropbtn">Lediga tider</button>
+            <div id="myDropdown" class="dropdown-content">
+                @foreach (var a in Model)
+                {
+                    <a href="#">@a.Date</a>
+                    @*<a href="#">Link 2</a>
+                    <a href="#">Link 3</a>*@
+                }
 
+            </div>
+        </div>
+     
 
-                </tr>
-            }
-        </table>
+        }
+        @*<div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>*@
     </div>
+
 </body>
 </html>
