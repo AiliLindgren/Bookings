@@ -76,6 +76,7 @@ namespace Bookings.Models
             })
             .ToArray();
         }
+        
 
         //public int VisitorsAtSameTime(string time)
         //{

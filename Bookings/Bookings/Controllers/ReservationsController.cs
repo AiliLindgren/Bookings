@@ -48,5 +48,7 @@ namespace Bookings.Controllers
             var result = service.GetCalendarView();
             return View(result);
         }
+
+        
     }
 }

@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+</head>
+<body style="background-color:lightcyan">
+    <h1>@ViewBag.Header</h1>
+    <div style="background-color:lightgrey">
+        @RenderBody()
+    </div>
+    
+    @RenderSection("scripts", false)
+</body>
+</html>
+
