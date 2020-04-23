@@ -1,38 +1,17 @@
-﻿body{
-    margin:0;
+﻿body {
+    margin: 0;
 }
 /*create formulär*/
-.reservation{
-  padding-top:50px;
-  padding-left:400px;
+.reservation {
+    padding-top: 50px;
+    padding-left: 400px;
 }
 /*AddPeople*/
-.AddPeople{
-padding-left:400px;
-
+.AddPeople {
+    padding-left: 400px;
 }
-._Form{
-    border: 2px solid blue;
-    display:block;
-    padding-left:100px;
-
-}
-.grid-container {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    background-color: #2196F3;
-    padding: 10px;
-}
-
-.grid-item {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
-}
-    /** Dropdown Button */
-    .dropbtn {
+/** Dropdown Button */
+.dropbtn {
     background-color: #3498DB;
     color: white;
     padding: 16px;
@@ -41,10 +20,10 @@ padding-left:400px;
     cursor: pointer;
 }
 
-/* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-    background-color:darkblue blue;
-}
+    /* Dropdown button on hover & focus */
+    .dropbtn:hover, .dropbtn:focus {
+        background-color: #2980B9;
+    }
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
@@ -82,69 +61,75 @@ padding-left:400px;
 /*time picker*/
 /* [CONTAINER] */
 .tpop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.7);
-  transition: all 0.5s;
-  visibility: hidden;
-  opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    transition: all 0.5s;
+    visibility: hidden;
+    opacity: 0;
 }
-.tpop.show {
-  visibility: visible;
-  opacity: 1;
-}
+
+    .tpop.show {
+        visibility: visible;
+        opacity: 1;
+    }
+
 .tpicker {
-  background: #f2f2f2;
-  padding: 10px;
-  width: 100%;
-  max-width: 320px;
-  white-space: nowrap;
-  font-size: 32px;
-  font-weight: bold;
-  text-align: center;
+    background: #f2f2f2;
+    padding: 10px;
+    width: 100%;
+    max-width: 320px;
+    white-space: nowrap;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
 }
+
 .tpop .tpicker {
-  margin: 20px auto 0 auto;
+    margin: 20px auto 0 auto;
 }
 
 /* [HR + MIN + AM/PM] */
 .tpicker-h, .tpicker-m, .tpicker-ap {
-  display: inline-block;
-  width: 30%;
+    display: inline-block;
+    width: 30%;
 }
+
 .tpicker input[type=text] {
-  box-sizing: border-box;
-  width: 70%;
-  padding: 10px;
-  margin: 5px 0;
-  border: 0;
-  background: #fff;
-  color: #888;
-  text-align: center;
-  font-size: 28px;
+    box-sizing: border-box;
+    width: 70%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 0;
+    background: #fff;
+    color: #888;
+    text-align: center;
+    font-size: 28px;
 }
+
 .tpicker-up, .tpicker-down {
-  text-align: center;
-  color: #ff853f;
-  cursor: pointer;
+    text-align: center;
+    color: #ff853f;
+    cursor: pointer;
 }
 
 /* [CANCEL + OK BUTTON] */
 .tpicker-btn {
-  margin-top: 10px;
+    margin-top: 10px;
 }
-.tpicker-btn input[type=button] {
-  width: 50%;
-  padding: 10px 0;
-  border: 0;
-  background: #a83a0b;
-  color: #fff;
-  font-size: 20px;
-  cursor: pointer;
-}
+
+    .tpicker-btn input[type=button] {
+        width: 50%;
+        padding: 10px 0;
+        border: 0;
+        background: #a83a0b;
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+    }
 /*calender*/
 /*!
  * Bootswatch v4.4.1
@@ -11844,4 +11829,3 @@ a.text-dark:hover, a.text-dark:focus {
 .dropdown-menu .dropdown-header {
     color: #868e96;
 }
-

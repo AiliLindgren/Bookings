@@ -1,7 +1,7 @@
 ﻿console.log("hej")
 
 function SayHello() {
-console.log("hej")
+    console.log("hej")
 }
 //dropdown
 /* When the user clicks on the button,
@@ -235,10 +235,10 @@ function showCalendar(month, year) {
         //creating individual cells, filing them up with data.
         for (let j = 0; j < 7; j++) {
             if (i === 0 && j < firstDay) {
-                //let cell = document.createElement("td");
+                let cell = document.createElement("td");
                 let cellText = document.createTextNode("");
-                let cellbutton=document.createElement("button")
-                //cell.appendChild(cellText);
+                let cellbutton = document.createElement("button")
+                cell.appendChild(cellText);
                 row.appendChild(cell);
                 cell.appendChild(cellbutton);
             }

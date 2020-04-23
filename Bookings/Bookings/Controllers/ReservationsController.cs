@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Bookings.Models;
+using Bookings.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bookings.Controllers
@@ -34,23 +35,20 @@ namespace Bookings.Controllers
 
         [Route("create")]
         [HttpPost]
-        public IActionResult Create(Reservation reservation)
+        public IActionResult Create(ReservationsCreateVM reservation)
         {
             service.AddReservation(reservation);
 
             return RedirectToAction(nameof(Index));
         }
-        [Route("form")]
-        [HttpGet]
-        public IActionResult Form()
-        {
-            var model = service.GetAll();
-           
-            // Show empty form
-            return PartialView("_Form",model);
-            //letar upp partial view 
-        }
-        
 
+        [Route("CalendarView")]
+        public IActionResult CalendarView()
+        {
+            var result = service.GetCalendarView();
+            return View(result);
+        }
+
+        
     }
 }

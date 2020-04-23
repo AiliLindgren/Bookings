@@ -1,29 +1,18 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">*@
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-
-    <link href="~/RevStyle.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
 </head>
-<body>
-
+<body style="background-color:lightcyan">
     <h1>@ViewBag.Header</h1>
-    <div style="background-color:white">
+    <div style="background-color:lightgrey">
+        @RenderBody()
     </div>
-
-    @RenderBody()
     
-    <script src="~/Rev.js"></script>
     @RenderSection("scripts", false)
-
 </body>
 </html>
 

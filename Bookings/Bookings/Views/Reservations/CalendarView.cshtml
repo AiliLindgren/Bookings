@@ -3,7 +3,7 @@
 
 @{
     ViewBag.Title = "Booking";
-    ViewBag.Header = "Booking";
+    ViewBag.Header = "booking";
 }
 
 <!DOCTYPE html>
@@ -14,8 +14,7 @@
     <title>Index</title>
 </head>
 <body>
-    <button onclick="SayHello()">Hello!</button>
-    @*<partial name="_Form" model="Model" />*@
+        
     <h3>Reservations</h3>
     <ul>
         @foreach (var item in Model)
@@ -25,25 +24,25 @@
         <a asp-controller="Reservations" asp-action="create">Book!</a>
     </ul>
 
-    <div class="grid-container">
+    @*<div class="grid-container">
         @foreach (var c in Model)
         {
             <div class="grid-item">
-                @c.IsFull
+                @c.Date
                 <button onclick="myFunction()" class="dropbtn">Lediga tider</button>
                 <div id="myDropdown" class="dropdown-content">
                     @foreach (var a in Model)
                     {
-                        <a href="#">@a.IsWeekend</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
+                        <a href="#">@a.Date</a>
+                        @<a href="#">Link 2</a>
+                        <a href="#">Link 3</a>@
                     }
 
                 </div>
             </div>
 
 
-        }
+        }*@
         <div class="grid-item">2</div>
         <div class="grid-item">3</div>
         <div class="grid-item">4</div>
@@ -57,3 +56,4 @@
 
 </body>
 </html>
+
