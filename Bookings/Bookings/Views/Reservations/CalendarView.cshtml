@@ -13,7 +13,12 @@
 <body>
     @foreach (var item in Model)
     {
-        <p>@item.IsWeekend @item.IsFull</p>
+        <p>Weekend: @item.IsWeekend Full? @item.IsFull</p>
+
+        @foreach (var slot in item.CalendarTimeSlots)
+        {
+            <a>Start time: @slot.Start End time: @slot.End</a>
+        }
     }
 </body>
 </html>
