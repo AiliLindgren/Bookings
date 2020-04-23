@@ -23,6 +23,7 @@ namespace Bookings.Models.ViewModels
 
     public class CalendarTimeSlotVM
     {
+
         public int Start { get; set; }
         public int End { get; set; }
 

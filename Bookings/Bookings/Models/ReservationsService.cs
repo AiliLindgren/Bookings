@@ -1,5 +1,6 @@
 ﻿using Bookings.Models.Entities;
 using Bookings.Models.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,10 +54,15 @@ namespace Bookings.Models
                         {
 
                             var slot = new CalendarTimeSlotVM { Start = hour };
+
+                            //var amountOfFullTimeSlots = 0;
+                            // IsFull = context.Reservations.Where(r => r.StartTime == hour).Select(r.NumberofPeople).Sum() > 5;
+                            // if (isFull) amountOfFullTimeSlots++
+
                             hour += 2;
                             slot.End = hour;
                             day.CalendarTimeSlots.Add(slot);
-    
+
                             // trigger a method that checks how many bookings there is for the day && specific TIMESLOT
                         }
                     }
@@ -80,11 +86,13 @@ namespace Bookings.Models
                 }
 
 
+                // IF all timeSpaces(amountOfFullTimeSlots) were full => Day is full
                 result.Add(day);
             }
             //return new CalendarViewVM {IsFull = context.Reservation.Any(o => o.Date == date)};
             return result.ToArray();
         }
+
         //internal CalendarViewVM[] CheckIfFull()
         //{
         //    var date = "22.04.1988";
