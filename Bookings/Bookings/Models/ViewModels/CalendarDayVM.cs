@@ -12,6 +12,7 @@ namespace Bookings.Models.ViewModels
         //Array of Timeslots 
         public bool IsWeekend { get; set; } 
         public bool IsFull { get; set; }
+        public bool IsClosed { get; set; } 
         public List<CalendarTimeSlotVM> CalendarTimeSlots { get; set; }
 
     }
