@@ -1,9 +1,9 @@
-﻿@model Bookings.Models.ViewModels.CalendarDayVM[]
+﻿@model Bookings.Models.ViewModels.ReservationsIndexVM[]
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
     ViewBag.Title = "Booking";
-    ViewBag.Header = "Booking";
+    ViewBag.Header = "Reservations";
 }
 
 <!DOCTYPE html>
@@ -14,18 +14,18 @@
     <title>Index</title>
 </head>
 <body>
-    <button onclick="SayHello()">Hello!</button>
+    @*<button onclick="SayHello()">Hello!</button>*@
     @*<partial name="_Form" model="Model" />*@
-    <h3>Reservations</h3>
+    @*<h3>Reservations</h3>*@
     <ul>
         @foreach (var item in Model)
         {
-            <li>@item.CalendarTimeSlots</li>
+            <li>Start time: @item.StartTime End time: @item.EndTime Contact: @item.Contact Number of people: @item.NumberOfPeople Has space: @item.HasSpace</li>
         }
         <a asp-controller="Reservations" asp-action="create">Book!</a>
     </ul>
 
-    <div class="grid-container">
+    @*<div class="grid-container">
         @foreach (var c in Model)
         {
             <div class="grid-item">
@@ -52,7 +52,7 @@
         <div class="grid-item">7</div>
         <div class="grid-item">8</div>
         <div class="grid-item">9</div>
-    </div>
+    </div>*@
 
 
 </body>

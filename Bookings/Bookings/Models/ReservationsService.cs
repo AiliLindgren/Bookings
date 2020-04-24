@@ -47,6 +47,8 @@ namespace Bookings.Models
                 };
                 //return new CalendarViewVM {IsFull = context.Reservation.Any(o => o.Date == date)};
             }
+            
+            
 
             return result.ToArray();
 
