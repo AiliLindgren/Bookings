@@ -35,10 +35,6 @@ namespace Bookings.Models.Entities
                 entity.Property(e => e.Contact)
                     .IsRequired()
                     .HasMaxLength(64);
-
-                entity.Property(e => e.CreatedAt).HasColumnName("created_at");
-
-                entity.Property(e => e.Date).HasColumnType("date");
             });
 
             OnModelCreatingPartial(modelBuilder);

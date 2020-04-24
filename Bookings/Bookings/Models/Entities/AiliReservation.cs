@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 
 namespace Bookings.Models.Entities
@@ -7,10 +7,8 @@ namespace Bookings.Models.Entities
     {
         public int Id { get; set; }
         public int NumberOfPeople { get; set; }
-        public DateTime Date { get; set; }
-        public TimeSpan StartTime { get; set; }
-        public TimeSpan EndTime { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
         public string Contact { get; set; }
     }
 }
