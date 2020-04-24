@@ -11,9 +11,11 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Index</title>
 </head>
 <body>
+     <div class="w3-container w3-center w3-animate-left">
     <div class="column"
     <div class="card">
         <h1 class="h3">April 2020</h1>
@@ -62,33 +64,34 @@
         </select>
         </div>
     <div>
-        <partial name="_search" model="@new ReservationsIndexVM()" />
-        <form action="/create" method="get">
-            <input type="submit" value="Next"
-                   name="Submit" id="frm1_submit" />
-    </form>
+
+            <partial name="_search" model="@new ReservationsIndexVM()" />
+            <form action="/create" method="get">
+                <input type="submit" value="Next"
+                       name="Submit" id="frm1_submit" />
+            </form>
             @*<div id="divGET"</div>*@
             @*<div id="divForm"</div>*@
-    </div>
-    
-    <script>
-        fetch("/search",
-            {
-                method: "POST",
+        </div>
 
-            })
-            .then(res => res.text())
-            .then(html => document.getElementById("divForm").innerHTML = html);
-         fetch("/search",
-            {
-                method: "GET",
+        <script>
+            fetch("/search",
+                {
+                    method: "POST",
 
-            })
-            .then(res => res.text())
-            .then(html => document.getElementById("divGET").innerHTML = html);
-        
+                })
+                .then(res => res.text())
+                .then(html => document.getElementById("divForm").innerHTML = html);
+            fetch("/search",
+                {
+                    method: "GET",
 
-    </script>
+                })
+                .then(res => res.text())
+                .then(html => document.getElementById("divGET").innerHTML = html);
+
+
+        </script>
 </body>
 </html>
 

@@ -4,10 +4,15 @@
     ViewBag.Title = "Your Booking";
     ViewBag.Header = "Your Booking";
 }
-
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <title>Index</title>
+    </head>
 <body>
-    <partial name="_search" model="@new ReservationsIndexVM()" />
-    <div class="column "
+    <div class="w3-container w3-center w3-animate-left">
+        <partial name="_search" model="@new ReservationsIndexVM()" />
+        <div class="column "
         <div class="bookingform"
             <h4>Enter your email adress</h4>
             <form asp-controller="Reservations" asp-action="create">
