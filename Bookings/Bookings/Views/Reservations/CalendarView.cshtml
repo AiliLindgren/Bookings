@@ -3,7 +3,7 @@
 
 @{
     ViewBag.Title = "Booking";
-    ViewBag.Header = "booking";
+    ViewBag.Header = "Pick a date!";
 }
 
 <!DOCTYPE html>
@@ -63,13 +63,32 @@
         </div>
     <div>
         <partial name="_search" model="@new ReservationsIndexVM()" />
-    </div>
-    <br />
-    <form action="/create" method="get">
-        <input type="submit" value="Next"
-               name="Submit" id="frm1_submit" />
-
+        <form action="/create" method="get">
+            <input type="submit" value="Next"
+                   name="Submit" id="frm1_submit" />
     </form>
+            @*<div id="divGET"</div>*@
+            @*<div id="divForm"</div>*@
+    </div>
+    
+    <script>
+        fetch("/search",
+            {
+                method: "POST",
+
+            })
+            .then(res => res.text())
+            .then(html => document.getElementById("divForm").innerHTML = html);
+         fetch("/search",
+            {
+                method: "GET",
+
+            })
+            .then(res => res.text())
+            .then(html => document.getElementById("divGET").innerHTML = html);
+        
+
+    </script>
 </body>
 </html>
 

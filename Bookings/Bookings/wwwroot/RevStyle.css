@@ -1,5 +1,5 @@
 ﻿body {
-    padding-left:500px
+    padding-left:100px;
     margin: 0;
    
 }
@@ -11,10 +11,13 @@
 .t1{
 
 }
-.column{
-    width:600px;
-    margin:100px;
-    background-color:white;
+.img{
+    padding-left:500px;
+}
+.column {
+    width: 600px;
+    margin: 100px;
+    background-color: white;
 }
 .bookingform {
     font-size: 100px;
@@ -47,7 +50,6 @@
     padding: 16px;
     font-size: 20px;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
 }
 #frm2_submit {
@@ -56,7 +58,6 @@
     padding: 16px;
     font-size: 20px;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
 }
 }
@@ -98,6 +99,7 @@
 .show {
     display: block;
 }
+
 /*time picker*/
 /* [CONTAINER] */
 .tpop {

@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <title> @ViewBag.Title</title>
 
     <link rel="stylesheet" type="text/css" href="~/RevStyle.css">
     <script src="~/Rev.js"></script>
@@ -17,6 +17,9 @@
             padding: 0;
             overflow: hidden;
             background-color:#1E90FF;
+            border:solid 1px;
+                border-bottom-color:lightblue;
+                border-radius:5px;
         }
 
         li {
@@ -35,14 +38,15 @@
                     background-color: #00BFFF;
                 }
     </style>
-    <ul>
-        <li><a class="active" href="Index">Home</a></li>
-        <li><a href="/search">search</a></li>
-        <li><a href="/CalendarView">Book</a></li>
-        <li><a href="#about">About</a></li>
-    </ul>
-
+    
     <column class="column">
+        <ul>
+            <li><a class="active" href="Index">Home</a></li>
+            <li><a href="/search">search</a></li>
+            <li><a href="/CalendarView">Book</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+
 
         <h1>@ViewBag.Header</h1>
         <div style="background-color:white">
