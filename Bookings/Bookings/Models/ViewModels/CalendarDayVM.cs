@@ -14,7 +14,7 @@ namespace Bookings.Models.ViewModels
         public bool IsClosed { get; set; }
 
         public bool IsFull { get; set; }
-        public int OpeningHours { get; set; }
+        //public int OpeningHours { get; set; }
 
         public List<CalendarTimeSlotVM> CalendarTimeSlots { get; set; }
 
@@ -24,6 +24,7 @@ namespace Bookings.Models.ViewModels
 
     public class CalendarTimeSlotVM
     {
+        public bool IsFull { get; set; }
         public DateTime StartDateTime { get; set; } 
         public DateTime EndDateTime { get; set; }
 

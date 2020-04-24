@@ -76,9 +76,7 @@ namespace Bookings.Models
 
                         }
                     }
-
                 }
-
 
                 // IF all timeSpaces(amountOfFullTimeSlots) were full => Day is full
                 result.Add(day);

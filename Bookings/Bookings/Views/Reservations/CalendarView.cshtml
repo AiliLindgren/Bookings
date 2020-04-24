@@ -17,7 +17,7 @@
 
         @foreach (var slot in item.CalendarTimeSlots)
         {
-            <a>Start time: @slot.StartDateTime End time: @slot.EndDateTime</a>
+            <a>Start time: @slot.StartDateTime.Date.ToString("hh:mm") End time: @slot.EndDateTime.Date.ToString("hh:mm")</a>
         }
     }
 </body>
