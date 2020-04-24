@@ -1,14 +1,12 @@
-﻿ using System;
-using System.Collections.Generic;
+﻿using System;
 
-namespace Bookings.Models.Entities
+namespace Bookings.Models
 {
-    public partial class AiliReservation
+    internal class AiliReservation
     {
-        public int Id { get; set; }
-        public int NumberOfPeople { get; set; }
+        public string Contact { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
-        public string Contact { get; set; }
+        public int NumberOfPeople { get; set; }
     }
 }

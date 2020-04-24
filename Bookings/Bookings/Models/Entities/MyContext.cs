@@ -15,7 +15,7 @@ namespace Bookings.Models.Entities
         {
         }
 
-        public virtual DbSet<AiliReservation> AiliReservation { get; set; }
+        public virtual DbSet<AiliReservation> AiliReservation { get; set; } 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

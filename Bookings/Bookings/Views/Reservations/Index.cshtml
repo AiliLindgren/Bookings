@@ -20,7 +20,7 @@
     <ul>
         @foreach (var item in Model)
         {
-            <li>Start time: @item.StartTime End time: @item.EndTime Contact: @item.Contact Number of people: @item.NumberOfPeople Has space: @item.Isfull</li>
+            <li>Start time: @item.StartTime End time: @item.EndTime Contact: @item.Contact Number of people: @item.NumberOfPeople Is full? @item.Isfull</li>
         }
         <a asp-controller="Reservations" asp-action="create">Book!</a>
     </ul>

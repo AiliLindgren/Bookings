@@ -9,7 +9,7 @@ namespace Bookings.Models
 {
     public class ReservationsService
     {
-        DateTime testTime = new DateTime(2020, 01, 01, 12, 01, 00);
+        DateTime testTime = new DateTime(2020, 01, 02, 01, 00, 00);
 
         MyContext context;
         public ReservationsService(MyContext context)
