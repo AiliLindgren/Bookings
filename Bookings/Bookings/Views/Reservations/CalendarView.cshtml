@@ -19,9 +19,9 @@
     {
         <p>Weekend: @item.IsWeekend Full? @item.IsFull</p>
 
-        @foreach (var slot in item.CalendarTimeSlots)
+        @foreach (var slot in item.TimeSlots)
         {
-            <a>Start time: @slot.Start End time: @slot.End</a>
+            <a>Start time: @slot.Start</a>
         }
     }
 </body>

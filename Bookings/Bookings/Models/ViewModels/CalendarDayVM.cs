@@ -13,17 +13,20 @@ namespace Bookings.Models.ViewModels
         public bool IsWeekend { get; set; } 
         public bool IsFull { get; set; }
         public bool IsClosed { get; set; }
-        public int OpeningHours { get; set; }
 
-        public List<CalendarTimeSlotVM> CalendarTimeSlots { get; set; }
+        public List<TimeSlotVM> TimeSlots { get; set; }
 
+
+        //public int OpeningHours { get; set; } // Behövs nog inte
     }
 
-    public class CalendarTimeSlotVM
+    public class TimeSlotVM
     {
         public DateTime Start { get; set; }
-        public DateTime End { get; set; }
-        public int Count { get; set; }
+        public bool TimeIsFull { get; set; } 
+
+        //public DateTime End { get; set; } // Behövs inte än iaf
+        //public int Count { get; set; } // Behövs nog inte
 
     }
 }

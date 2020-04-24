@@ -19,10 +19,9 @@ namespace Bookings.Models
 
         internal CalendarDayVM[] GetCalendarView()
         {
-            //var date = "22.04.1988";
             var date = new DateTime(1988, 04, 01);
 
-            var reservations = context.AiliReservation.ToArray();
+            //var reservations = context.AiliReservation.ToArray();
 
             var result = new List<CalendarDayVM>();
 
@@ -43,7 +42,7 @@ namespace Bookings.Models
                     IsWeekend = (now.DayOfWeek == DayOfWeek.Saturday && now.DayOfWeek == DayOfWeek.Sunday),
                     //Isfull = CheckIfStartTimeIsFull(testTime),
                     IsClosed = (now.DayOfWeek == DayOfWeek.Monday),
-                    CalendarTimeSlots = new List<CalendarTimeSlotVM>()
+                    TimeSlots = new List<TimeSlotVM>()
                 };
                 //return new CalendarViewVM {IsFull = context.Reservation.Any(o => o.Date == date)};
 
@@ -51,66 +50,25 @@ namespace Bookings.Models
                 {
                     if (day.IsWeekend)
                     {
-                        day.OpeningHours = 10;
+                        
+                        
+                        
+                        
+                        
+                        
+                        
 
-                        int numberOfSlots = (day.OpeningHours - 1) * 4;
 
-
-
-
-                        DateTime hour = new DateTime(2020, 04, 01, 10, 00, 00);
-
-                        for (int t = 0; t < day.OpeningHours / 0.25; t++)
-                        {
-                            // DateTime dt = 23.04.2019 12:00:00
-                            // dt.AddHours(2);
-
-                            var slot = new CalendarTimeSlotVM { Start = hour };
-
-                            // StartEndTime, EndDateTime
-
-                            //var amountOfFullTimeSlots = 0;
-                            // IsFull = context.Reservations.Where(r => r.StartDateTime = ).Select(r.NumberofPeople).Sum() > 5;
-                            // if (isFull) amountOfFullTimeSlots++
-
-                            //hour += 2;
-                            //slot.End = hour;
-                            day.CalendarTimeSlots.Add(slot);
-
-                            // trigger a method that checks how many bookings there is for the day && specific TIMESLOT
-                        }
-                    }
-                    else
-                    {
-                        day.OpeningHours = 6;
-                        var hour = 12;
-
-                        for (int t = 0; t < day.OpeningHours / 2; t++)
-                        {
-
-                            var slot = new CalendarTimeSlotVM { Start = hour };
-                            hour += 2;
-                            slot.End = hour;
-                            day.CalendarTimeSlots.Add(slot);
-
-                            // trigger a method that checks how many bookings there is for the day && specific TIMESLOT
-                        }
-                    }
-
+                        // IF all timeSpaces(amountOfFullTimeSlots) were full => Day is full
+                     result.Add(day);
+                    }  
+                    
+                    //return new CalendarViewVM {IsFull = context.Reservation.Any(o => o.Date == date)};
+                    return result.ToArray();
                 }
 
 
-                // IF all timeSpaces(amountOfFullTimeSlots) were full => Day is full
-                result.Add(day);
             }
-            //return new CalendarViewVM {IsFull = context.Reservation.Any(o => o.Date == date)};
-            return result.ToArray();
-        }
-
-
-    }
-
-
 
             return result.ToArray();
 
