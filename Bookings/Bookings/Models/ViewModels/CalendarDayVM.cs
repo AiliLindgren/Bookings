@@ -18,14 +18,14 @@ namespace Bookings.Models.ViewModels
 
         public List<CalendarTimeSlotVM> CalendarTimeSlots { get; set; }
 
-
+        public DateTime StartDateTime { get; set; }
+        public DateTime EndDateTime { get; set; }
     }
 
     public class CalendarTimeSlotVM
     {
-
-        public int Start { get; set; }
-        public int End { get; set; }
+        public DateTime StartDateTime { get; set; } 
+        public DateTime EndDateTime { get; set; }
 
     }
 }
