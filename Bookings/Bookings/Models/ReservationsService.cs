@@ -40,7 +40,7 @@ namespace Bookings.Models
                 // we can start with givin ALL DAYS same instances in the <TimeSlot> List!
 
                 var now = date.AddDays(i);
-                var day = new CalendarDayVM { IsWeekend = (now.DayOfWeek != DayOfWeek.Saturday && now.DayOfWeek != DayOfWeek.Sunday), IsFull = false, IsClosed = (now.DayOfWeek == DayOfWeek.Monday), CalendarTimeSlots = new List<CalendarTimeSlotVM>() };
+                var day = new CalendarDayVM { IsWeekend = (now.DayOfWeek == DayOfWeek.Saturday && now.DayOfWeek == DayOfWeek.Sunday), IsFull = false, IsClosed = (now.DayOfWeek == DayOfWeek.Monday), CalendarTimeSlots = new List<CalendarTimeSlotVM>() };
 
 
                 if (!day.IsClosed)
@@ -52,11 +52,15 @@ namespace Bookings.Models
 
                         for (int t = 0; t < day.OpeningHours / 2; t++)
                         {
+                            // DateTime dt = 23.04.2019 12:00:00
+                            // dt.AddHours(2);
 
                             var slot = new CalendarTimeSlotVM { Start = hour };
 
+                            // StartEndTime, EndDateTime
+
                             //var amountOfFullTimeSlots = 0;
-                            // IsFull = context.Reservations.Where(r => r.StartTime == hour).Select(r.NumberofPeople).Sum() > 5;
+                            // IsFull = context.Reservations.Where(r => r.StartDateTime = ).Select(r.NumberofPeople).Sum() > 5;
                             // if (isFull) amountOfFullTimeSlots++
 
                             hour += 2;
@@ -128,8 +132,8 @@ namespace Bookings.Models
                 OrderBy(o => o.Contact)
                 .Select(o => new ReservationsIndexVM
                 {
-                    Date = o.Date,
-                    StartTime = o.SartTime,
+                    EndTime = o.EndTime,
+                    StartTime = o.StartTime,
                     Contact = o.Contact,
                     NumberOfPeople = o.NumberOfPeople,
 
@@ -143,7 +147,7 @@ namespace Bookings.Models
                 OrderBy(o => o.Contact)
                 .Select(o => new ReservationsIndexVM
                 {
-                    Date = o.Date
+                    StartTime = o.StartTime
                 })
                 .ToArray();
         }
@@ -153,8 +157,8 @@ namespace Bookings.Models
             context.Reservation.Add(new Reservation
             {
                 Contact = model.Contact,
-                Date = model.Date,
-                SartTime = model.StartTime,
+                StartTime = model.StartTime,
+                EndTime = model.EndTime,
                 NumberOfPeople = model.NumberOfPeople
 
             });

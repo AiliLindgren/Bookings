@@ -17,9 +17,11 @@
     <ul>
         @foreach (var item in Model)
         {
-        <li>Booking for: @item.NumberOfPeople Date: @item.Date Time: @item.StartTime Your contact: @item.Contact </li>
-          
+            <li>Booking for: @item.NumberOfPeople Date: @item.StartTime.Date.ToString("d.M.yyyy") Time: @item.StartTime.Date.ToString("hh:mm") Your contact: @item.Contact </li>
+
         }
     </ul>
+    <a asp-controller="Reservations" asp-action="create">Make a booking!</a>
+
 </body>
 </html>

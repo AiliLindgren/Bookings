@@ -19,19 +19,19 @@
         <input asp-for="Contact" />
         @*<span asp-validation-for="Name"></span>*@
 
-        <label asp-for="Date"></label>
-        <input asp-for="Date" />
-        @*<span asp-validation-for="Email"></span>*@
-
         <label asp-for="StartTime"></label>
         <input asp-for="StartTime" />
+
+        @*<label asp-for="EndTime"></label>
+        <input asp-for="EndTime" />*@
+        @*<span asp-validation-for="Email"></span>*@
 
         <label asp-for="NumberOfPeople"></label>
         <input asp-for="NumberOfPeople" />
         @*method for checking out if more than 2 objects have the same StartTime and disable booking if so. *@
 
         <br />
-        <input type="submit" value="Add" />
+        <input type="submit" value="Add"  />
     </form>
 </body>
 </html>
