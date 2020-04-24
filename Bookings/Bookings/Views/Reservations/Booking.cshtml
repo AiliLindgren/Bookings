@@ -1,0 +1,11 @@
+﻿@model Bookings.Models.ViewModels.ReservationsIndexVM
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewBag.Title = "Booking";
+    ViewBag.Header = "booking";
+}
+
+ Bokat: @Model.NumberOfPeople personer
+<p>kl: @Model.StartTime</p>
+

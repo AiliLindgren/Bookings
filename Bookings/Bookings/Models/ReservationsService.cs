@@ -10,14 +10,16 @@ namespace Bookings.Models
     public class ReservationsService
     {
         TimeSpan testTime = new TimeSpan(15, 00, 00);
+        //CalendarTimeSlots
+        CalendarDayVM calender;
 
-        MyContext context;
+         MyContext context;
         public ReservationsService(MyContext context)
         {
             this.context = context;
         }
 
-        internal CalendarDayVM[] GetCalendarView()
+        public CalendarDayVM[] GetCalendarView()
         {
             //var date = "22.04.1988";
             var date = new DateTime(1988, 04, 01);
@@ -101,6 +103,22 @@ namespace Bookings.Models
             else
                 return false;
         }
+       
+        public ReservationsIndexVM Check (DateTime date)
+        //den här metoden returnerar bara antalet lediga platser ett angivet datum och 
+        //beställning
+        {
+            return context.AiliReservation.
+                 Where(o => o.Date==date)
+                 .Select(o => new ReservationsIndexVM
+                 {
+                     StartTime = o.StartTime,
+                     NumberOfPeople= (5-o.NumberOfPeople)
+
+                 })
+                 .Single();
+
+        }
 
         public ReservationsIndexVM[] GetDay()
         {
@@ -131,5 +149,7 @@ namespace Bookings.Models
             //model.ID = id;
             ////id++;
         }
+
+        
     }
 }

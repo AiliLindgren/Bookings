@@ -14,45 +14,65 @@
     <title>Index</title>
 </head>
 <body>
-        
-    <h3>Reservations</h3>
-    <ul>
-        @foreach (var item in Model)
-        {
-            <li>@item.CalendarTimeSlots</li>
-        }
-        <a asp-controller="Reservations" asp-action="create">Book!</a>
-    </ul>
+    @*<div class="container col-sm-4 col-md-7 col-lg-4 mt-5">
+        <div class="card">
+            <h3 class="card-header" id="monthAndYear"></h3>
+            <table class="table table-bordered table-responsive-sm" id="calendar">
+                <thead>
+                    <tr>
+                        <th>Sun</th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                    </tr>
+                </thead>*@
 
-    @*<div class="grid-container">
-        @foreach (var c in Model)
-        {
-            <div class="grid-item">
-                @c.Date
-                <button onclick="myFunction()" class="dropbtn">Lediga tider</button>
-                <div id="myDropdown" class="dropdown-content">
-                    @foreach (var a in Model)
-                    {
-                        <a href="#">@a.Date</a>
-                        @<a href="#">Link 2</a>
-                        <a href="#">Link 3</a>@
-                    }
+       
+        <div class="grid-container">
+            <div class="grid-item">Mon</div>
+            <div class="grid-item">Tue</div>
+            <div class="grid-item">Wed</div>
+            <div class="grid-item">Thu</div>
+            <div class="grid-item">Fri</div>
+            <div class="grid-item">Sat</div>
+            <div class="grid-item">Sun</div>
 
+            @for (int i = 0; i < DateTime.DaysInMonth(2020, 04); i++)
+            {
+                <div class="grid-item">
+                    <text>@(i + 1) </text>
+                      
                 </div>
-            </div>
+            }
 
 
-        }*@
-        <div class="grid-item">2</div>
-        <div class="grid-item">3</div>
-        <div class="grid-item">4</div>
-        <div class="grid-item">5</div>
-        <div class="grid-item">6</div>
-        <div class="grid-item">7</div>
-        <div class="grid-item">8</div>
-        <div class="grid-item">9</div>
-    </div>
+        </div>
+        <div class="form-inline">
 
+            <button class="btn btn-outline-primary col-sm-6" id="previous" onclick="previous()">Previous</button>
+
+            <button class="btn btn-outline-primary col-sm-6" id="next" onclick="next()">Next</button>
+        </div>
+        <label for="year"></label>
+        <select class="form-control col-sm-4" name="year" id="year" onchange="jump()">
+            <option value=2020>2020</option>
+            <option value=2021>2021</option>
+            <option value=2022>2022</option>
+            <option value=2023>2023</option>
+            <option value=2024>2024</option>
+            <option value=2025>2025</option>
+            <option value=2026>2026</option>
+            <option value=2027>2027</option>
+            <option value=2028>2028</option>
+            <option value=2029>2029</option>
+            <option value=2030>2030</option>
+        </select>
+        <partial name="_search" model="@new ReservationsIndexVM()" />
+
+        <
 
 </body>
 </html>

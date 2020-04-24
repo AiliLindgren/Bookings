@@ -8,4 +8,3 @@
     [Contact]        NVARCHAR (64) NOT NULL,
     PRIMARY KEY CLUSTERED ([ID] ASC)
 );
-

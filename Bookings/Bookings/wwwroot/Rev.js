@@ -3,6 +3,11 @@
 function SayHello() {
     console.log("hej")
 }
+var uniqueID = 0;
+while (document.getElementById("myDropdown") != null) {
+    uniqueID = uniqueID++;
+}
+
 //dropdown
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
