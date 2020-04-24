@@ -9,7 +9,7 @@ namespace Bookings.Models
 {
     public class ReservationsService
     {
-        TimeSpan testTime = new TimeSpan(15, 00, 00);
+        DateTime testTime = new DateTime(2020, 04, 24, 15, 00, 00);
 
         MyContext context;
         public ReservationsService(MyContext context)
@@ -67,10 +67,9 @@ namespace Bookings.Models
         public ReservationsIndexVM[] GetAll()
         {
             return context.AiliReservation
-            .OrderBy(o => o.Date)
+            .OrderBy(o => o.StartTime)
             .Select(o => new ReservationsIndexVM
-            {
-                Date = o.Date,
+            {                
                 StartTime = o.StartTime,
                 EndTime = o.EndTime,
                 Contact = o.Contact,
@@ -88,7 +87,7 @@ namespace Bookings.Models
         //}
 
         // Kolla hur många id:n som är kopplade till en viss tid.
-        public bool CheckIfStartTimeIsFull(TimeSpan testTime)
+        public bool CheckIfStartTimeIsFull(DateTime testTime)
         {
             //var visitors = context.AiliReservation.Where(o => o.StartTime == timeSpan).ToList();
             //return visitors.Count() <= 5;
@@ -107,7 +106,7 @@ namespace Bookings.Models
                 OrderBy(o => o.Contact)
                 .Select(o => new ReservationsIndexVM
                 {
-                    Date = o.Date
+                    StartTime = o.StartTime
                 })
                 .ToArray();
         }
@@ -117,7 +116,6 @@ namespace Bookings.Models
             context.AiliReservation.Add(new AiliReservation
             {
                 Contact = model.Contact,
-                Date = model.Date,
                 StartTime = model.StartTime,
                 EndTime = model.EndTime,
                 NumberOfPeople = model.NumberOfPeople

@@ -9,11 +9,11 @@ namespace Bookings.Models.ViewModels
     public class ReservationsCreateVM
     {
         //public int Id { get; set; }
-        public DateTime Date { get; set; }
+        //public DateTime Date { get; set; }
 
         [Required(ErrorMessage = "Enter time")]
-        public TimeSpan StartTime { get; set; }
-        public TimeSpan EndTime { get; set; } 
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; } 
 
         [Required(ErrorMessage = "Enter the number of visitors")]
         public int NumberOfPeople { get; set; }

@@ -8,52 +8,21 @@
 
 <!DOCTYPE html>
 
+
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>CalendarView</title>
 </head>
 <body>
-        
-    <h3>Reservations</h3>
-    <ul>
-        @foreach (var item in Model)
+    @foreach (var item in Model)
+    {
+        <p>Weekend: @item.IsWeekend Full? @item.IsFull</p>
+
+        @foreach (var slot in item.CalendarTimeSlots)
         {
-            <li>@item.CalendarTimeSlots</li>
+            <a>Start time: @slot.Start End time: @slot.End</a>
         }
-        <a asp-controller="Reservations" asp-action="create">Book!</a>
-    </ul>
-
-    @*<div class="grid-container">
-        @foreach (var c in Model)
-        {
-            <div class="grid-item">
-                @c.Date
-                <button onclick="myFunction()" class="dropbtn">Lediga tider</button>
-                <div id="myDropdown" class="dropdown-content">
-                    @foreach (var a in Model)
-                    {
-                        <a href="#">@a.Date</a>
-                        @<a href="#">Link 2</a>
-                        <a href="#">Link 3</a>@
-                    }
-
-                </div>
-            </div>
-
-
-        }*@
-        <div class="grid-item">2</div>
-        <div class="grid-item">3</div>
-        <div class="grid-item">4</div>
-        <div class="grid-item">5</div>
-        <div class="grid-item">6</div>
-        <div class="grid-item">7</div>
-        <div class="grid-item">8</div>
-        <div class="grid-item">9</div>
-    </div>
-
-
+    }
 </body>
 </html>
-

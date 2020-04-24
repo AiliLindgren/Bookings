@@ -17,7 +17,6 @@ namespace Bookings.Controllers
             this.service = service;
         }
 
-        [Route("")]
         [Route("index")]
         [HttpGet]
         public IActionResult Index()
@@ -42,6 +41,7 @@ namespace Bookings.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Route("")]
         [Route("CalendarView")]
         public IActionResult CalendarView()
         {
