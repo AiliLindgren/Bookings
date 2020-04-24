@@ -1,4 +1,5 @@
 ﻿body {
+    padding-left:500px
     margin: 0;
    
 }
@@ -12,8 +13,11 @@
 }
 .column{
     width:600px;
-    margin:40px;
+    margin:100px;
     background-color:white;
+}
+.bookingform {
+    font-size: 100px;
 }
 /*create formulär*/
 .reservation {
@@ -37,11 +41,29 @@
     cursor: pointer;
     position:sticky
 }
-
-    /* Dropdown button on hover & focus */
-    .dropbtn:hover, .dropbtn:focus {
-        background-color: #2980B9;
-    }
+#frm1_submit {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#frm2_submit {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+}
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+}
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {

@@ -61,6 +61,15 @@
             <option value=2030>2030</option>
         </select>
         </div>
+    <div>
+        <partial name="_search" model="@new ReservationsIndexVM()" />
+    </div>
+    <br />
+    <form action="/create" method="get">
+        <input type="submit" value="Next"
+               name="Submit" id="frm1_submit" />
+
+    </form>
 </body>
 </html>
 

@@ -1,10 +1,14 @@
 ﻿@model Bookings.Models.ViewModels.ReservationsIndexVM
+    <div class="column"
+    <div style="background-color:pink"
+        <form asp-controller="Reservation" asp-action="search">
+            <label asp-for="Date"></label>
+            <input asp-for="Date" />
+            <br />
+            <input type="submit" value="Find" />
+        </form>
 
-<form asp-controller="Reservation" asp-action="search">
-    <label asp-for="Date"></label>
-    <input asp-for="Date" />
-    <br />
-    <input type="submit" value="Find" />
-</form>
-@if (Model != null)
-{<b>Lediga platser:(@Model.NumberOfPeople)</b>}</b>
+        @if (Model != null)
+        {<b>Lediga platser:(@Model.NumberOfPeople)</b>}</b>
+    </div>
+</div>
