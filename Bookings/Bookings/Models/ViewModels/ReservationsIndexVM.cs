@@ -15,7 +15,7 @@ namespace Bookings.Models.ViewModels
         public string Contact { get; set; }
         public int NumberOfPeople { get; set; }
 
-        public bool HasSpace { get; set; }
+        public bool Isfull { get; set; }
 
     }
 }
