@@ -14,23 +14,12 @@
     <title>Index</title>
 </head>
 <body>
-    @*<div class="container col-sm-4 col-md-7 col-lg-4 mt-5">
-        <div class="card">
-            <h3 class="card-header" id="monthAndYear"></h3>
-            <table class="table table-bordered table-responsive-sm" id="calendar">
-                <thead>
-                    <tr>
-                        <th>Sun</th>
-                        <th>Mon</th>
-                        <th>Tue</th>
-                        <th>Wed</th>
-                        <th>Thu</th>
-                        <th>Fri</th>
-                        <th>Sat</th>
-                    </tr>
-                </thead>*@
-
-       
+    <div class="column"
+    <div class="card">
+        <h1 class="h3">April 2020</h1>
+    </div>
+    <div class="column"
+    <table class="t1">
         <div class="grid-container">
             <div class="grid-item">Mon</div>
             <div class="grid-item">Tue</div>
@@ -44,7 +33,7 @@
             {
                 <div class="grid-item">
                     <text>@(i + 1) </text>
-                      
+
                 </div>
             }
 
@@ -56,6 +45,7 @@
 
             <button class="btn btn-outline-primary col-sm-6" id="next" onclick="next()">Next</button>
         </div>
+    </table>
         <label for="year"></label>
         <select class="form-control col-sm-4" name="year" id="year" onchange="jump()">
             <option value=2020>2020</option>
@@ -70,10 +60,7 @@
             <option value=2029>2029</option>
             <option value=2030>2030</option>
         </select>
-        <partial name="_search" model="@new ReservationsIndexVM()" />
-
-        <
-
+        </div>
 </body>
 </html>
 
