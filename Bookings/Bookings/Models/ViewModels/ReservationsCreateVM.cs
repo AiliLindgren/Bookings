@@ -25,8 +25,8 @@ namespace Bookings.Models.ViewModels
         public int NumberOfPeople { get; set; }
 
         [Required(ErrorMessage = "Enter time")]
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public DateTime StartDateTime { get; set; }
+        public DateTime EndDateTime { get; set; }
 
         [Required(ErrorMessage = "Enter e-mail address")]
         [Display(Name = "Email")]

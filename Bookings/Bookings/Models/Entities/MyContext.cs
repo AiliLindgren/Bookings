@@ -32,9 +32,7 @@ namespace Bookings.Models.Entities
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.Contact)
-                    .IsRequired()
-                    .HasMaxLength(64);
+                entity.Property(e => e.Contact).HasMaxLength(64);
             });
 
             OnModelCreatingPartial(modelBuilder);

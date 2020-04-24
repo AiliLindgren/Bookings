@@ -13,11 +13,13 @@
 <body>
     @foreach (var item in Model)
     {
-        <p>Weekend: @item.IsWeekend Full? @item.IsFull</p>
+        <p>@item.StartDateTime.Date.ToString("d.M.") Weekend: @item.IsWeekend Full? @item.IsFull</p>
 
         @foreach (var slot in item.CalendarTimeSlots)
         {
-            <a>Start time: @slot.StartDateTime.Date.ToString("hh:mm") End time: @slot.EndDateTime.Date.ToString("hh:mm")</a>
+            @*End time: @slot.EndDateTime.Date.ToString("hh:mm")*@
+            @if (slot.IsFull) {<b style="color:red;font-size:46px;"> FULL @slot.StartDateTime.ToString("hh:mm") </b> } else {<a > @slot.StartDateTime.ToString("hh:mm") </a> }
+            <p>@slot.IsFull</p>
         }
     }
 </body>
