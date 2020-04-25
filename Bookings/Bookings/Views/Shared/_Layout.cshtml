@@ -1,15 +1,60 @@
-﻿
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>_Layout</title>
+    <title> @ViewBag.Title</title>
+
+    <link rel="stylesheet" type="text/css" href="~/RevStyle.css">
+    <script src="~/Rev.js"></script>
 </head>
-<body>
+
+<body style="background-color:white">
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #1E90FF;
+            border: solid 1px;
+            border-bottom-color: lightblue;
+            border-radius: 5px;
+        }
+
+        li {
+            float: left;
+        }
+
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+                li a:hover {
+                    background-color: #00BFFF;
+                }
+    </style>
+
+    <column class="column">
+        <ul>
+            <li><a class="active" href="Index">Home</a></li>
+            <li><a href="/search">search</a></li>
+            <li><a href="/CalendarView">Book</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+
+
+        <h1>@ViewBag.Header</h1>
+        <div style="background-color:white">
+            @RenderBody()
+        </div>
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+        @RenderSection("scripts", false)
+    </column>
 </body>
 </html>
+
