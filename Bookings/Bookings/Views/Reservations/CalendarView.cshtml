@@ -19,7 +19,7 @@
         {
             @*End time: @slot.EndDateTime.Date.ToString("hh:mm")*@
             @if (slot.IsFull) {<b style="color:red;font-size:46px;"> FULL @slot.StartDateTime.ToString("hh:mm") </b> } else {<a > @slot.StartDateTime.ToString("hh:mm") </a> }
-            <p>@slot.IsFull</p>
+            <b>@slot.IsFull</b>
         }
     }
 </body>
