@@ -3,6 +3,7 @@ using Bookings.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -28,94 +29,85 @@ namespace Bookings.Models
 
         internal CalendarDayVM[] GetCalendarView()
         {
-            //var date = "22.04.1988";
-            var date = new DateTime(2020, 01, 01);
-
             var reservations = context.Reservation.ToArray();
-
-            int NumberOFTheFirstDayOfMonth = (int)new DateTime(date.Year, date.Month, 1).DayOfWeek; //mon = 1, tis = 2 osv...
-
             var result = new List<CalendarDayVM>();
 
-            for (int i = 0; i < DateTime.DaysInMonth(date.Year, date.Month); i++)
+            var date = new DateTime(2020, 04, 12);
+            var calendarDate = new DateTime(date.Year, date.Month, 1);
+            int weekdayInt = (int)new DateTime(date.Year, date.Month, 1).DayOfWeek - 1; //mon = 1, tis = 2 osv...
+            int totalCalendarSpots = (DateTime.DaysInMonth(date.Year, date.Month) + weekdayInt);
+
+            for (int i = 0; weekdayInt < totalCalendarSpots; i++)
             {
-                int j = 0;
-                var now = date.AddDays(j);
-
-                // Innan vi lägger till värdet, kollar vi
-                if (i == NumberOFTheFirstDayOfMonth)
+                if (i == weekdayInt)
                 {
-                    var day = new CalendarDayVM { StartDateTime = now, IsWeekend = (now.DayOfWeek == DayOfWeek.Saturday || now.DayOfWeek == DayOfWeek.Sunday), IsClosed = (now.DayOfWeek == DayOfWeek.Monday), CalendarTimeSlots = new List<CalendarTimeSlotVM>() };
-                    //lägg now in i Arrayn
+                    var day = new CalendarDayVM { StartDateTime = calendarDate, FakeDay = false, IsWeekend = (calendarDate.DayOfWeek == DayOfWeek.Saturday || calendarDate.DayOfWeek == DayOfWeek.Sunday), IsClosed = (calendarDate.DayOfWeek == DayOfWeek.Monday), CalendarTimeSlots = new List<CalendarTimeSlotVM>() };
 
-                    if (!day.IsClosed)
-                    {
-                        if (day.IsWeekend)
-                        {
-                            day.StartDateTime = day.StartDateTime.AddHours(10);
-                            //day.EndDateTime = day.StartDateTime.AddHours(8);
-                            int openinghours = 8;
-                            //day.EndDateTime = day.EndDateTime.AddMinutes(30);
+                    weekdayInt++;
+                    calendarDate = calendarDate.AddDays(1);
 
-                            //for (day.StartDateTime = day.StartDateTime; day.StartDateTime < day.EndDateTime; day.StartDateTime.AddMinutes(15))
-                            //{
-                            //    var slot = new CalendarTimeSlotVM { StartDateTime = day.StartDateTime, EndDateTime = day.StartDateTime.AddHours(2) };
-
-                            //    day.CalendarTimeSlots.Add(slot);
-
-                            //    // trigger a method that checks how many bookings there is for the day && specific TIMESLOT
-                            //}
-                            for (double t = 0; t < openinghours; t += 0.25)
-                            {
-                                var slot = new CalendarTimeSlotVM { StartDateTime = day.StartDateTime.AddHours(t) };
-                                slot.IsFull = reservations.Where(r => r.StartDateTime == slot.StartDateTime).Select(r => r.NumberOfPeople).Sum() > 4;
-                                day.CalendarTimeSlots.Add(slot);
-
-                            }
-
-
-                        }
-                        else
-                        {
-                            day.StartDateTime = day.StartDateTime.AddHours(12);
-                            //day.EndDateTime = day.StartDateTime.AddHours(6);
-                            int openinghours = 6;
-
-                            //day.EndDateTime = day.EndDateTime.AddMinutes(30);
-
-                            //for (day.StartDateTime = day.StartDateTime; day.StartDateTime < day.EndDateTime; day.StartDateTime.AddMinutes(15))
-                            //{
-                            //    var slot = new CalendarTimeSlotVM { StartDateTime = day.StartDateTime, EndDateTime = day.StartDateTime.AddHours(2) };
-
-                            //    day.CalendarTimeSlots.Add(slot);
-
-                            //}
-
-                            for (int t = 0; t < openinghours; t++)
-                            {
-                                var slot = new CalendarTimeSlotVM { StartDateTime = day.StartDateTime.AddHours(t) };
-                                day.CalendarTimeSlots.Add(slot);
-                            }
-                        }
-                    }
-
-                    // IF all timeSpaces(amountOfFullTimeSlots) were full => Day is full
                     result.Add(day);
-                    j++;
                 }
                 else
                 {
-                    var day = new CalendarDayVM();
-                    //lägg till null i arrayn
+                    var day = new CalendarDayVM { FakeDay = true, CalendarTimeSlots = new List<CalendarTimeSlotVM>() };
                     result.Add(day);
                 }
-
-
-
-
             }
-            //return new CalendarViewVM {IsFull = context.Reservation.Any(o => o.Date == date)};
+
             return result.ToArray();
+                    //if (!day.IsClosed)
+                    //{
+                    //    if (day.IsWeekend)
+                    //    {
+                    //        day.StartDateTime = day.StartDateTime.AddHours(10);
+                    //        //day.EndDateTime = day.StartDateTime.AddHours(8);
+                    //        int openinghours = 8;
+                    //        //day.EndDateTime = day.EndDateTime.AddMinutes(30);
+
+                    //        //for (day.StartDateTime = day.StartDateTime; day.StartDateTime < day.EndDateTime; day.StartDateTime.AddMinutes(15))
+                    //        //{
+                    //        //    var slot = new CalendarTimeSlotVM { StartDateTime = day.StartDateTime, EndDateTime = day.StartDateTime.AddHours(2) };
+
+                    //        //    day.CalendarTimeSlots.Add(slot);
+
+                    //        //    // trigger a method that checks how many bookings there is for the day && specific TIMESLOT
+                    //        //}
+                    //        for (double t = 0; t < openinghours; t += 0.25)
+                    //        {
+                    //            var slot = new CalendarTimeSlotVM { StartDateTime = day.StartDateTime.AddHours(t) };
+                    //            slot.IsFull = reservations.Where(r => r.StartDateTime == slot.StartDateTime).Select(r => r.NumberOfPeople).Sum() > 4;
+                    //            day.CalendarTimeSlots.Add(slot);
+
+                    //        }
+
+
+                    //    }
+                    //    else
+                    //    {
+                    //        day.StartDateTime = day.StartDateTime.AddHours(12);
+                    //        //day.EndDateTime = day.StartDateTime.AddHours(6);
+                    //        int openinghours = 6;
+
+                    //        //day.EndDateTime = day.EndDateTime.AddMinutes(30);
+
+                    //        //for (day.StartDateTime = day.StartDateTime; day.StartDateTime < day.EndDateTime; day.StartDateTime.AddMinutes(15))
+                    //        //{
+                    //        //    var slot = new CalendarTimeSlotVM { StartDateTime = day.StartDateTime, EndDateTime = day.StartDateTime.AddHours(2) };
+
+                    //        //    day.CalendarTimeSlots.Add(slot);
+
+                    //        //}
+
+                    //        for (int t = 0; t < openinghours; t++)
+                    //        {
+                    //            var slot = new CalendarTimeSlotVM { StartDateTime = day.StartDateTime.AddHours(t) };
+                    //            day.CalendarTimeSlots.Add(slot);
+                    //        }
+                    //    }
+                    //}
+
+                    // IF all timeSpaces(amountOfFullTimeSlots) were full => Day is full
         }
 
 

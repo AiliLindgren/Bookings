@@ -19,7 +19,7 @@
     <div class="w3-container w3-center w3-animate-left">
         <div class="column"
     <div class="card">
-        <h1 class="h3">April 2020</h1>
+        <h1 class="h3"> </h1>
     </div>
     <div class="column"
     <table class="t1">
@@ -41,17 +41,14 @@
         }*@
 
             @foreach (var item in Model)
-            {
-                <p>@item.StartDateTime.Date.ToString("d.M.") Weekend: @item.IsWeekend Full? @item.IsFull</p>
-
-                @foreach (var slot in item.CalendarTimeSlots)
+                @if (item.FakeDay)
                 {
-                    @*@End time: @slot.EndDateTime.Date.ToString("hh:mm")@*@
-                @if(slot.IsFull) {<b style="color:red;font-size:46px;"> FULL @slot.StartDateTime.ToString("hh:mm") </b> } else
-            {<a> @slot.StartDateTime.ToString("hh:mm") </a> }
-        <b>@slot.IsFull</b>
-    }
-            }
+                    <p> </p>
+                }
+                else
+                {
+                    <p>@item.StartDateTime.Date.ToString("d.M.")</p>
+                }
 
 
         </div>

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 namespace Bookings.Models.ViewModels
 {
     public class CalendarDayVM
-
     {
         //27-31 days 
         //Array of Timeslots 
@@ -20,6 +19,8 @@ namespace Bookings.Models.ViewModels
 
         public DateTime StartDateTime { get; set; }
         public DateTime EndDateTime { get; set; }
+
+        public bool FakeDay { get; set; }
     }
 
     public class CalendarTimeSlotVM
