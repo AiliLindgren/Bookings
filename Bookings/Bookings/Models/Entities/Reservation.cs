@@ -6,9 +6,9 @@ namespace Bookings.Models.Entities
     public partial class Reservation
     {
         public int Id { get; set; }
-        public string Date { get; set; }
-        public string Time { get; set; }
         public int NumberOfPeople { get; set; }
+        public DateTime StartDateTime { get; set; }
+        public DateTime EndDateTime { get; set; }
         public string Contact { get; set; }
     }
 }

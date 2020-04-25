@@ -10,17 +10,23 @@ namespace Bookings.Models.ViewModels
     {
         //27-31 days 
         //Array of Timeslots 
-        public bool IsWeekend { get; set; } 
+        public bool IsWeekend { get; set; }
+        public bool IsClosed { get; set; }
+
         public bool IsFull { get; set; }
+        //public int OpeningHours { get; set; }
+
         public List<CalendarTimeSlotVM> CalendarTimeSlots { get; set; }
 
+        public DateTime StartDateTime { get; set; }
+        public DateTime EndDateTime { get; set; }
     }
 
     public class CalendarTimeSlotVM
     {
-        public DateTime Start { get; set; }
-        public DateTime End { get; set; }
-        public int Count { get; set; }
+        public bool IsFull { get; set; }
+        public DateTime StartDateTime { get; set; } 
+        public DateTime EndDateTime { get; set; }
 
     }
 }

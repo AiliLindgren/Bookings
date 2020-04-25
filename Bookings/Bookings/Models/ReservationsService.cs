@@ -1,5 +1,6 @@
 ﻿using Bookings.Models.Entities;
 using Bookings.Models.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,22 +10,29 @@ namespace Bookings.Models
 {
     public class ReservationsService
     {
-        TimeSpan testTime = new TimeSpan(15, 00, 00);
-        //CalendarTimeSlots
-        CalendarDayVM calender;
 
-         MyContext context;
+        //static List<Reservation> myReservations = new List<Reservation>
+        //{
+        //    new Reservation{ ID = 1, Contact = "Aili", Date = "21.04.2020", NumberOfVisitors = 1, StartTime = "12.00"},
+        //    new Reservation{ ID = 2, Contact = "Jessica", Date = "22.04.2020", NumberOfVisitors = 1, StartTime = "12.00"},
+        //    new Reservation{ ID = 3, Contact = "Sointu", Date = "23.04.2020", NumberOfVisitors = 6, StartTime = "12.00"}
+        //};
+
+        //int id = 4;
+
+        MyContext context;
         public ReservationsService(MyContext context)
         {
             this.context = context;
         }
 
-        public CalendarDayVM[] GetCalendarView()
+        internal CalendarDayVM[] GetCalendarView()
         {
             //var date = "22.04.1988";
-            var date = new DateTime(1988, 04, 01);
+            var date = new DateTime(2020, 01, 01);
 
-            var reservations = context.AiliReservation.ToArray();
+            var reservations = context.Reservation.ToArray();
+
             var result = new List<CalendarDayVM>();
             for (int i = 0; i < DateTime.DaysInMonth(date.Year, date.Month); i++)
             {
@@ -33,112 +41,101 @@ namespace Bookings.Models
                 // we can start with givin ALL DAYS same instances in the <TimeSlot> List!
 
                 var now = date.AddDays(i);
-                result.Add(new CalendarDayVM { IsWeekend = (now.DayOfWeek != DayOfWeek.Saturday && now.DayOfWeek != DayOfWeek.Sunday) });
+                var day = new CalendarDayVM { StartDateTime = now, IsWeekend = (now.DayOfWeek == DayOfWeek.Saturday || now.DayOfWeek == DayOfWeek.Sunday), IsClosed = (now.DayOfWeek == DayOfWeek.Monday), CalendarTimeSlots = new List<CalendarTimeSlotVM>() };
+
+
+                if (!day.IsClosed)
+                {
+                    if (day.IsWeekend)
+                    {
+                        day.StartDateTime = day.StartDateTime.AddHours(10);
+                        //day.EndDateTime = day.StartDateTime.AddHours(8);
+                        int openinghours = 8;
+                        //day.EndDateTime = day.EndDateTime.AddMinutes(30);
+
+                        //for (day.StartDateTime = day.StartDateTime; day.StartDateTime < day.EndDateTime; day.StartDateTime.AddMinutes(15))
+                        //{
+                        //    var slot = new CalendarTimeSlotVM { StartDateTime = day.StartDateTime, EndDateTime = day.StartDateTime.AddHours(2) };
+
+                        //    day.CalendarTimeSlots.Add(slot);
+
+                        //    // trigger a method that checks how many bookings there is for the day && specific TIMESLOT
+                        //}
+                        for (double t = 0; t < openinghours; t += 0.25)
+                        {
+                            var slot = new CalendarTimeSlotVM { StartDateTime = day.StartDateTime.AddHours(t) };
+                            slot.IsFull = context.Reservation.Where(r => r.StartDateTime == slot.StartDateTime).Select(r => r.NumberOfPeople).Sum() > 4;
+                            day.CalendarTimeSlots.Add(slot);
+
+                        }
+
+
+                    }
+                    else
+                    {
+                        day.StartDateTime = day.StartDateTime.AddHours(12);
+                        //day.EndDateTime = day.StartDateTime.AddHours(6);
+                        int openinghours = 6;
+
+                        //day.EndDateTime = day.EndDateTime.AddMinutes(30);
+
+                        //for (day.StartDateTime = day.StartDateTime; day.StartDateTime < day.EndDateTime; day.StartDateTime.AddMinutes(15))
+                        //{
+                        //    var slot = new CalendarTimeSlotVM { StartDateTime = day.StartDateTime, EndDateTime = day.StartDateTime.AddHours(2) };
+
+                        //    day.CalendarTimeSlots.Add(slot);
+
+                        //}
+
+                        for (int t = 0; t < openinghours; t ++)
+                        {
+                            var slot = new CalendarTimeSlotVM { StartDateTime = day.StartDateTime.AddHours(t) };
+                            day.CalendarTimeSlots.Add(slot);
+                        }
+                    }
+                }
+
+                // IF all timeSpaces(amountOfFullTimeSlots) were full => Day is full
+                result.Add(day);
             }
             //return new CalendarViewVM {IsFull = context.Reservation.Any(o => o.Date == date)};
             return result.ToArray();
         }
-        //internal CalendarViewVM[] CheckIfFull()
-        //{
-        //    var date = "22.04.1988";
-
-        //    return new CalendarViewVM { IsFull = context.Reservation.Any(o => o.Date == date) };
-        //}
-
-
-        //public ReservationsCreateVM IsItFull(string time)
-        //{
-        //    var amount = context.Reservation.
-        //        OrderBy(o => o.Contact)
-        //          .Where(o => o.Time == time)
-        //          .Select(o => new ReservationsIndexVM
-        //          {
-        //              Date = o.Date,
-        //              Time = o.Time,
-        //              Contact = o.Contact,
-        //              NumberOfPeople = o.NumberOfPeople,
-        //          })
-        //        .ToArray().Count();
-
-        //    if (amount > 4)
-        //    {
-
-        //    }
-        //}
 
 
         public ReservationsIndexVM[] GetAll()
         {
-            return context.AiliReservation
-            .OrderBy(o => o.Date)
-            .Select(o => new ReservationsIndexVM
-            {
-                Date = o.Date,
-                StartTime = o.StartTime,
-                EndTime = o.EndTime,
-                Contact = o.Contact,
-                NumberOfPeople = o.NumberOfPeople,
-                HasSpace = CheckNumberOfPeopleOnSameTime(testTime)
-            })
-            .ToArray();
-        }
-        
+            return context.Reservation.
+                OrderBy(o => o.Contact)
+                .Select(o => new ReservationsIndexVM
+                {
+                    EndDateTime = o.EndDateTime,
+                    StartDateTime = o.StartDateTime,
+                    Contact = o.Contact,
+                    NumberOfPeople = o.NumberOfPeople,
 
-        //public int VisitorsAtSameTime(string time)
-        //{
-        //    var visitors = context.Reservation.Where(o => o.Time == time).Select(o => o.NumberOfPeople).Sum();
-        //    return visitors;
-        //}
-
-        // Kolla hur många id:n som är kopplade till en viss tid.
-        public bool CheckNumberOfPeopleOnSameTime(TimeSpan testTime)
-        {
-            //var visitors = context.AiliReservation.Where(o => o.StartTime == timeSpan).ToList();
-            //return visitors.Count() <= 5;
-
-            var visitors = context.AiliReservation.Where(o => o.StartTime == testTime).Select(o => o.NumberOfPeople).Sum();
-
-            if (visitors <= 5)
-                return true;
-            else
-                return false;
-        }
-       
-        public ReservationsIndexVM Check (DateTime date)
-        //den här metoden returnerar bara antalet lediga platser ett angivet datum och 
-        //beställning
-        {
-            return context.AiliReservation.
-                 Where(o => o.Date==date)
-                 .Select(o => new ReservationsIndexVM
-                 {
-                     StartTime = o.StartTime,
-                     NumberOfPeople= (5-o.NumberOfPeople)
-
-                 })
-                 .Single();
-
+                })
+                .ToArray();
         }
 
         public ReservationsIndexVM[] GetDay()
         {
-            return context.AiliReservation.
+            return context.Reservation.
                 OrderBy(o => o.Contact)
                 .Select(o => new ReservationsIndexVM
                 {
-                    Date = o.Date
+                    StartDateTime = o.StartDateTime
                 })
                 .ToArray();
         }
 
         public void AddReservation(ReservationsCreateVM model)
         {
-            context.AiliReservation.Add(new AiliReservation
+            context.Reservation.Add(new Reservation
             {
                 Contact = model.Contact,
-                Date = model.Date,
-                StartTime = model.StartTime,
-                EndTime = model.EndTime,
+                StartDateTime = model.StartDateTime,
+                EndDateTime = model.EndDateTime,
                 NumberOfPeople = model.NumberOfPeople
 
             });
@@ -150,6 +147,6 @@ namespace Bookings.Models
             ////id++;
         }
 
-        
+
     }
 }
