@@ -15,8 +15,10 @@
     <title>Index</title>
 </head>
 <body>
+    
+     
      <div class="w3-container w3-center w3-animate-left">
-    <div class="column"
+         <div class="column"
     <div class="card">
         <h1 class="h3">April 2020</h1>
     </div>
@@ -65,15 +67,15 @@
         </div>
     <div>
 
-            <partial name="_search" model="@new ReservationsIndexVM()" />
-            <form action="/create" method="get">
-                <input type="submit" value="Next"
-                       name="Submit" id="frm1_submit" />
-            </form>
-            @*<div id="divGET"</div>*@
-            @*<div id="divForm"</div>*@
-        </div>
+        <partial name="_search" model="@new ReservationsIndexVM()" />
+        <form action="/create" method="get">
+            <input type="submit" value="Next"
+                   name="Submit" id="frm1_submit" />
+        </form>
 
+        @*<div id="divGET"</div>*@
+        @*<div id="divForm"</div>*@
+    </div>
         <script>
             fetch("/search",
                 {
