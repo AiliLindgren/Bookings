@@ -87,7 +87,7 @@ namespace Bookings.Models
 
                         //}
 
-                        for (int t = 0; t < openinghours; t ++)
+                        for (int t = 0; t < openinghours; t++)
                         {
                             var slot = new CalendarTimeSlotVM { StartDateTime = day.StartDateTime.AddHours(t) };
                             day.CalendarTimeSlots.Add(slot);

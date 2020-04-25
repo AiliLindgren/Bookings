@@ -44,7 +44,7 @@ namespace Bookings.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [Route("CaendarView")]
+        [Route("CalendarView")]
         public IActionResult CalendarView()
         {
             var result = service.GetCalendarView();
