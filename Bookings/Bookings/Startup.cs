@@ -37,8 +37,10 @@ namespace Bookings
             }
 
             app.UseRouting();
+            app.UseStaticFiles();
 
             app.UseEndpoints(o => o.MapControllers());
+
 
         }
     }
