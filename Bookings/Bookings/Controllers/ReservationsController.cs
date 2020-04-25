@@ -42,65 +42,12 @@ namespace Bookings.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [Route("CaendarView")]
+        [Route("CalendarView")]
         public IActionResult CalendarView()
         {
             var result = service.GetCalendarView();
             return View(result);
         }
-        [Route("Bookings/details{date}")]
-        public IActionResult Booking(DateTime date)
-        {
-            var result = service.Check(date);
-            return View(result);
-        }
-
-        [Route("search")]
-        [HttpGet]
-        public IActionResult search()
-        {
-            return View();
-        }
-
-        [Route("search")]
-        [HttpPost]
-        public IActionResult search(DateTime date)
-        {
-
-            if (!ModelState.IsValid)
-                return View(date);
-
-            // Add customer to DB
-            var result= service.Check(date);
-            return View(result);
-
-            
-        }
-
-        [Route("_search")]
-        [HttpGet]
-        public IActionResult Search()
-        {
-            return PartialView("_search");
-            //letar upp partial view 
-        }
-
-        [Route("_search")]
-        [HttpPost]
-        public IActionResult Search(DateTime date)
-        {
-            if (!ModelState.IsValid)
-                return View(date);
-
-            // Add customer to DB
-            var result = service.Check(date);
-            
-            // Show empty form
-            return PartialView(result);
-            //letar upp partial view 
-        }
-
-
-
     }
+       
 }
