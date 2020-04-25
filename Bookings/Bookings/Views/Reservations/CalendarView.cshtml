@@ -32,12 +32,25 @@
             <div class="grid-item">Sat</div>
             <div class="grid-item">Sun</div>
 
-            @for (int i = 0; i < DateTime.DaysInMonth(2020, 04); i++)
-            {
-                <div class="grid-item">
-                    <text>@(i + 1) </text>
+            @*@for (int i = 0; i < DateTime.DaysInMonth(2020, 04); i++)
+        {
+            <div class="grid-item">
+                <text>@(i + 1) </text>
 
-                </div>
+            </div>
+        }*@
+
+            @foreach (var item in Model)
+            {
+                <p>@item.StartDateTime.Date.ToString("d.M.") Weekend: @item.IsWeekend Full? @item.IsFull</p>
+
+                @foreach (var slot in item.CalendarTimeSlots)
+                {
+                    @*@End time: @slot.EndDateTime.Date.ToString("hh:mm")@*@
+                @if(slot.IsFull) {<b style="color:red;font-size:46px;"> FULL @slot.StartDateTime.ToString("hh:mm") </b> } else
+            {<a> @slot.StartDateTime.ToString("hh:mm") </a> }
+        <b>@slot.IsFull</b>
+    }
             }
 
 
