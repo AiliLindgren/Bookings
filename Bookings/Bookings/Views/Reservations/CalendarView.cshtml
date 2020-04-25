@@ -15,7 +15,6 @@
     <title>Index</title>
 </head>
 <body>
-    
      
      <div class="w3-container w3-center w3-animate-left">
          <div class="column"
@@ -73,27 +72,8 @@
                    name="Submit" id="frm1_submit" />
         </form>
 
-        @*<div id="divGET"</div>*@
-        @*<div id="divForm"</div>*@
     </div>
-        <script>
-            fetch("/search",
-                {
-                    method: "POST",
-
-                })
-                .then(res => res.text())
-                .then(html => document.getElementById("divForm").innerHTML = html);
-            fetch("/search",
-                {
-                    method: "GET",
-
-                })
-                .then(res => res.text())
-                .then(html => document.getElementById("divGET").innerHTML = html);
-
-
-        </script>
+        
 </body>
 </html>
 
