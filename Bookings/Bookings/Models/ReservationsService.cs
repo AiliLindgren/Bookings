@@ -33,70 +33,86 @@ namespace Bookings.Models
 
             var reservations = context.Reservation.ToArray();
 
+            int NumberOFTheFirstDayOfMonth = (int)new DateTime(date.Year, date.Month, 1).DayOfWeek; //mon = 1, tis = 2 osv...
+
             var result = new List<CalendarDayVM>();
+
             for (int i = 0; i < DateTime.DaysInMonth(date.Year, date.Month); i++)
             {
-                // we need to give the new date all the class properties: isFull, isWeekend,  List<TimeSlot> . 
-                // the List is full of objects of a TimeSlot: with properties public DateTime Start, DateTime End, int Count
-                // we can start with givin ALL DAYS same instances in the <TimeSlot> List!
+                int j = 0;
+                var now = date.AddDays(j);
 
-                var now = date.AddDays(i);
-                var day = new CalendarDayVM { StartDateTime = now, IsWeekend = (now.DayOfWeek == DayOfWeek.Saturday || now.DayOfWeek == DayOfWeek.Sunday), IsClosed = (now.DayOfWeek == DayOfWeek.Monday), CalendarTimeSlots = new List<CalendarTimeSlotVM>() };
-
-
-                if (!day.IsClosed)
+                // Innan vi lägger till värdet, kollar vi
+                if (i == NumberOFTheFirstDayOfMonth)
                 {
-                    if (day.IsWeekend)
+                    var day = new CalendarDayVM { StartDateTime = now, IsWeekend = (now.DayOfWeek == DayOfWeek.Saturday || now.DayOfWeek == DayOfWeek.Sunday), IsClosed = (now.DayOfWeek == DayOfWeek.Monday), CalendarTimeSlots = new List<CalendarTimeSlotVM>() };
+                    //lägg now in i Arrayn
+
+                    if (!day.IsClosed)
                     {
-                        day.StartDateTime = day.StartDateTime.AddHours(10);
-                        //day.EndDateTime = day.StartDateTime.AddHours(8);
-                        int openinghours = 8;
-                        //day.EndDateTime = day.EndDateTime.AddMinutes(30);
-
-                        //for (day.StartDateTime = day.StartDateTime; day.StartDateTime < day.EndDateTime; day.StartDateTime.AddMinutes(15))
-                        //{
-                        //    var slot = new CalendarTimeSlotVM { StartDateTime = day.StartDateTime, EndDateTime = day.StartDateTime.AddHours(2) };
-
-                        //    day.CalendarTimeSlots.Add(slot);
-
-                        //    // trigger a method that checks how many bookings there is for the day && specific TIMESLOT
-                        //}
-                        for (double t = 0; t < openinghours; t += 0.25)
+                        if (day.IsWeekend)
                         {
-                            var slot = new CalendarTimeSlotVM { StartDateTime = day.StartDateTime.AddHours(t) };
-                            slot.IsFull = context.Reservation.Where(r => r.StartDateTime == slot.StartDateTime).Select(r => r.NumberOfPeople).Sum() > 4;
-                            day.CalendarTimeSlots.Add(slot);
+                            day.StartDateTime = day.StartDateTime.AddHours(10);
+                            //day.EndDateTime = day.StartDateTime.AddHours(8);
+                            int openinghours = 8;
+                            //day.EndDateTime = day.EndDateTime.AddMinutes(30);
+
+                            //for (day.StartDateTime = day.StartDateTime; day.StartDateTime < day.EndDateTime; day.StartDateTime.AddMinutes(15))
+                            //{
+                            //    var slot = new CalendarTimeSlotVM { StartDateTime = day.StartDateTime, EndDateTime = day.StartDateTime.AddHours(2) };
+
+                            //    day.CalendarTimeSlots.Add(slot);
+
+                            //    // trigger a method that checks how many bookings there is for the day && specific TIMESLOT
+                            //}
+                            for (double t = 0; t < openinghours; t += 0.25)
+                            {
+                                var slot = new CalendarTimeSlotVM { StartDateTime = day.StartDateTime.AddHours(t) };
+                                slot.IsFull = reservations.Where(r => r.StartDateTime == slot.StartDateTime).Select(r => r.NumberOfPeople).Sum() > 4;
+                                day.CalendarTimeSlots.Add(slot);
+
+                            }
+
 
                         }
-
-
-                    }
-                    else
-                    {
-                        day.StartDateTime = day.StartDateTime.AddHours(12);
-                        //day.EndDateTime = day.StartDateTime.AddHours(6);
-                        int openinghours = 6;
-
-                        //day.EndDateTime = day.EndDateTime.AddMinutes(30);
-
-                        //for (day.StartDateTime = day.StartDateTime; day.StartDateTime < day.EndDateTime; day.StartDateTime.AddMinutes(15))
-                        //{
-                        //    var slot = new CalendarTimeSlotVM { StartDateTime = day.StartDateTime, EndDateTime = day.StartDateTime.AddHours(2) };
-
-                        //    day.CalendarTimeSlots.Add(slot);
-
-                        //}
-
-                        for (int t = 0; t < openinghours; t++)
+                        else
                         {
-                            var slot = new CalendarTimeSlotVM { StartDateTime = day.StartDateTime.AddHours(t) };
-                            day.CalendarTimeSlots.Add(slot);
+                            day.StartDateTime = day.StartDateTime.AddHours(12);
+                            //day.EndDateTime = day.StartDateTime.AddHours(6);
+                            int openinghours = 6;
+
+                            //day.EndDateTime = day.EndDateTime.AddMinutes(30);
+
+                            //for (day.StartDateTime = day.StartDateTime; day.StartDateTime < day.EndDateTime; day.StartDateTime.AddMinutes(15))
+                            //{
+                            //    var slot = new CalendarTimeSlotVM { StartDateTime = day.StartDateTime, EndDateTime = day.StartDateTime.AddHours(2) };
+
+                            //    day.CalendarTimeSlots.Add(slot);
+
+                            //}
+
+                            for (int t = 0; t < openinghours; t++)
+                            {
+                                var slot = new CalendarTimeSlotVM { StartDateTime = day.StartDateTime.AddHours(t) };
+                                day.CalendarTimeSlots.Add(slot);
+                            }
                         }
                     }
+
+                    // IF all timeSpaces(amountOfFullTimeSlots) were full => Day is full
+                    result.Add(day);
+                    j++;
+                }
+                else
+                {
+                    var day = new CalendarDayVM();
+                    //lägg till null i arrayn
+                    result.Add(day);
                 }
 
-                // IF all timeSpaces(amountOfFullTimeSlots) were full => Day is full
-                result.Add(day);
+
+
+
             }
             //return new CalendarViewVM {IsFull = context.Reservation.Any(o => o.Date == date)};
             return result.ToArray();
