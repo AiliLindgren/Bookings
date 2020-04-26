@@ -128,63 +128,7 @@
 
     </table>
              @*<label class="lead mr-2 ml-2" for="month">Jump To: </label>*@
-    <div class="dropdown">
-            <button class="dropbtn">Pick Month</button>
-            <div class="dropdown-content">
-                    <a href="/CalendarView/1">Jan</a>
-                    <a href="/CalendarView/2">Feb</a>
-                    <a href="/CalendarView/3">Mars</a>
-                    <a href="/CalendarView/4">April</a>
-                    <a href="/CalendarView/5">Maj</a>
-                    <a href="/CalendarView/6">Juni</a>
-                    <a href="/CalendarView/7">Juli</a>
-                    <a href="/CalendarView/8">Augusti</a>
-                    <a href="/CalendarView/9">Sept</a>
-                    <a href="/CalendarView/10">Oct</a>
-                    <a href="/CalendarView/11">Nov</a>
-                    <a href="/CalendarView/12">Dec</a>
-
- <script>
-     function jump() {
-    currentYear = parseInt(selectYear.value);
-    currentMonth = parseInt(selectMonth.value);
-    showCalendar(currentMonth, currentYear);
-}
-
-        // HTML//anonym funktionclick event kopplat till id( som get element by id)
-        /**/
-        $("#month").onchange(function () {
-            // Make AJAX call
-            $.ajax({
-                url: "/CalendarView/5",
-                type: "GET",
-                success: function (result) {
-                    // Call done - update DOM
-                    $("#grid-container").html(result);
-                }
-            });
-        });
-
-
-    </script>
-
-        <label for="year"></label>
-        <select class="form-control col-sm-4" name="year" id="year" onchange="jump()">
-            <option value=2020>2020</option>
-            <option value=2021>2021</option>
-            <option value=2022>2022</option>
-            <option value=2023>2023</option>
-            <option value=2024>2024</option>
-            <option value=2025>2025</option>
-            <option value=2026>2026</option>
-            <option value=2027>2027</option>
-            <option value=2028>2028</option>
-            <option value=2029>2029</option>
-            <option value=2030>2030</option>
-        </select>
-</div>
-
-
+    
 
 
 </body>

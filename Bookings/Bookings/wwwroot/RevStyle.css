@@ -216,7 +216,7 @@
     text-align: center;
 }
 .dropbtn {
-    background-color: #4CAF50;
+    background-color: white;
     color: white;
     padding: 16px;
     font-size: 16px;
@@ -254,7 +254,23 @@
 
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
+    
 }
+.flex-container {
+    display: flex;
+    background-color: DodgerBlue;
+    border-radius:10px;
+}
+
+    .flex-container > div {
+        background-color: white;
+        margin: 10px;
+        padding: 20px;
+        border-radius:5px;
+        font-size: 15px;
+    }
+
+
     /*!
  * Bootswatch v4.4.1
  * Homepage: https://bootswatch.com
