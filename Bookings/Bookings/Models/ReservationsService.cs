@@ -48,7 +48,7 @@ namespace Bookings.Models
         //}
 
 
-        internal CalendarDayVM[] GetCalendarView(int month,int people)
+        internal CalendarDayVM[] GetCalendarView(int month)
         {
             var reservations = context.Reservation.ToArray();
             var result = new List<CalendarDayVM>();

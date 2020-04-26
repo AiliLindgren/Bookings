@@ -63,7 +63,23 @@
     <div class="card">
         <h1 class="h3"> </h1>
     </div>
-    <div class="column"
+        <script>
+            let index = 0;
+function AddAmount() {
+    index++;
+    result = index;
+    if (index < 0) {
+
+        alert("Don't even think about it")
+
+    }
+    else
+        document.getElementById("result").innerText = result;
+}
+        </script>
+        
+    
+        <div class="column"
     <table class="t1">
         <div class="grid-container">
             <div class="grid-item">Mon</div>
@@ -77,49 +93,52 @@
 
             @foreach (var item in Model)
             {
+
+
                 @if (item.FakeDay)
                 {
                     <div class="grid-item"> </div>
                 }
                 else if (!item.IsClosed)
                 {
-        <div class="grid-item-free">
-            @item.StartDateTime.Date.ToString("d.")
-            <div class="dropdown">
-                <button class="dropbtn">pick</button>
-                <div class="dropdown-content">
-                    <ul>
-                        @foreach (var slot in item.CalendarTimeSlots)
-                        {
-                            if (!slot.IsFull)
-                            {
-                             <li>@slot.StartDateTime.ToString("h:mm") - @slot.EndDateTime.ToString("h:mm")</li>
-                            }
-                            else
-                            {
-                                <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b>
-                            }
-                        }
-                    </ul>
+                    <div class="grid-item-free">
+                        @item.StartDateTime.Date.ToString("d.")
+                        <div class="dropdown">
+                            <button class="dropbtn">pick</button>
+                            <div class="dropdown-content">
+                                <ul>
+                                    @foreach (var slot in item.CalendarTimeSlots)
+                                    {
+                                        if (!slot.IsFull)
+                                        {
+                                            <li>@slot.StartDateTime.ToString("h:mm") - @slot.EndDateTime.ToString("h:mm")</li>
+                                        }
+                                        else
+                                        {
+                                            <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b>
+                                        }
+                                    }
+                                </ul>
 
-            </div>
-            </div>
-        </div>
-            }
-            else if (item.IsFull)
-            {
-            <div class="grid-item-full">
-                @item.StartDateTime.Date.ToString("d.")
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if (item.IsFull)
+                {
+                    <div class="grid-item-full">
+                        @item.StartDateTime.Date.ToString("d.")
 
-            </div>
-            }
-            else
-            {
-            <div class="grid-item-occupied">
-                @item.StartDateTime.Date.ToString("d.")
+                    </div>
+                }
+                else
+                {
+                    <div class="grid-item-occupied">
+                        @item.StartDateTime.Date.ToString("d.")
 
-            </div>
-            }
+                    </div>
+                }
+
 
 
             }
@@ -127,65 +146,24 @@
         </div>
 
     </table>
-             @*<label class="lead mr-2 ml-2" for="month">Jump To: </label>*@
-    <select class="form-control col-sm-4" name="month" id="month" onchange="jump()">
 
+             <div class="dropdown">
+            <button class="dropbtn">Pick Month</button>
+            <div class="dropdown-content">
+                    <a href="/CalendarView/1">Jan</a>
+                    <a href="/CalendarView/2">Feb</a>
+                    <a href="/CalendarView/3">Mars</a>
+                    <a href="/CalendarView/4">April</a>
+                    <a href="/CalendarView/5">Maj</a>
+                    <a href="/CalendarView/6">Juni</a>
+                    <a href="/CalendarView/7">Juli</a>
+                    <a href="/CalendarView/8">Augusti</a>
+                    <a href="/CalendarView/9">Sept</a>
+                    <a href="/CalendarView/10">Oct</a>
+                    <a href="/CalendarView/11">Nov</a>
+                    <a href="/CalendarView/12">Dec</a>
+                
 
-        <option value=0>Jan</option>
-        <option value=1>Feb</option>
-        <option value=2>Mar</option>
-        <option value=3>Apr</option>
-        <option value=4>May</option>
-        <option value=5>Jun</option>
-        <option value=6>Jul</option>
-        <option value=7>Aug</option>
-        <option value=8>Sep</option>
-        <option value=9>Oct</option>
-        <option value=10>Nov</option>
-        <option value=11>Dec</option>
-    </select>
- <script>
-     function jump() {
-    currentYear = parseInt(selectYear.value);
-    currentMonth = parseInt(selectMonth.value);
-    showCalendar(currentMonth, currentYear);
-}
-
-        // HTML//anonym funktionclick event kopplat till id( som get element by id)
-        /**/
-        $("#month").onchange(function () {
-            // Make AJAX call
-            $.ajax({
-                url: "/CalendarView/5",
-                type: "GET",
-                success: function (result) {
-                    // Call done - update DOM
-                    $("#grid-container").html(result);
-                }
-            });
-        });
-
-
-    </script>
-
-        <label for="year"></label>
-        <select class="form-control col-sm-4" name="year" id="year" onchange="jump()">
-            <option value=2020>2020</option>
-            <option value=2021>2021</option>
-            <option value=2022>2022</option>
-            <option value=2023>2023</option>
-            <option value=2024>2024</option>
-            <option value=2025>2025</option>
-            <option value=2026>2026</option>
-            <option value=2027>2027</option>
-            <option value=2028>2028</option>
-            <option value=2029>2029</option>
-            <option value=2030>2030</option>
-        </select>
-</div>
-
-
-    
 
 </body>
 </html>
