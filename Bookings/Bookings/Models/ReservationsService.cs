@@ -27,6 +27,8 @@ namespace Bookings.Models
             this.context = context;
         }
 
+        // Tillfällig kommentar.
+
         //internal CalendarDayVM[] next()
         //{
         //    var currentYear = DateTime.Today.Year;
