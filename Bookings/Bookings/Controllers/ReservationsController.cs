@@ -61,9 +61,10 @@ namespace Bookings.Controllers
             }
            
         }
-        [Route("calendar")]
+
+        [Route("calendar/{5}/{3}")]
         [HttpGet]
-        public IActionResult calender(int month,int people)
+        public IActionResult Calendar(int month,int people) 
         {
             var result = service.GetCalendarView(month,people);
             // Show empty form
@@ -71,5 +72,16 @@ namespace Bookings.Controllers
             //letar upp partial view 
         }
 
+        [Route("timebox-data")]
+        [HttpGet]
+        public IActionResult TimeboxData(CalendarTimeSlotVM dayAndTime)
+        {
+            // Show empty form
+            var model = new
+            {
+                StartDateTime = dayAndTime.StartDateTime.Date.ToString()
+            };
+            return Json(model);
+        }
     }
 }
