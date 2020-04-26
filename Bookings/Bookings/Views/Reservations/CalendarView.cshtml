@@ -12,7 +12,48 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <title>Index</title>
+    <style>
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #ddd;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    </style>
 </head>
 <body>
     
@@ -42,24 +83,43 @@
                 }
                 else if (!item.IsClosed)
                 {
-                    <div class="grid-item-free">
-                        @item.StartDateTime.Date.ToString("d.")
-                    </div>
-                }
-                else if (item.IsFull)
-                {
-                    <div class="grid-item-full">
-                        @item.StartDateTime.Date.ToString("d.")
+        <div class="grid-item-free">
+            @item.StartDateTime.Date.ToString("d.")
+            <div class="dropdown">
+                <button class="dropbtn">pick</button>
+                <div class="dropdown-content">
+                    @foreach (var slot in item.CalendarTimeSlots)
+                    {
+                        if (!slot.IsFull)
+                        {
+                            <b>@slot.StartDateTime.ToString("h:mm") - @slot.EndDateTime.ToString("h:mm")</b>
+                        }
+                        else
+                        {
+                            <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b>
+                        }
+                    }
+               
 
-                    </div>
-                }
-                else
-                {
-                    <div class="grid-item-occupied">
-                        @item.StartDateTime.Date.ToString("d.")
+                
+            </div>
+            </div>
+        </div>
+            }
+            else if (item.IsFull)
+            {
+            <div class="grid-item-full">
+                @item.StartDateTime.Date.ToString("d.")
 
-                    </div>
-                }
+            </div>
+            }
+            else
+            {
+            <div class="grid-item-occupied">
+                @item.StartDateTime.Date.ToString("d.")
+
+            </div>
+            }
 
 
             }
@@ -88,15 +148,7 @@
         </select>
         </div>
 
-    @*<div>
-
-        <partial name="_search" model="@new ReservationsIndexVM()" />
-        <form action="/create" method="get">
-            <input type="submit" value="Next"
-                   name="Submit" id="frm1_submit" />
-        </form>
-
-    </div>*@
+    
 
 </body>
 </html>

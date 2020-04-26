@@ -29,36 +29,42 @@
             <div class="grid-item">Tue</div>
             <div class="grid-item">Wed</div>
             <div class="grid-item">Thu</div>
-            <div class="grid-item">Fri</div>
+            <div class="grid-item">Fri
+                <p>hej</p>
+            </div>
             <div class="grid-item">Sat</div>
             <div class="grid-item">Sun</div>
 
 
             @foreach (var item in Model)
             {
+                
                 @if (item.FakeDay)
                 {
-                    <div class="grid-item"> </div>
+                    <div class="grid-item">
+                        
+                    </div>
                 }
                 else if (!item.IsClosed)
                 {
                     <div class="grid-item-free">
                         @item.StartDateTime.Date.ToString("d.")
+                        
                     </div>
                 }
                 else if (item.IsFull)
                 {
-                    <div class="grid-item-full">
-                        @item.StartDateTime.Date.ToString("d.")
-
-                    </div>
+                      
+                  <div class="grid-item-full">
+                  @item.StartDateTime.Date.ToString("d.")
+                   </div>
                 }
                 else
                 {
-                    <div class="grid-item-occupied">
-                        @item.StartDateTime.Date.ToString("d.")
-
-                    </div>
+        <div class="grid-item-occupied">
+            @item.StartDateTime.Date.ToString("d.")
+          
+        </div>
                 }
 
 
