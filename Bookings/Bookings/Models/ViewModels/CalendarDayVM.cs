@@ -32,5 +32,10 @@ namespace Bookings.Models.ViewModels
         public DateTime StartDateTime { get; set; } 
         public DateTime EndDateTime { get; set; }
 
+        public override string ToString()
+        {
+            return $"{StartDateTime}";
+        }
+
     }
 }

@@ -68,7 +68,8 @@ namespace Bookings.Models
                         StartDateTime = calendarDate, 
                         FakeDay = false, 
                         IsWeekend = (calendarDate.DayOfWeek == DayOfWeek.Saturday || calendarDate.DayOfWeek == DayOfWeek.Sunday), 
-                        IsClosed = (calendarDate.DayOfWeek == DayOfWeek.Monday), CalendarTimeSlots = new List<CalendarTimeSlotVM>() 
+                        IsClosed = (calendarDate.DayOfWeek == DayOfWeek.Monday),
+                        CalendarTimeSlots = new List<CalendarTimeSlotVM>() 
                     };
 
                     weekdayInt++;
