@@ -50,5 +50,14 @@ namespace Bookings.Controllers
             var result = service.GetCalendarView();
             return View(result);
         }
+        [Route("calender")]
+        [HttpGet]
+        public IActionResult calender()
+        {
+            var result = service.GetCalendarView();
+            // Show empty form
+            return PartialView("_calender",result);
+            //letar upp partial view 
+        }
     }
 }

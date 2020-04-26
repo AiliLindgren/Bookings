@@ -27,6 +27,25 @@ namespace Bookings.Models
             this.context = context;
         }
 
+        //internal CalendarDayVM[] next()
+        //{
+        //    var currentYear = DateTime.Today.Year;
+        //    var currentMonth= DateTime.Today.Month;
+        //    currentYear = (currentMonth ==11) ? currentYear + 1 : currentYear;
+        //    currentMonth = (currentMonth + 1) % 12;
+        //    return GetCalendarView(currentMonth,currentYear);
+        //}
+
+        //internal CalendarDayVM[] previous()
+        //{
+        //    var currentYear = DateTime.Today.Year;
+        //    var currentMonth = DateTime.Today.Month;
+        //    currentYear = (currentMonth == 0) ? currentYear - 1 : currentYear;
+        //    currentMonth = (currentMonth == 0) ? 11 : currentMonth - 1;
+        //    //return GetCalendarView(currentMonth, currentYear);
+        //}
+
+
         internal CalendarDayVM[] GetCalendarView()
         {
             var reservations = context.Reservation.ToArray();
