@@ -44,15 +44,32 @@ namespace Bookings.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Route("CalendarView/{month}/{people}")]
         [Route("CalendarView")]
         [HttpGet]
-        public IActionResult CalendarView()
+        public ActionResult CalendarView(int month,int people)
         {
-            var result = service.GetCalendarView();
-            return View(result);
+            if (month==0)
+            {
+              var result = service.GetCalendarView(DateTime.Now.Month,1);
+                return View(result);
+            }
+            else
+            {
+                var result = service.GetCalendarView(month,people);
+                return View(result);
+            }
+           
         }
-        
+        [Route("calendar")]
+        [HttpGet]
+        public IActionResult calender(int month,int people)
+        {
+            var result = service.GetCalendarView(month,people);
+            // Show empty form
+            return PartialView("_calendar", result);
+            //letar upp partial view 
+        }
 
-       
     }
 }

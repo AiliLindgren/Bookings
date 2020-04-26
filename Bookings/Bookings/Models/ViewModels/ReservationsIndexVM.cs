@@ -20,5 +20,6 @@ namespace Bookings.Models.ViewModels
         public DateTime StartDateTime { get; set; }
         public DateTime EndDateTime { get; set; }
         public string Contact { get; set; }
+        public CalendarDayVM Calendar { get; set; }
     }
 }

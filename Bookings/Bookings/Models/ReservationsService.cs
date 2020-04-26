@@ -46,13 +46,13 @@ namespace Bookings.Models
         //}
 
 
-        internal CalendarDayVM[] GetCalendarView()
+        internal CalendarDayVM[] GetCalendarView(int month,int people)
         {
             var reservations = context.Reservation.ToArray();
             var result = new List<CalendarDayVM>();
 
             //DateTime date = DateTime.Now;
-            DateTime date = new DateTime(2020, 10, 1);
+            DateTime date = new DateTime(2020, month, 1);
             var calendarDate = new DateTime(date.Year, date.Month, 1);
             int weekdayInt = (int)new DateTime(date.Year, date.Month, 1).DayOfWeek - 1; //mon = 1, tis = 2 osv...
             int totalCalendarSpots = (DateTime.DaysInMonth(date.Year, date.Month) + weekdayInt);
