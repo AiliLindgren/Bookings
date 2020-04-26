@@ -88,19 +88,19 @@
             <div class="dropdown">
                 <button class="dropbtn">pick</button>
                 <div class="dropdown-content">
-                    @foreach (var slot in item.CalendarTimeSlots)
-                    {
-                        if (!slot.IsFull)
+                    <ul>
+                        @foreach (var slot in item.CalendarTimeSlots)
                         {
-                            <b>@slot.StartDateTime.ToString("h:mm") - @slot.EndDateTime.ToString("h:mm")</b>
+                            if (!slot.IsFull)
+                            {
+                             <li>@slot.StartDateTime.ToString("h:mm") - @slot.EndDateTime.ToString("h:mm")</li>
+                            }
+                            else
+                            {
+                                <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b>
+                            }
                         }
-                        else
-                        {
-                            <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b>
-                        }
-                    }
-               
-
+                    </ul>
                 
             </div>
             </div>

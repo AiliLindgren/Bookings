@@ -53,14 +53,6 @@ namespace Bookings.Controllers
         }
         
 
-        //[Route("calender")]
-        //[HttpGet]
-        //public IActionResult calender()
-        //{
-        //    var result = service.GetCalendarView();
-        //    // Show empty form
-        //    return PartialView("_calender",result);
-        //    //letar upp partial view 
-        //}
+       
     }
 }
