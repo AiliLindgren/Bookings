@@ -126,7 +126,7 @@
                 }
                 else if (!item.IsClosed)
                 {
-        <div class="grid-item-free">
+        <div class="grid-item-free calendar">
             @item.StartDateTime.Date.ToString("d.")
             <div class="dropdown">
                 <button class="dropbtn">pick</button>
@@ -136,7 +136,7 @@
                         {
                             if (!slot.IsFull)
                             {
-                             <li>@slot.StartDateTime.ToString("h:mm") - @slot.EndDateTime.ToString("h:mm")</li>
+                             <li data-value="@slot.IsFull">@slot.StartDateTime.ToString("h:mm") - @slot.EndDateTime.ToString("h:mm")</li>
                             }
                             else
                             {

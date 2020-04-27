@@ -49,9 +49,9 @@ namespace Bookings.Controllers
         [HttpGet]
         public ActionResult CalendarView(int month)
         {
-            if (month==0)
+            if (month == 0)
             {
-              var result = service.GetCalendarView(DateTime.Now.Month);
+                var result = service.GetCalendarView(DateTime.Now.Month);
                 return View(result);
             }
             else
