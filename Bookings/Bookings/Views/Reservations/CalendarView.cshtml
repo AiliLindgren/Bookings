@@ -36,9 +36,27 @@
                 <span>Total number of people:</span> <span id="totalPeople">0</span>
             </div>
         </div>
-    
+    <br />
 
     <div class="w3-container w3-center w3-animate-left">
+        <div style="float:left" class="dropdown">
+            <button class="dropbtn">Pick Month</button>
+            <div class="dropdown-content">
+
+                <a href="/CalendarView/1">Jan</a>
+                <a href="/CalendarView/2">Feb</a>
+                <a href="/CalendarView/3">Mars</a>
+                <a href="/CalendarView/4">April</a>
+                <a href="/CalendarView/5">Maj</a>
+                <a href="/CalendarView/6">Juni</a>
+                <a href="/CalendarView/7">Juli</a>
+                <a href="/CalendarView/8">Aug</a>
+                <a href="/CalendarView/9">Sept</a>
+                <a href="/CalendarView/10">Oct</a>
+                <a href="/CalendarView/11">Nov</a>
+                <a href="/CalendarView/12">Dec</a>
+            </div>
+        </div>
         <div class="column"
             <div class="card">
                 <h1 class="h3"> </h1>
@@ -75,8 +93,8 @@
                                   <div class="grid-item-free">
 
                                       @item.StartDateTime.Date.ToString("d.")
-                                    
-                                     
+
+
                                       <select name="id_time-slot">
                                           @foreach (var slot in item.CalendarTimeSlots)
                                           {
@@ -97,13 +115,13 @@
                                       </select>
 
                                   </div>
-                     
+
                               }
                               else if (item.IsFull)
                               {
                                   <div class="grid-item-full">
                                       @item.StartDateTime.Date.ToString("d.")
-                                     
+
 
                                   </div>
                               }
@@ -123,24 +141,7 @@
             </div>
        </div>
     </div>
-    <div style="float:left" class="dropdown">
-        <button class="dropbtn">Pick Month</button>
-        <div class="dropdown-content">
-
-            <a href="/CalendarView/1">Jan</a>
-            <a href="/CalendarView/2">Feb</a>
-            <a href="/CalendarView/3">Mars</a>
-            <a href="/CalendarView/4">April</a>
-            <a href="/CalendarView/5">Maj</a>
-            <a href="/CalendarView/6">Juni</a>
-            <a href="/CalendarView/7">Juli</a>
-            <a href="/CalendarView/8">Aug</a>
-            <a href="/CalendarView/9">Sept</a>
-            <a href="/CalendarView/10">Oct</a>
-            <a href="/CalendarView/11">Nov</a>
-            <a href="/CalendarView/12">Dec</a>
-        </div>
-    </div>
+    
 
     @section scripts
                     {
