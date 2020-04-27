@@ -30,8 +30,6 @@ namespace Bookings.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            //service.GetAll()
-
             return View();
         }
 
@@ -89,6 +87,22 @@ namespace Bookings.Controllers
                 StartDateTime = dayAndTime.StartDateTime.Date.ToString()
             };
             return Json(model);
+        }
+
+        [Route("form")]
+        [HttpGet]
+        public IActionResult Form()
+        {
+            return View();
+        }
+
+        [Route("form")]
+        [HttpPost]
+        public IActionResult Form(ReservationsCreateVM reservation)
+        {
+            service.AddReservation(reservation);
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
