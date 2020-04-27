@@ -41,6 +41,7 @@
                 <h1 class="h3"> </h1>
             </div>
         <div class="column"
+<<<<<<< HEAD
               <table class="t1">
                     <div class="grid-container">
                         <div class="grid-item">Mon</div>
@@ -53,6 +54,42 @@
 
 
                         @foreach (var item in Model)
+=======
+    <div class="card">
+        <h1 class="h3"> </h1>
+    </div>
+    <div class="column"
+    <table class="t1">
+        <div class="grid-container">
+            <div class="grid-item">Mon</div>
+            <div class="grid-item">Tue</div>
+            <div class="grid-item">Wed</div>
+            <div class="grid-item">Thu</div>
+            <div class="grid-item">Fri</div>
+            <div class="grid-item">Sat</div>
+            <div class="grid-item">Sun</div>
+
+
+            @foreach (var item in Model)
+            {
+                @if (item.FakeDay)
+                {
+                    <div class="grid-item"> </div>
+                }
+                else if (!item.IsClosed&&!item.IsFull)
+                {
+        <div class="grid-item-free">
+
+            @item.StartDateTime.Date.ToString("d.")
+
+            <div class="dropdown">
+
+                <button class="dropbtn">pick</button>
+
+                <div class="dropdown-content">
+                    <ul>
+                        @foreach (var slot in item.CalendarTimeSlots)
+>>>>>>> 7e1f45d544bfbbe5ccdf3f0c2db7e8afcacfe4b2
                         {
                             @if (item.FakeDay)
                             {
@@ -96,8 +133,24 @@
                                     @item.StartDateTime.Date.ToString("d.")
                                     <div class="dropdown">
 
+<<<<<<< HEAD
                                         <button class="dropbtn">pick</button>
                                     </div>
+=======
+            </div>
+            </div>
+        </div>
+            }
+            else if (item.IsFull)
+            {
+              <div class="grid-item-full">
+
+                @item.StartDateTime.Date.ToString("d.")
+            <div class="dropdown">
+
+                <button class="dropbtn">pick</button>
+            </div>
+>>>>>>> 7e1f45d544bfbbe5ccdf3f0c2db7e8afcacfe4b2
 
                                 </div>
                             }
