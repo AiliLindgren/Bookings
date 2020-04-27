@@ -89,7 +89,7 @@
                 <div class="dropdown-content">
                     <ul>
                         @foreach (var slot in item.CalendarTimeSlots)
->>>>>>> 7e1f45d544bfbbe5ccdf3f0c2db7e8afcacfe4b2
+
                         {
                             @if (item.FakeDay)
                             {
@@ -110,7 +110,7 @@
                                                         {
                                                             if (!slot.IsFull)
                                                             {
-                                                             <li>@slot.StartDateTime.ToString("h:mm") - @slot.EndDateTime.ToString("h:mm")</li>
+                                                             <li id="time-slot"> @slot.StartDateTime.ToString("h:mm") - @slot.EndDateTime.ToString("h:mm")</li>
                                                             }
                                                             else if(slot.IsFull)
                                                             {
