@@ -199,7 +199,7 @@ li {
     }
 
         .dropdown-content a:hover {
-            background-color: #ddd;
+            background-color: white;
         }
 
 .dropdown:hover .dropdown-content {
@@ -207,7 +207,7 @@ li {
 }
 
 .dropdown:hover .dropbtn {
-    background-color: #3e8e41;
+    background-color: white;
     
 }
 
