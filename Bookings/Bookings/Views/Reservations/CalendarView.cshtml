@@ -29,11 +29,12 @@
             </span>
         </div>
 
-        <div> <span>Date and time: </span> <span id="chosenDateAndTime"> </span></div>
+        <div> <span>Date and time: </span> <span id="demo"> </span></div>
         <div>
             <span>Total amount to pay:</span> <span id="totalPrice">0</span> <span>kr</span>
 
             <span>Total number of people:</span> <span id="totalPeople">0</span>
+                                                 <span> <p id="demo"></p></span>
         </div>
     </div>
 
@@ -59,94 +60,105 @@
             </div>
         </div>
         <div class="column"
-            <div class="card">
-                <h1 class="h3"> </h1>
-            </div>
-            <div class="column"
-                  <table class="t1">
-                      <div class="grid-container">
-                          <div class="grid-item">Mon</div>
-                          <div class="grid-item">Tue</div>
-                          <div class="grid-item">Wed</div>
-                          <div class="grid-item">Thu</div>
-                          <div class="grid-item">Fri</div>
-                          <div class="grid-item">Sat</div>
-                          <div class="grid-item">Sun</div>
+        <div class="card">
+        <h1 class="h3"> </h1>
+        </div>
+        <div class="column"
+        <table class="t1">
+        <div class="grid-container">
+        <div class="grid-item">Mon</div>
+        <div class="grid-item">Tue</div>
+        <div class="grid-item">Wed</div>
+        <div class="grid-item">Thu</div>
+        <div class="grid-item">Fri</div>
+        <div class="grid-item">Sat</div>
+        <div class="grid-item">Sun</div>
 
 
-                          @foreach (var item in Model)
-                          {
-                              @if (item.FakeDay)
-                              {
-                                  <div class="grid-item"> </div>
-                              }
-                              else if (item.StartDateTime.Date < DateTime.Today)
-                              {
-                               <div class="grid-item-occupied">
-                                @item.StartDateTime.Date.ToString("d.")
-                                <div class="dropdown">
-                                <button class="dropbtn">Time passed</button>
-                                 </div>
-                                  </div>
-                              }
-                              else if (!item.IsClosed && !item.IsFull)
-                              {
-                      <div class="grid-item-free">
+        @foreach (var item in Model)
+        {
+            @if (item.FakeDay)
+            {
+                <div class="grid-item"> </div>
+            }
+            else if (item.StartDateTime.Date < DateTime.Today)
+            {
+                <div class="grid-item-occupied">
+                @item.StartDateTime.Date.ToString("d.")
+                <div class="dropdown">
+                <button class="dropbtn">Time passed</button>
+                </div>
+                </div>
+            }
+            else if (!item.IsClosed && !item.IsFull)
+            {
+                <div class="grid-item-free">
 
-                          @item.StartDateTime.Date.ToString("d.")
-                          <div class="dropdown">
-                              <button class="dropbtn">Pick</button>
-                              <div class="dropdown-content">
-                                  @*<select name="id_time-slot">*@
-                                  <ul>
-                                      @foreach (var slot in item.CalendarTimeSlots)
-                                      {
-                                          if (!slot.IsFull)
-                                          {
-                                              <asp:HiddenField ID="ProductID" value="@slot.StartDateTime.ToString("h:mm")" onclick="SendDateAndTime()" />
+                @item.StartDateTime.Date.ToString("d.")
+                <div class="dropdown">
+                <button class="dropbtn">Pick</button>
+                <div class="dropdown-content">
+                @*<select name="id_time-slot">*@
+                    <ul>
+                        @foreach (var slot in item.CalendarTimeSlots)
+                        {
+                            if (!slot.IsFull)
+                            {
+                                @*<asp:HiddenField ID="ProductID" runat="server" value="@slot.StartDateTime.ToString("h:mm")" onclick="SendDateAndTime()" />*@
 
-                                              <li>@slot.StartDateTime.ToString("h:mm")</li>
+                        <li>
+                            @slot.StartDateTime.ToString("h:mm")
+                                                        <button id="myBtn" value=" @item.StartDateTime.Date.ToString("yyyy-MM-dd") @slot.StartDateTime.ToString("h:mm")" onclick="Tid()">pick</button>
+                                                    </li>
 
-                                          }
-                                          else if (slot.IsFull)
-                                          {
-                                                <li> <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b></li>
-                                          }
-                                          else
-                                          {
-                                               <li> <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b></li>
-                                          }
-                                      }
-                                  </ul>
-
-                              </div>
-                          </div>
-                       </div>
-
-                          }
-                          else if (item.IsFull)
-                          {
-                          <div class="grid-item-full">
-                              @item.StartDateTime.Date.ToString("d.")
+                                <script>
+                                    function Tid() {
+                                        var x = document.getElementById("myBtn").value;
+                                        document.getElementById("demo").innerHTML = x;
+                                    }
+                                </script>
 
 
-                          </div>
-                          }
-                          else
-                          {
-                          <div class="grid-item-occupied">
-                              @item.StartDateTime.Date.ToString("d.")
+                            }
+                            else if (slot.IsFull)
+                            {
+                                <li> <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b></li>
+                            }
+                            else
+                            {
+                                <li> <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b></li>
+                            }
+                        }
+                    </ul>
 
-                          </div>
-                          }
+                </div>
+                </div>
+                </div>
 
-                          }
+            }
+            else if (item.IsFull)
+            {
+                <div class="grid-item-full">
+                @item.StartDateTime.Date.ToString("d.")
 
-                      </div>
 
-                  </table>
-            </div>
-       </div>
+                </div>
+            }
+            else
+            {
+                <div class="grid-item-occupied">
+                @item.StartDateTime.Date.ToString("d.")
+
+                </div>
+            }
+
+        }
+
+        </div>
+
+        </table>
+        </div>
+        </div>
     </div>
 
 
