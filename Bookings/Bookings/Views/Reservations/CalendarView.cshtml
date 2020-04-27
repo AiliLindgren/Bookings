@@ -98,6 +98,7 @@
                 <div class="dropdown">
                 <button class="dropbtn">Pick</button>
                 <div class="dropdown-content">
+                    
                 @*<select name="id_time-slot">*@
                     <ul>
                         @foreach (var slot in item.CalendarTimeSlots)
@@ -105,27 +106,23 @@
                             if (!slot.IsFull)
                             {
                                 @*<asp:HiddenField ID="ProductID" runat="server" value="@slot.StartDateTime.ToString("h:mm")" onclick="SendDateAndTime()" />*@
-                        <div class="dropdown">
-                            <bu id="myBtn" value=" @item.StartDateTime.Date.ToString("yyyy-MM-dd") @slot.StartDateTime.ToString("h:mm")" onclick="Tid()">pick</bu/button>
-                            <div class="dropdown-content">
-                                <li>
-                                    @slot.StartDateTime.ToString("h:mm")
-                                </li>
 
-                            </div>
-                        </div>
+                        <li>
+                            @slot.StartDateTime.ToString("h:mm")
+                       <button id="myBtn" value=" @slot.StartDateTime.Date.ToString("yyyy-MM-dd") @slot.StartDateTime.ToString("h:mm")" onclick="Tid()">pick</button>
+                                                    </li>
 
-                                        }
-                                        else if (slot.IsFull)
-                                        {
-                                        <li> <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b></li>
-                                        }
-                                        else
-                                        {
-                                        <li> <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b></li>
-                                        }
-                                        }
-                            </ul>
+                            }
+                            else if (slot.IsFull)
+                            {
+                                <li> <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b></li>
+                            }
+                            else
+                            {
+                                <li> <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b></li>
+                            }
+                        }
+                    </ul>
 
                 </div>
                 </div>

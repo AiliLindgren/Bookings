@@ -23,3 +23,14 @@ function SendDateAndTime() {
     var DateAndTime = document.getElementById("ProductID").value
     document.getElementById("chosenDateAndTime").innerText = DateAndTime
 }
+
+function Tid() {
+    var x = document.getElementById("myBtn").value;
+    document.getElementById("demo").innerHTML = x;
+   
+}
+
+
+button.click(function () {
+});
+
