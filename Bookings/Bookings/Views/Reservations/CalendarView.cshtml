@@ -19,23 +19,24 @@
     <partial name="_form" model="@new ReservationsCreateVM()" />
 
     <div class="flex-container">
-            <div><span>Ticket price:</span> <span id="ticketPrice">100</span> <span>kr</span></div>
+        <div><span>Ticket price:</span> <span id="ticketPrice">100</span> <span>kr</span></div>
 
-            <div>
-                <span>
-                    Number of people:<button onclick="changeAmount('-', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">-</button>
-                    <span id="numberOfPeople">0</span>
-                    <button onclick="changeAmount('+', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">+</button>
-                </span>
-            </div>
-
-            <div> <span>Date and time: </span> <span id="chosenDateAndTime"> </span></div>
-            <div>
-                <span>Total amount to pay:</span> <span id="totalPrice">0</span> <span>kr</span>
-
-                <span>Total number of people:</span> <span id="totalPeople">0</span>
-            </div>
+        <div>
+            <span>
+                Number of people:<button onclick="changeAmount('-', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">-</button>
+                <span id="numberOfPeople">0</span>
+                <button onclick="changeAmount('+', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">+</button>
+            </span>
         </div>
+
+        <div> <span>Date and time: </span> <span id="chosenDateAndTime"> </span></div>
+        <div>
+            <span>Total amount to pay:</span> <span id="totalPrice">0</span> <span>kr</span>
+
+            <span>Total number of people:</span> <span id="totalPeople">0</span>
+        </div>
+    </div>
+
     <br />
 
     <div class="w3-container w3-center w3-animate-left">
@@ -90,48 +91,54 @@
                               }
                               else if (!item.IsClosed && !item.IsFull)
                               {
-                                  <div class="grid-item-free">
+                      <div class="grid-item-free">
 
-                                      @item.StartDateTime.Date.ToString("d.")
-
-
-                                      <select name="id_time-slot">
-                                          @foreach (var slot in item.CalendarTimeSlots)
+                          @item.StartDateTime.Date.ToString("d.")
+                          <div class="dropdown">
+                              <button class="dropbtn">Pick</button>
+                              <div class="dropdown-content">
+                                  @*<select name="id_time-slot">*@
+                                  <ul>
+                                      @foreach (var slot in item.CalendarTimeSlots)
+                                      {
+                                          if (!slot.IsFull)
                                           {
-                                              if (!slot.IsFull)
-                                              {
-                                          <option> @slot.StartDateTime.ToString("h:mm")</option>
+                                              <asp:HiddenField ID="ProductID" value="@slot.StartDateTime.ToString("h:mm")" onclick="SendDateAndTime()" />
 
-                                              }
-                                              else if (slot.IsFull)
-                                              {
-                                                  <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b>
-                                              }
-                                              else
-                                              {
-                                                  <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b>
-                                              }
+                                              <li>@slot.StartDateTime.ToString("h:mm")</li>
+
                                           }
-                                      </select>
+                                          else if (slot.IsFull)
+                                          {
+                                                <li> <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b></li>
+                                          }
+                                          else
+                                          {
+                                               <li> <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b></li>
+                                          }
+                                      }
+                                  </ul>
 
-                                  </div>
+                              </div>
+                          </div>
+                       </div>
 
-                              }
-                              else if (item.IsFull)
-                              {
-                                  <div class="grid-item-full">
-                                      @item.StartDateTime.Date.ToString("d.")
+                          }
+                          else if (item.IsFull)
+                          {
+                          <div class="grid-item-full">
+                              @item.StartDateTime.Date.ToString("d.")
 
 
-                                  </div>
-                              }
-                              else
-                              {
-                                  <div class="grid-item-occupied">
-                                      @item.StartDateTime.Date.ToString("d.")
+                          </div>
+                          }
+                          else
+                          {
+                          <div class="grid-item-occupied">
+                              @item.StartDateTime.Date.ToString("d.")
 
-                                  </div>
-                              }
+                          </div>
+                          }
 
                           }
 
@@ -141,7 +148,7 @@
             </div>
        </div>
     </div>
-    
+
 
     @section scripts
                     {

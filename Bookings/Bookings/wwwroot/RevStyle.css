@@ -152,7 +152,17 @@ li {
     font-size: 20px;
     text-align: center;
 }
-.grid-item-occupied {
+    .grid-item-free.ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: white;
+        border: solid 1px;
+        border-bottom-color: white;
+        border-radius: 5px;
+    }
+    .grid-item-occupied {
     background-color: white;
     border: 1px solid rgba(233, 236, 239, 0.5);
     color:lightgray;

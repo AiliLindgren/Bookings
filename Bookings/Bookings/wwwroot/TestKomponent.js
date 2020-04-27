@@ -19,3 +19,7 @@
     document.getElementById(totalPeople).innerText = newTotalPeople
 }
 
+function SendDateAndTime() {
+    var DateAndTime = document.getElementById("ProductID").value
+    document.getElementById("chosenDateAndTime").innerText = DateAndTime
+}
