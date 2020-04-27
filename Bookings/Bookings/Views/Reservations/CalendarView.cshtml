@@ -74,7 +74,7 @@
                         {
                             if (!slot.IsFull)
                             {
-                             <li>@slot.StartDateTime.ToString("h:mm") - @slot.EndDateTime.ToString("h:mm")</li>
+                             <li id="time-slot" >@slot.StartDateTime.ToString("h:mm") - @slot.EndDateTime.ToString("h:mm")</li>
                             }
                             else if(slot.IsFull)
                             {
