@@ -1,4 +1,5 @@
-﻿function changeAmount(operator, price, numberOfPeople, totalPrice, totalPeople) {
+﻿
+function changeAmount(operator, price, numberOfPeople, totalPrice, totalPeople) {
     let itemPrice = parseFloat(price)
     let newNumberOfPeople = parseFloat(document.getElementById(numberOfPeople).innerText)
     let newTotalPrice = parseFloat(document.getElementById(totalPrice).innerText)
@@ -18,7 +19,6 @@
     document.getElementById(totalPrice).innerText = newTotalPrice
     document.getElementById(totalPeople).innerText = newTotalPeople
 }
-
 console.log("hej")
 
 function SayHello() {

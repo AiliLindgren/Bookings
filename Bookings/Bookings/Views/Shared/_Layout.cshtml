@@ -6,40 +6,42 @@
     <title> @ViewBag.Title</title>
 
     <link rel="stylesheet" type="text/css" href="~/RevStyle.css">
-    <script src="~/Rev.js"></script>
+    <script src="~/TestKomponent.js"></script>
+    
 </head>
 
 <body style="background-color:white">
-    <style>
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #1E90FF;
-            border: solid 1px;
-            border-bottom-color: lightblue;
-            border-radius: 5px;
-        }
-
-        li {
-            float: left;
-        }
-
-            li a {
-                display: block;
-                color: white;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
+    
+    <column class="column">
+        <style>
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #1E90FF;
+                border: solid 1px;
+                border-bottom-color: white;
+                border-radius: 5px;
             }
 
-                li a:hover {
-                    background-color: #00BFFF;
-                }
-    </style>
+            li {
+                float: left;
+            }
 
-    <column class="column">
+                li a {
+                    display: block;
+                    color: white;
+                    text-align: center;
+                    padding: 14px 16px;
+                    text-decoration: none;
+                }
+
+                    li a:hover {
+                        background-color: #00BFFF;
+                    }
+        </style>
+
         <ul>
             <li><a class="active" href="Index">Home</a></li>
             <li><a href="/CalendarView">Book</a></li>
@@ -50,11 +52,15 @@
 
         <h1>@ViewBag.Header</h1>
         <div style="background-color:white">
+
             @RenderBody()
         </div>
+
         <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
         @RenderSection("scripts", false)
     </column>
+    <div class="footer">
+    </div>
 </body>
 </html>
 

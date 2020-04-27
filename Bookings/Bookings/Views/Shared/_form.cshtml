@@ -1,0 +1,30 @@
+﻿@model Bookings.Models.ViewModels.ReservationsCreateVM
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    
+    
+        <form asp-controller="Reservations" asp-action="form">
+            
+            
+                <label asp-for="StartDateTime"></label>
+                <input asp-for="StartDateTime" />
+            
+            
+                <label asp-for="NumberOfPeople"></label>
+                <input asp-for="NumberOfPeople" />
+
+            <input type="submit" value="confirm" />
+        </form>
+   
+</body>
+</html>

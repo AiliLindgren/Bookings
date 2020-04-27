@@ -3,7 +3,6 @@
 
 @{
     ViewBag.Title = "Booking";
-    //ViewBag.Header = "Pick a date!";
 }
 
 <!DOCTYPE html>
@@ -12,76 +11,11 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <style>
-        .dropbtn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f1f1f1;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-            .dropdown-content a {
-                color: black;
-                padding: 12px 16px;
-                text-decoration: none;
-                display: block;
-            }
-
-                .dropdown-content a:hover {
-                    background-color: #ddd;
-                }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown:hover .dropbtn {
-            background-color: #3e8e41;
-        }
-    </style>
 </head>
 <body>
 
-
-
-    @*<span>Time:</span> <span id="chosenTime">14:00</span>*@
-
-    @*<input type="button" value="Klicka för datum och tid" id="btnGetJSON" />
-        </div>*@
-    @*<div id="divStuff"></div>*@
-
-    @section scripts
-{
-        <script>
-            // JSON
-            $("#btnGetJSON").click(function () {
-                // Make AJAX call
-                $.ajax({
-                    url: "/timebox-data",
-                    type: "GET",
-                    success: function (result) {
-                        // Call done - update DOM
-                        $("#chosenDateAndTime").html("<b>" + result.time + "</b>");
-                    }
-                });
-            });
-        </script>
-    }
+    @*<partial name="_form" model="@new ReservationsCreateVM()" />*@
+   
     
     <div class="flex-container">
         <div><span>Ticket price:</span> <span id="ticketPrice">100</span> <span>kr</span></div>
@@ -124,19 +58,26 @@
                 {
                     <div class="grid-item"> </div>
                 }
-                else if (!item.IsClosed)
+                else if (!item.IsClosed&&!item.IsFull)
                 {
-        <div class="grid-item-free calendar">
+        <div class="grid-item-free">
+
             @item.StartDateTime.Date.ToString("d.")
             <div class="dropdown">
+
                 <button class="dropbtn">pick</button>
+
                 <div class="dropdown-content">
                     <ul>
                         @foreach (var slot in item.CalendarTimeSlots)
                         {
                             if (!slot.IsFull)
                             {
-                             <li data-value="@slot.IsFull">@slot.StartDateTime.ToString("h:mm") - @slot.EndDateTime.ToString("h:mm")</li>
+                             <li>@slot.StartDateTime.ToString("h:mm") - @slot.EndDateTime.ToString("h:mm")</li>
+                            }
+                            else if(slot.IsFull)
+                            {
+                                <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b>
                             }
                             else
                             {
@@ -151,8 +92,12 @@
             }
             else if (item.IsFull)
             {
-            <div class="grid-item-full">
+              <div class="grid-item-full">
                 @item.StartDateTime.Date.ToString("d.")
+            <div class="dropdown">
+
+                <button class="dropbtn">pick</button>
+            </div>
 
             </div>
             }
@@ -164,41 +109,60 @@
             </div>
             }
 
-
             }
 
         </div>
 
     </table>
-       <div style="float:left" class="dropdown">
-            <button class="dropbtn">Pick Month</button>
-            <div class="dropdown-content">
-                    <a href="/CalendarView/1">Jan</a>
-                    <a href="/CalendarView/2">Feb</a>
-                    <a href="/CalendarView/3">Mars</a>
-                    <a href="/CalendarView/4">April</a>
-                    <a href="/CalendarView/5">Maj</a>
-                    <a href="/CalendarView/6">Juni</a>
-                    <a href="/CalendarView/7">Juli</a>
-                    <a href="/CalendarView/8">Augusti</a>
-                    <a href="/CalendarView/9">Sept</a>
-                    <a href="/CalendarView/10">Oct</a>
-                    <a href="/CalendarView/11">Nov</a>
-                    <a href="/CalendarView/12">Dec</a>
-</div>
+    <div style="float:left" class="dropdown">
+        <button class="dropbtn">Pick Month</button>
+        <div class="dropdown-content">
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    @*<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-            crossorigin="anonymous"></script>*@
-    <script src="TestKomponent.js"></script>
+            <a href="/CalendarView/1">Jan</a>
+            <a href="/CalendarView/2">Feb</a>
+            <a href="/CalendarView/3">Mars</a>
+            <a href="/CalendarView/4">April</a>
+            <a href="/CalendarView/5">Maj</a>
+            <a href="/CalendarView/6">Juni</a>
+            <a href="/CalendarView/7">Juli</a>
+            <a href="/CalendarView/8">Aug</a>
+            <a href="/CalendarView/9">Sept</a>
+            <a href="/CalendarView/10">Oct</a>
+            <a href="/CalendarView/11">Nov</a>
+            <a href="/CalendarView/12">Dec</a>
+        </div>
+
+        @section scripts
+{
+            <script>
+                // JSON
+                $("#btnGetJSON").click(function () {
+                    // Make AJAX call
+                    $.ajax({
+                        url: "/timebox-data",
+                        type: "GET",
+                        success: function (result) {
+                            // Call done - update DOM
+                            $("#chosenDateAndTime").html("<b>" + result.time + "</b>");
+                        }
+                    });
+                });
+            </script>
+        }
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        @*<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+                integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+                integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+                crossorigin="anonymous"></script>*@
+
+        <script src="TestKomponent.js"></script>
 
 
 </body>

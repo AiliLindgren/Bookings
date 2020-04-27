@@ -15,30 +15,12 @@
     <title>Index</title>
 </head>
 <body>
-    @*<input type="button" value="Klicka för tiden i HTML" id="btnGetHTML" />
-        <div id="divStuff"></div>*@
-    <partial name="_calendar" model="@new CalendarDayVM[Model.Length]" />
+    @*<partial name="_calendar" model="@new CalendarDayVM[Model.Length]" />*@
+   
     <div class="w3-container w3-center w3-animate-bottom">
-        <h1>Make your booking!</h1>
-        <img src="https://img.guidebook-sweden.com/stockholms-kommun/gustav-iiis-antikmuseum.jpg">
-
-        <script>
-            // HTML//anonym funktionclick event kopplat till id( som get element by id)
-            /**/
-            $("#btnGetHTML").click(function () {
-                // Make AJAX call
-                $.ajax({
-                    url: "/calendar",
-                    type: "GET",
-                    success: function (result) {
-                        // Call done - update DOM
-                        $("#divStuff").html(result);
-                    }
-                });
-            });
-
-
-        </script>
+        
+    </div>
+       
 
 
 </body>

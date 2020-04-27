@@ -18,3 +18,4 @@
     document.getElementById(totalPrice).innerText = newTotalPrice
     document.getElementById(totalPeople).innerText = newTotalPeople
 }
+

@@ -12,48 +12,6 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <style>
-        .dropbtn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f1f1f1;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-            .dropdown-content a {
-                color: black;
-                padding: 12px 16px;
-                text-decoration: none;
-                display: block;
-            }
-
-                .dropdown-content a:hover {
-                    background-color: #ddd;
-                }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown:hover .dropbtn {
-            background-color: #3e8e41;
-        }
-    </style>
 </head>
 <body>
 
@@ -73,62 +31,33 @@
             <div class="grid-item">Fri</div>
             <div class="grid-item">Sat</div>
             <div class="grid-item">Sun</div>
-
-
-            @foreach (var item in Model)
-            {
-                @if (item.FakeDay)
-                {
-                    <div class="grid-item"> </div>
-                }
-                else if (!item.IsClosed)
-                {
-        <div class="grid-item-free">
-            @item.StartDateTime.Date.ToString("d.")
-            <div class="dropdown">
-                <button class="dropbtn">pick</button>
-                <div class="dropdown-content">
-                    <ul>
-                        @foreach (var slot in item.CalendarTimeSlots)
-                        {
-                            if (!slot.IsFull)
-                            {
-                             <li>@slot.StartDateTime.ToString("h:mm") - @slot.EndDateTime.ToString("h:mm")</li>
-                            }
-                            else
-                            {
-                                <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b>
-                            }
-                        }
-                    </ul>
-
-            </div>
-            </div>
+            <div class="grid-item">1</div>
+            <div class="grid-item">2</div>
+            <div class="grid-item">3</div>
+            <div class="grid-item">4</div>
+            <div class="grid-item">5</div>
+            <div class="grid-item">6</div>
+            <div class="grid-item">7</div>
+            <div class="grid-item">1</div>
+            <div class="grid-item">2</div>
+            <div class="grid-item">3</div>
+            <div class="grid-item">4</div>
+            <div class="grid-item">5</div>
+            <div class="grid-item">6</div>
+            <div class="grid-item">7</div>
+            <div class="grid-item">1</div>
+            <div class="grid-item">2</div>
+            <div class="grid-item">3</div>
+            <div class="grid-item">4</div>
+            <div class="grid-item">5</div>
+            <div class="grid-item">6</div>
+            <div class="grid-item">7</div>
         </div>
-            }
-            else if (item.IsFull)
-            {
-            <div class="grid-item-full">
-                @item.StartDateTime.Date.ToString("d.")
-
-            </div>
-            }
-            else
-            {
-            <div class="grid-item-occupied">
-                @item.StartDateTime.Date.ToString("d.")
-
-            </div>
-            }
-
-
-            }
-
         </div>
+
+        
 
     </table>
-             @*<label class="lead mr-2 ml-2" for="month">Jump To: </label>*@
-    
 
 
 </body>
