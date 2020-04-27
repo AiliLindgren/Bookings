@@ -11,20 +11,38 @@
     <title>Create</title>
 </head>
 <body>
-    
-    
-        <form asp-controller="Reservations" asp-action="form">
-            
-            
-                <label asp-for="StartDateTime"></label>
-                <input asp-for="StartDateTime" />
-            
-            
-                <label asp-for="NumberOfPeople"></label>
-                <input asp-for="NumberOfPeople" />
 
-            <input type="submit" value="confirm" />
-        </form>
-   
+    @*<div class="flex-container">
+            <div><span>Ticket price:</span> <span id="ticketPrice">100</span> <span>kr</span></div>
+
+            <div>
+                <span>
+                    Number of people:<button onclick="changeAmount('-', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">-</button>
+                    <span id="numberOfPeople">0</span>
+                    <button onclick="changeAmount('+', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">+</button>
+                </span>
+            </div>
+
+            <div> <span>Date and time: </span> <span id="chosenDateAndTime"> </span></div>
+            <div>
+                <span>Total amount to pay:</span> <span id="totalPrice">0</span> <span>kr</span>
+
+                <span>Total number of people:</span> <span id="totalPeople">0</span>
+            </div>
+        </div>*@
+
+    <form asp-controller="Reservations" asp-action="form">
+
+
+        <label asp-for="StartDateTime"></label>
+        <input asp-for="StartDateTime" />
+
+
+        <label asp-for="NumberOfPeople"></label>
+        <input asp-for="NumberOfPeople" />
+
+        <input type="submit" value="confirm" />
+    </form>
+
 </body>
 </html>
