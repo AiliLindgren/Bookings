@@ -7,8 +7,7 @@
     color: #495057;
     text-align: left;
     background-color: #fff;
-    background-image: url("https://img.guidebook-sweden.com/stockholms-kommun/gustav-iiis-antikmuseum.jpg");
-    
+  
 }
 .footer {
     position: fixed;
@@ -46,7 +45,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: white;
+    background-color: dodgerblue;
     border: solid 1px;
     border-bottom-color: white;
     border-radius: 5px;
@@ -179,7 +178,7 @@ li {
 }
 
 .dropdown {
-    position: relative;
+    position:initial;
     display: inline-block;
 }
 
@@ -200,7 +199,7 @@ li {
     }
 
         .dropdown-content a:hover {
-            background-color: #ddd;
+            background-color: white;
         }
 
 .dropdown:hover .dropdown-content {
@@ -208,7 +207,7 @@ li {
 }
 
 .dropdown:hover .dropbtn {
-    background-color: #3e8e41;
+    background-color: white;
     
 }
 
