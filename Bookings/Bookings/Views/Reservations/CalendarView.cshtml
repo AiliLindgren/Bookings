@@ -15,208 +15,158 @@
 <body>
 
     @*<partial name="_form" model="@new ReservationsCreateVM()" />*@
-   
-    
+
+
     <div class="flex-container">
-             <div><span>Ticket price:</span> <span id="ticketPrice">100</span> <span>kr</span></div>
+        <div><span>Ticket price:</span> <span id="ticketPrice">100</span> <span>kr</span></div>
 
-                    <div>
-                        <span>
-                            Number of people:<button onclick="changeAmount('-', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">-</button>
-                            <span id="numberOfPeople">0</span>
-                            <button onclick="changeAmount('+', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">+</button>
-                        </span>
-                    </div>
+        <div>
+            <span>
+                Number of people:<button onclick="changeAmount('-', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">-</button>
+                <span id="numberOfPeople">0</span>
+                <button onclick="changeAmount('+', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">+</button>
+            </span>
+        </div>
 
-                    <div> <span>Date and time: </span> <span id="chosenDateAndTime"> </span></div>
-                    <div>
-                        <span>Total amount to pay:</span> <span id="totalPrice">0</span> <span>kr</span>
+        <div> <span>Date and time: </span> <span id="chosenDateAndTime"> </span></div>
+        <div>
+            <span>Total amount to pay:</span> <span id="totalPrice">0</span> <span>kr</span>
 
-                        <span>Total number of people:</span> <span id="totalPeople">0</span>
-                    </div>
+            <span>Total number of people:</span> <span id="totalPeople">0</span>
+        </div>
     </div>
     <div class="w3-container w3-center w3-animate-left">
-      <div class="column"
+        <div class="column"
             <div class="card">
                 <h1 class="h3"> </h1>
             </div>
-        <div class="column"
-
-              <table class="t1">
-                    <div class="grid-container">
-                        <div class="grid-item">Mon</div>
-                        <div class="grid-item">Tue</div>
-                        <div class="grid-item">Wed</div>
-                        <div class="grid-item">Thu</div>
-                        <div class="grid-item">Fri</div>
-                        <div class="grid-item">Sat</div>
-                        <div class="grid-item">Sun</div>
-
-
-                        @foreach (var item in Model)
-
-    <div class="card">
-        <h1 class="h3"> </h1>
-    </div>
-    <div class="column"
-    <table class="t1">
-        <div class="grid-container">
-            <div class="grid-item">Mon</div>
-            <div class="grid-item">Tue</div>
-            <div class="grid-item">Wed</div>
-            <div class="grid-item">Thu</div>
-            <div class="grid-item">Fri</div>
-            <div class="grid-item">Sat</div>
-            <div class="grid-item">Sun</div>
+            <div class="column"
+                  <table class="t1">
+                        <div class="grid-container">
+                            <div class="grid-item">Mon</div>
+                            <div class="grid-item">Tue</div>
+                            <div class="grid-item">Wed</div>
+                            <div class="grid-item">Thu</div>
+                            <div class="grid-item">Fri</div>
+                            <div class="grid-item">Sat</div>
+                            <div class="grid-item">Sun</div>
 
 
-            @foreach (var item in Model)
-            {
-                @if (item.FakeDay)
-                {
-                    <div class="grid-item"> </div>
-                }
-                else if (!item.IsClosed&&!item.IsFull)
-                {
-        <div class="grid-item-free">
-
-            @item.StartDateTime.Date.ToString("d.")
-
-            <div class="dropdown">
-
-                <button class="dropbtn">pick</button>
-
-                <div class="dropdown-content">
-                    <ul>
-                        @foreach (var slot in item.CalendarTimeSlots)
-
-                        {
-                            @if (item.FakeDay)
+                            @foreach (var item in Model)
                             {
-                                <div class="grid-item"> </div>
-                            }
-                            else if (!item.IsClosed&&!item.IsFull)
-                            {
-                                <div class="grid-item-free">
+                                @if (item.FakeDay)
+                                {
+                                    <div class="grid-item"> </div>
+                                }
+                                else if (!item.IsClosed&&!item.IsFull)
+                                {
+                                    <div class="grid-item-free">
 
-                                    @item.StartDateTime.Date.ToString("d.")
-                                    <div class="dropdown">
+                                        @item.StartDateTime.Date.ToString("d.")
+                                        <div class="dropdown">
+
+                                                <button class="dropbtn">pick</button>
+
+                                                    <div class="dropdown-content">
+                                                        <ul>
+                                                            @foreach (var slot in item.CalendarTimeSlots)
+                                                            {
+                                                                if (!slot.IsFull)
+                                                                {
+                                                                 <li>@slot.StartDateTime.ToString("h:mm") - @slot.EndDateTime.ToString("h:mm")</li>
+                                                                }
+                                                                else if(slot.IsFull)
+                                                                {
+                                                                    <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b>
+                                                                }
+                                                            }
+                                                        </ul>
+
+                                                    </div>
+                                        </div>
+                                    </div>
+                                }
+                                else if (item.IsFull)
+                                {
+                                    <div class="grid-item-full">
+                                        @item.StartDateTime.Date.ToString("d.")
+                                        <div class="dropdown">
 
                                             <button class="dropbtn">pick</button>
+                                        </div>
 
-                                                <div class="dropdown-content">
-                                                    <ul>
-                                                        @foreach (var slot in item.CalendarTimeSlots)
-                                                        {
-                                                            if (!slot.IsFull)
-                                                            {
-                                                             <li id="time-slot"> @slot.StartDateTime.ToString("h:mm") - @slot.EndDateTime.ToString("h:mm")</li>
-                                                            }
-                                                            else if(slot.IsFull)
-                                                            {
-                                                                <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b>
-                                                            }
-                                                            else
-                                                            {
-                                                                <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b>
-                                                            }
-                                                        }
-                                                    </ul>
-
-                                                </div>
                                     </div>
-                                </div>
-                            }
-                            else if (item.IsFull)
-                            {
-                                <div class="grid-item-full">
-                                    @item.StartDateTime.Date.ToString("d.")
-                                    <div class="dropdown">
+                                }
+                                else
+                                {
+                                    <div class="grid-item-occupied">
+                                        @item.StartDateTime.Date.ToString("d.")
 
-                                        <button class="dropbtn">pick</button>
                                     </div>
+                                }
+
+                                }
+
+                        </div>
+
+                  </table>
             </div>
-            </div>
-        </div>
-            }
-            else if (item.IsFull)
-            {
-              <div class="grid-item-full">
+       </div>
+    </div>
+    <div style="float:left" class="dropdown">
+        <button class="dropbtn">Pick Month</button>
+        <div class="dropdown-content">
 
-                @item.StartDateTime.Date.ToString("d.")
-            <div class="dropdown">
-
-                <button class="dropbtn">pick</button>
-            </div>
-
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="grid-item-occupied">
-                                    @item.StartDateTime.Date.ToString("d.")
-
-                                </div>
-                            }
-
-                            }
-
-                    </div>
-
-              </table>
+            <a href="/CalendarView/1">Jan</a>
+            <a href="/CalendarView/2">Feb</a>
+            <a href="/CalendarView/3">Mars</a>
+            <a href="/CalendarView/4">April</a>
+            <a href="/CalendarView/5">Maj</a>
+            <a href="/CalendarView/6">Juni</a>
+            <a href="/CalendarView/7">Juli</a>
+            <a href="/CalendarView/8">Aug</a>
+            <a href="/CalendarView/9">Sept</a>
+            <a href="/CalendarView/10">Oct</a>
+            <a href="/CalendarView/11">Nov</a>
+            <a href="/CalendarView/12">Dec</a>
         </div>
     </div>
-</div>
-                <div style="float:left" class="dropdown">
-                    <button class="dropbtn">Pick Month</button>
-                    <div class="dropdown-content">
 
-                        <a href="/CalendarView/1">Jan</a>
-                        <a href="/CalendarView/2">Feb</a>
-                        <a href="/CalendarView/3">Mars</a>
-                        <a href="/CalendarView/4">April</a>
-                        <a href="/CalendarView/5">Maj</a>
-                        <a href="/CalendarView/6">Juni</a>
-                        <a href="/CalendarView/7">Juli</a>
-                        <a href="/CalendarView/8">Aug</a>
-                        <a href="/CalendarView/9">Sept</a>
-                        <a href="/CalendarView/10">Oct</a>
-                        <a href="/CalendarView/11">Nov</a>
-                        <a href="/CalendarView/12">Dec</a>
-                    </div>
-                </div>
-
-                    @section scripts
+    @section scripts
                     {
-                            <script>
-                                // JSON
-                                $("#btnGetJSON").click(function () {
-                                    // Make AJAX call
-                                    $.ajax({
-                                        url: "/timebox-data",
-                                        type: "GET",
-                                        success: function (result) {
-                                            // Call done - update DOM
-                                            $("#chosenDateAndTime").html("<b>" + result.time + "</b>");
-                                        }
-                                    });
-                                });
-                            </script>
+        <script>
+            // JSON
+            $("#btnGetJSON").click(function () {
+                // Make AJAX call
+                $.ajax({
+                    url: "/timebox-data",
+                    type: "GET",
+                    success: function (result) {
+                        // Call done - update DOM
+                        $("#chosenDateAndTime").html("<b>" + result.time + "</b>");
                     }
+                });
+            });
+        </script>
+    }
 
-                        <!-- Optional JavaScript -->
-                        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-                        @*<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-                                integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-                                crossorigin="anonymous"></script>
-                        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-                                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-                                crossorigin="anonymous"></script>
-                        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-                                integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-                                crossorigin="anonymous"></script>*@
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    @*<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+                integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+                integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+                crossorigin="anonymous"></script>*@
 
-                        <script src="TestKomponent.js"></script>
+    <script src="TestKomponent.js"></script>
 
 
 </body>
