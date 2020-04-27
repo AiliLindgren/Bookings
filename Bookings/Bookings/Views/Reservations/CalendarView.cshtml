@@ -14,27 +14,30 @@
 </head>
 <body>
 
-    @*<partial name="_form" model="@new ReservationsCreateVM()" />*@
 
+
+    <partial name="_form" model="@new ReservationsCreateVM()" />
 
     <div class="flex-container">
-        <div><span>Ticket price:</span> <span id="ticketPrice">100</span> <span>kr</span></div>
+            <div><span>Ticket price:</span> <span id="ticketPrice">100</span> <span>kr</span></div>
 
-        <div>
-            <span>
-                Number of people:<button onclick="changeAmount('-', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">-</button>
-                <span id="numberOfPeople">0</span>
-                <button onclick="changeAmount('+', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">+</button>
-            </span>
+            <div>
+                <span>
+                    Number of people:<button onclick="changeAmount('-', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">-</button>
+                    <span id="numberOfPeople">0</span>
+                    <button onclick="changeAmount('+', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">+</button>
+                </span>
+            </div>
+
+            <div> <span>Date and time: </span> <span id="chosenDateAndTime"> </span></div>
+            <div>
+                <span>Total amount to pay:</span> <span id="totalPrice">0</span> <span>kr</span>
+
+                <span>Total number of people:</span> <span id="totalPeople">0</span>
+            </div>
         </div>
+    
 
-        <div> <span>Date and time: </span> <span id="chosenDateAndTime"> </span></div>
-        <div>
-            <span>Total amount to pay:</span> <span id="totalPrice">0</span> <span>kr</span>
-
-            <span>Total number of people:</span> <span id="totalPeople">0</span>
-        </div>
-    </div>
     <div class="w3-container w3-center w3-animate-left">
         <div class="column"
             <div class="card">
@@ -42,76 +45,79 @@
             </div>
             <div class="column"
                   <table class="t1">
-                        <div class="grid-container">
-                            <div class="grid-item">Mon</div>
-                            <div class="grid-item">Tue</div>
-                            <div class="grid-item">Wed</div>
-                            <div class="grid-item">Thu</div>
-                            <div class="grid-item">Fri</div>
-                            <div class="grid-item">Sat</div>
-                            <div class="grid-item">Sun</div>
+                      <div class="grid-container">
+                          <div class="grid-item">Mon</div>
+                          <div class="grid-item">Tue</div>
+                          <div class="grid-item">Wed</div>
+                          <div class="grid-item">Thu</div>
+                          <div class="grid-item">Fri</div>
+                          <div class="grid-item">Sat</div>
+                          <div class="grid-item">Sun</div>
 
 
-                            @foreach (var item in Model)
-                            {
-                                @if (item.FakeDay)
-                                {
-                                    <div class="grid-item"> </div>
-                                }
-                                else if (!item.IsClosed&&!item.IsFull)
-                                {
-                                    <div class="grid-item-free">
+                          @foreach (var item in Model)
+                          {
+                              @if (item.FakeDay)
+                              {
+                                  <div class="grid-item"> </div>
+                              }
+                              else if (item.StartDateTime.Date < DateTime.Today)
+                              {
+                               <div class="grid-item-occupied">
+                                @item.StartDateTime.Date.ToString("d.")
+                                <div class="dropdown">
+                                <button class="dropbtn">Time passed</button>
+                                 </div>
+                                  </div>
+                              }
+                              else if (!item.IsClosed && !item.IsFull)
+                              {
+                                  <div class="grid-item-free">
 
-                                        @item.StartDateTime.Date.ToString("d.")
-                                        <div class="dropdown">
+                                      @item.StartDateTime.Date.ToString("d.")
+                                    
+                                     
+                                      <select name="id_time-slot">
+                                          @foreach (var slot in item.CalendarTimeSlots)
+                                          {
+                                              if (!slot.IsFull)
+                                              {
+                                          <option> @slot.StartDateTime.ToString("h:mm")</option>
 
-                                                <button class="dropbtn">pick</button>
+                                              }
+                                              else if (slot.IsFull)
+                                              {
+                                                  <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b>
+                                              }
+                                              else
+                                              {
+                                                  <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b>
+                                              }
+                                          }
+                                      </select>
 
-                                                    <div class="dropdown-content">
-                                                        <ul>
-                                                            @foreach (var slot in item.CalendarTimeSlots)
-                                                            {
-                                                                if (!slot.IsFull)
-                                                                {
-                                                                 <li>@slot.StartDateTime.ToString("h:mm") - @slot.EndDateTime.ToString("h:mm")</li>
-                                                                }
-                                                                else if(slot.IsFull)
-                                                                {
-                                                                    <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b>
-                                                                }
-                                                                else
-                                                                {
-                                                                    <b style="color: gray">@slot.StartDateTime.ToString("h:mm")</b>
-                                                                }
-                                                            }
-                                                        </ul>
+                                  </div>
+                     
+                              }
+                              else if (item.IsFull)
+                              {
+                                  <div class="grid-item-full">
+                                      @item.StartDateTime.Date.ToString("d.")
+                                     
 
-                                                    </div>
-                                        </div>
-                                    </div>
-                                }
-                                else if (item.IsFull)
-                                {
-                                    <div class="grid-item-full">
-                                        @item.StartDateTime.Date.ToString("d.")
-                                        <div class="dropdown">
+                                  </div>
+                              }
+                              else
+                              {
+                                  <div class="grid-item-occupied">
+                                      @item.StartDateTime.Date.ToString("d.")
 
-                                            <button class="dropbtn">pick</button>
-                                        </div>
+                                  </div>
+                              }
 
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="grid-item-occupied">
-                                        @item.StartDateTime.Date.ToString("d.")
+                          }
 
-                                    </div>
-                                }
-
-                                }
-
-                        </div>
+                      </div>
 
                   </table>
             </div>

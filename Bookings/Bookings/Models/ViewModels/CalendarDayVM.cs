@@ -15,6 +15,10 @@ namespace Bookings.Models.ViewModels
         public DateTime Month { get; set; }
         public DateTime Year { get; set; }
 
+        
+        
+
+
         //public int OpeningHours { get; set; }
 
         public List<CalendarTimeSlotVM> CalendarTimeSlots { get; set; }
