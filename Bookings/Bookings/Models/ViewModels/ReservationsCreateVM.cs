@@ -13,12 +13,12 @@ namespace Bookings.Models.ViewModels
 
         //[Required(ErrorMessage = "Enter time")]
         public DateTime StartDateTime { get; set; }
-        public DateTime EndDateTime { get; set; }
+        //public DateTime EndDateTime { get; set; }
 
-        [Required(ErrorMessage = "Enter e-mail address")]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Contact { get; set; }
+        //[Required(ErrorMessage = "Enter e-mail address")]
+        //[Display(Name = "Email")]
+        //[EmailAddress]
+        //public string Contact { get; set; }
        
 
     }

@@ -42,37 +42,51 @@ namespace Bookings.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [Route("CalendarView/{month}")]
+        //[Route("CalendarView/{month}")]
         [Route("CalendarView")]
         [HttpGet]
-        public ActionResult CalendarView(int month)
+        public ActionResult CalendarView()
         {
-            if (month == 0)
+            var model = new ReservationsCreateVM
             {
-                var result = service.GetCalendarView(DateTime.Now.Month);
-                return View(result);
-            }
-            else
-            {
-                var result = service.GetCalendarView(month);
-                return View(result);
-            }
-           
+                StartDateTime = DateTime.Today.AddDays(1).AddHours(10),
+                NumberOfPeople = 1
+            };
+            return View(model);
         }
+        [Route("CalendarView")]
+        [HttpPost]
+        public IActionResult CalendarView(ReservationsCreateVM reservation)
+        {
+            service.AddReservation(reservation);
 
-        [Route("calendar/{5}/{3}")]
+            return RedirectToAction(nameof(Index));
+        }
+        //[Route("CalendarView/{month}")]
+        //[Route("CalendarView")]
+        //[HttpPost]
+        //public ActionResult CalendarView(int month)
+        //{
+        //    if (month == 0)
+        //    {
+        //        var result = service.GetCalendarView(DateTime.Now.Month);
+        //        return View(result);
+        //    }
+        //    else
+        //    {
+        //        var result = service.GetCalendarView(month);
+        //        return View(result);
+        //    }
+
+        //}
+
+
+        [Route("calender/{month}")]
         [HttpGet]
-        public IActionResult Calendar(int month,int people) 
+        public IActionResult Calendar(int month) 
         {
             var result = service.GetCalendarView(month);
-            var model = new
-            {
-               
-            };
-            // Show empty form
-            return PartialView("_calendar", result.Length);
-           
-            
+            return PartialView("_calender", result);
            
         }
        
