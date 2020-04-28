@@ -50,7 +50,8 @@ namespace Bookings.Controllers
             var model = new ReservationsCreateVM
             {
                 StartDateTime = DateTime.Today.AddDays(1).AddHours(10),
-                NumberOfPeople = 1
+                NumberOfPeople = 0,
+                //Contact = "email@email.com"
             };
             return View(model);
         }
@@ -58,6 +59,9 @@ namespace Bookings.Controllers
         [HttpPost]
         public IActionResult CalendarView(ReservationsCreateVM reservation)
         {
+            if (!ModelState.IsValid)
+                return View(reservation);
+
             service.AddReservation(reservation);
 
             return RedirectToAction(nameof(Index));

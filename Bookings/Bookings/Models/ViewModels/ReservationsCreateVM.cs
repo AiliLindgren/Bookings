@@ -9,17 +9,19 @@ namespace Bookings.Models.ViewModels
     public class ReservationsCreateVM
     {
         [Required(ErrorMessage = "Enter the number of visitors")]
+        [Range(1, 5)]
         public int NumberOfPeople { get; set; }
 
-        //[Required(ErrorMessage = "Enter time")]
+        [Required(ErrorMessage = "Enter time")]
         public DateTime StartDateTime { get; set; }
+
         //public DateTime EndDateTime { get; set; }
 
-        //[Required(ErrorMessage = "Enter e-mail address")]
-        //[Display(Name = "Email")]
-        //[EmailAddress]
-        //public string Contact { get; set; }
-       
+        [Required(ErrorMessage = "Enter e-mail address")]
+        [Display(Name = "E-mail address")]
+        [EmailAddress]
+        public string Contact { get; set; }
+
 
     }
 }

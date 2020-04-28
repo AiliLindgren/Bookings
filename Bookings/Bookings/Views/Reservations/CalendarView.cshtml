@@ -22,7 +22,7 @@
         <div><span>Ticket price:</span> <span id="ticketPrice">100</span> <span>kr</span></div>
         <div>
             <span>
-                Number of people:<button onclick="changeAmount('-', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">-</button>
+                Number of people: <button onclick="changeAmount('-', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">-</button>                
                 <span id="numberOfPeople">0</span>
                 <button onclick="changeAmount('+', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">+</button>
             </span>
@@ -34,14 +34,18 @@
             <span>Total amount to pay:</span> <span id="totalPrice">0</span> <span>kr</span>
 
             <span>Total number of people:</span> <span id="totalPeople">0</span>
+        </div>
 
+        <div>
             <form asp-controller="Reservations" asp-action="CalendarView">
                 <input asp-for="NumberOfPeople" type="hidden" name="NumberOfPeople" value="@Model.NumberOfPeople" id="totalPeopleHidden" />
                 <input type="hidden" name="StartDateTime" value="@Model.StartDateTime" id="chosenDateAndTimeHidden" />
+                <label asp-for="Contact"></label>
+                <input asp-for="Contact" />
+                <span asp-validation-for="Contact"></span>
                 <input type="submit" value="Confirm booking" />
             </form>
-        </div>
-           
+        </div>   
     </div>
 
     <br />

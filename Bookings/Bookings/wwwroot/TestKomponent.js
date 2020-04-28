@@ -18,6 +18,10 @@
     document.getElementById(numberOfPeople).innerText = newNumberOfPeople
     document.getElementById(totalPrice).innerText = newTotalPrice
     document.getElementById(totalPeople).innerText = newTotalPeople
+
+    //if (newTotalPeople === 0) {
+    //    alert("message: Number of people cannot be 0")
+    //}
     //$('#totalPeople').text(selectElement.value);
     $('#totalPeopleHidden').val(newTotalPeople);
     //ChangeMonth(new Date().getMonth,numberOfPeople)
