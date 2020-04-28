@@ -157,7 +157,7 @@ namespace Bookings.Models
         {
             context.Reservation.Add(new Reservation
             {
-                //    Contact = model.Contact,
+                Contact = model.Contact,
                 StartDateTime = model.StartDateTime,
                 //EndDateTime = model.EndDateTime,
                 NumberOfPeople = model.NumberOfPeople
