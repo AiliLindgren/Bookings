@@ -19,15 +19,18 @@
     document.getElementById(totalPeople).innerText = newTotalPeople
 }
 
-function SendDateAndTime() {    
-    var DateAndTime = document.getElementById("ProductID").value
-    document.getElementById("chosenDateAndTime").innerText = DateAndTime
-}
-
 function Tid() {
     var x = document.getElementById("myBtn").value;
-    document.getElementById("demo").innerHTML = x;
+    document.getElementById("chosenDateTime").innerHTML = x;
 }
+
+//document.getElementsByClassName("calendar"); // Fredrik visade detta i samband med att vi skulle dölja de tider som inte hade platser kvar.
+
+
+//function SendDateAndTime() {
+//    var DateAndTime = document.getElementById("ProductID").value
+//    document.getElementById("chosenDateAndTime").innerText = DateAndTime
+//}
 
 //    once the value from your C# code is stored then you can get it value by javascript
 

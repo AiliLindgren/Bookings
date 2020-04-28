@@ -28,7 +28,7 @@
             </span>
         </div>
 
-        <div> <span>Date and time: </span> <span id="demo"> </span></div>
+        <div> <span>Date and time: </span> <span id="chosenDateTime"> </span></div>
         <div>
             <span>Total amount to pay:</span> <span id="totalPrice">0</span> <span>kr</span>
 
@@ -42,7 +42,7 @@
             </div>
             <div class="column"
                   <table class="t1">
-                        <div class="grid-container">
+                        <div class="grid-container calendar">
                             <div class="grid-item">Mon</div>
                             <div class="grid-item">Tue</div>
                             <div class="grid-item">Wed</div>
@@ -82,11 +82,10 @@
                                                                 <button id="myBtn" value=" @item.StartDateTime.Date.ToString("yyyy-MM-dd") @slot.StartDateTime.ToString("h:mm")" onclick="Tid()">pick</button>
 
 
-
                                                                 <script>
                                                                     function Tid() {
                                                                         var x = document.getElementById("myBtn").value;
-                                                                        document.getElementById("demo").innerHTML = x;
+                                                                        document.getElementById("chosenDateTime").innerHTML = x;
                                                                     }
                                                                 </script>
 
