@@ -12,14 +12,18 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
+
 <body>
-
-
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
 
     @*<partial name="_form" model="@new ReservationsCreateVM()" />*@
 
     <div class="flex-container">
-        <div><span>Ticket price:</span> <span id="ticketPrice">100</span> <span>kr</span></div>
+        <div><span><b>Ticket price:</b></span> <span id="ticketPrice">100</span> <span>kr</span></div>
         <div>
             <span>
                 Number of people: <button onclick="changeAmount('-', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">-</button>                
