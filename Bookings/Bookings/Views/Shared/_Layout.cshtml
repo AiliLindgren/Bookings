@@ -6,20 +6,26 @@
     <title> @ViewBag.Title</title>
 
     <link rel="stylesheet" type="text/css" href="~/RevStyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <script src="~/TestKomponent.js"></script>
-    
+
 </head>
 
 <body style="background-color:white">
-    
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+
     <column class="column">
         <style>
-          .column.ul {
+            .column.ul {
                 list-style-type: none;
                 margin: 0;
                 padding: 0;
                 overflow: hidden;
-                background-color: dodgerblue;
+                background-color: #b7ded2;
                 border: solid 1px;
                 border-bottom-color: white;
                 border-radius: 5px;
@@ -29,17 +35,15 @@
                 float: left;
             }
 
-               .column. li a {
+                .column. li a {
                     display: block;
-                    color: dodgerblue;
+                    color: #b7ded2;
                     text-align: center;
                     padding: 14px 16px;
                     text-decoration: none;
                 }
 
-                    li a:hover {
-                        background-color: #00BFFF;
-                    }
+            
         </style>
 
         <ul>

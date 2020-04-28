@@ -14,12 +14,16 @@
 </head>
 <body>
 
-
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
 
     @*<partial name="_form" model="@new ReservationsCreateVM()" />*@
 
     <div class="flex-container">
-        <div><span>Ticket price:</span> <span id="ticketPrice">100</span> <span>kr</span></div>
+        <div><span><b>Ticket price:</b></span> <span id="ticketPrice">100</span> <span>kr</span></div>
         <div>
             <span>
                 Number of people:<button onclick="changeAmount('-', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">-</button>
@@ -41,7 +45,7 @@
                 <input type="submit" value="Confirm booking" />
             </form>
         </div>
-           
+
     </div>
 
     <br />
@@ -67,7 +71,7 @@
 
         </script>
 
-       
+
     }
 
     <!-- Optional JavaScript -->
