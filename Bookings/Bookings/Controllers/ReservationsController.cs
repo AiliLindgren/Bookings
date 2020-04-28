@@ -5,44 +5,46 @@ using System.Threading.Tasks;
 using Bookings.Models;
 using Bookings.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Bookings.Controllers
 {
     public class ReservationsController : Controller
     {
         ReservationsService service;
-
-        public ReservationsController(ReservationsService service)
+        IMemoryCache cache;
+        
+        public ReservationsController(ReservationsService service,IMemoryCache cache)
         {
             this.service = service;
+            this.cache = cache;
         }
+       
 
         [Route("")]
         [Route("index")]
         [HttpGet]
         public IActionResult Index()
         {
-            var model = service.GetAll();
-            return View(model);
+            
+            return View();
         }
+      
+        [Route("Confirm")]
+        [HttpGet]
+        public IActionResult Confirmation()
+        {
 
+            return Content(cache.Get<string>("Contact"));
+        }
         [Route("create")]
         [HttpGet]
         public IActionResult Create()
         {
+            
             return View();
         }
 
-        [Route("create")]
-        [HttpPost]
-        public IActionResult Create(ReservationsCreateVM reservation)
-        {
-            service.AddReservation(reservation);
-
-            return RedirectToAction(nameof(Index));
-        }
-
-        //[Route("CalendarView/{month}")]
         [Route("CalendarView")]
         [HttpGet]
         public ActionResult CalendarView()
@@ -54,6 +56,7 @@ namespace Bookings.Controllers
                 //Contact = "email@email.com"
             };
             return View(model);
+
         }
         [Route("CalendarView")]
         [HttpPost]
@@ -64,36 +67,21 @@ namespace Bookings.Controllers
 
             service.AddReservation(reservation);
 
-            return RedirectToAction(nameof(Index));
+            cache.Set("Contact", reservation.Contact);
+            
+            return RedirectToAction(nameof(Confirmation));
         }
-        //[Route("CalendarView/{month}")]
-        //[Route("CalendarView")]
-        //[HttpPost]
-        //public ActionResult CalendarView(int month)
-        //{
-        //    if (month == 0)
-        //    {
-        //        var result = service.GetCalendarView(DateTime.Now.Month);
-        //        return View(result);
-        //    }
-        //    else
-        //    {
-        //        var result = service.GetCalendarView(month);
-        //        return View(result);
-        //    }
-
-        //}
-
+        
 
         [Route("calender/{month}")]
         [HttpGet]
-        public IActionResult Calendar(int month) 
+        public IActionResult Calendar(int month)
         {
             var result = service.GetCalendarView(month);
             return PartialView("_calender", result);
-           
+
         }
-       
+
 
         [Route("timebox-data")]
         [HttpGet]
@@ -107,20 +95,6 @@ namespace Bookings.Controllers
             return Json(model);
         }
 
-        [Route("form")]
-        [HttpGet]
-        public IActionResult Form()
-        {
-            return View();
-        }
-
-        [Route("form")]
-        [HttpPost]
-        public IActionResult Form(ReservationsCreateVM reservation)
-        {
-            service.AddReservation(reservation);
-
-            return RedirectToAction(nameof(Index));
-        }
+       
     }
 }

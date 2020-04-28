@@ -24,6 +24,7 @@ namespace Bookings
             services.AddDbContext<MyContext>(options => options.UseSqlServer(connString));
             services.AddControllersWithViews();
             services.AddTransient<ReservationsService>();
+            services.AddSession();
 
 
         }
@@ -37,6 +38,7 @@ namespace Bookings
             }
 
             app.UseRouting();
+            app.UseSession();
             app.UseStaticFiles();
 
             app.UseEndpoints(o => o.MapControllers());
