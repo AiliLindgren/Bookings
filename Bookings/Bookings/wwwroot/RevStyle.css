@@ -45,7 +45,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: dodgerblue;
+    background-color: white;
     border: solid 1px;
     border-bottom-color: white;
     border-radius: 5px;
@@ -57,15 +57,13 @@ li {
 
     li a {
         display: block;
-        color: white;
+        /*color: black;*/
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
     }
 
-        li a:hover {
-            background-color: #00BFFF;
-        }
+       
 
 .bookingform {
     font-size: 100px;
@@ -111,7 +109,7 @@ li {
 
 .flex-container {
     display: flex;
-    background-color: DodgerBlue;
+    background-color: #b7ded2;
     border-radius: 10px;
 }
 
@@ -173,18 +171,26 @@ li {
 .grid-item-full {
     background-color: white;
     border: 1px solid rgba(233, 236, 239, 0.5);
-    color: red;
+    color: #ff6347;
     padding: 10px;
     font-size: 20px;
     text-align: center;
 }
 .dropbtn {
-    background-color:dodgerblue;
-    color: white;
+    background-color: #b7ded2;
+    color: black;
     padding: 16px;
     font-size: 16px;
     border: none;
-    border-radius:10px;
+    border-radius: 10px;
+}
+.dropbtn-passed {
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    color: #ff6347;
 }
 
 .dropdown {
