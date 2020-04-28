@@ -31,6 +31,6 @@ function Tid() {
 }
 
 
-button.click(function () {
-});
-
+function gohome() {
+    window.location.href = "/index.html"
+}
