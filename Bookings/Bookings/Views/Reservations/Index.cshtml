@@ -34,7 +34,7 @@
         }
     </style>
 
-    
+    <div id=divResults</div>
     <div class="flex-container"
 
         <div class="w3-container w3-center w3-animate-bottom">
@@ -44,6 +44,15 @@
         </div>
 
     </div>
+    <script>
+        fetch("/Confirm",
+            {
+                method: "GET",
+            })
+            .then(res => res.text())
+            .then(html =>
+                document.getElementById("divResults").innerHTML = html);
+    </script>
 
 
 

@@ -34,8 +34,10 @@ namespace Bookings.Controllers
         [HttpGet]
         public IActionResult Confirmation()
         {
+            
+            return Content((string)TempData["Message"]);
 
-            return Content(cache.Get<string>("Contact"));
+         
         }
         [Route("create")]
         [HttpGet]
@@ -67,8 +69,8 @@ namespace Bookings.Controllers
 
             service.AddReservation(reservation);
 
-            cache.Set("Contact", reservation.Contact);
-            
+            TempData["Message"]= $"Thank you {reservation.Contact.ToString()},Your order has been submitted! Reservation for {reservation.NumberOfPeople} people { reservation.StartDateTime}";
+           
             return RedirectToAction(nameof(Confirmation));
         }
         
@@ -83,17 +85,17 @@ namespace Bookings.Controllers
         }
 
 
-        [Route("timebox-data")]
-        [HttpGet]
-        public IActionResult TimeboxData(CalendarTimeSlotVM dayAndTime)
-        {
-            // Show empty form
-            var model = new
-            {
-                StartDateTime = dayAndTime.StartDateTime.Date.ToString()
-            };
-            return Json(model);
-        }
+        //[Route("timebox-data")]
+        //[HttpGet]
+        //public IActionResult TimeboxData(CalendarTimeSlotVM dayAndTime)
+        //{
+        //    // Show empty form
+        //    var model = new
+        //    {
+        //        StartDateTime = dayAndTime.StartDateTime.Date.ToString()
+        //    };
+        //    return Json(model);
+        //}
 
        
     }
