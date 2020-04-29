@@ -32,15 +32,17 @@ function aFunction(selectElement) {
     $('#chosenDateAndTime').text(selectElement.value);
     $('#chosenDateAndTimeHidden').val(selectElement.value);
 }
-function sendMail() {
-    var link = "mailto:Jessica@gmail.com"
-        + "?cc=myCCaddress@example.com"
-        + "&subject=" + escape("This is my subject")
-        + "&body=" + escape(document.getElementById('myText').value)
-        ;
 
-    window.location.href = link;
-}
+
+//function sendMail() {
+//    var link = "mailto:Jessica@gmail.com"
+//        + "?cc=myCCaddress@example.com"
+//        + "&subject=" + escape("This is my subject")
+//        + "&body=" + escape(document.getElementById('myText').value)
+//        ;
+
+//    window.location.href = link;
+//}
 
 //function SendDateAndTime() {
 //    var DateAndTime = document.getElementById("ProductID").value
