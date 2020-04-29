@@ -138,8 +138,17 @@ input[type=submit] {
         border-radius: 5px;
         font-size: 15px;
     }
+, flex-container.index {
+    position: center;
+    display: flex;
+    flex-direction:row;
+    background-color: #b7ded2;
+    border-radius: 10px;
+    float: left;
+}
+}
 
-.flex-container.calender{
+.flex-container.calender {
     position: center;
     display: flex;
     flex-direction: column;
