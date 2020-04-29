@@ -57,7 +57,7 @@ li {
 
     li a {
         display: block;
-        /*color: black;*/
+        color: black;
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
@@ -108,9 +108,12 @@ li {
 }
 
 .flex-container {
+   position:center;
     display: flex;
+    flex-direction: column;
     background-color: #b7ded2;
     border-radius: 10px;
+    float:left;
 }
 
     .flex-container > div {
@@ -121,7 +124,14 @@ li {
         font-size: 15px;
     }
 
-
+.flex-container.calender{
+    position: center;
+    display: flex;
+    flex-direction: column;
+    background-color: #b7ded2;
+    border-radius: 10px;
+    float: left;
+}
 
 /*calender*/
 .grid-container {
