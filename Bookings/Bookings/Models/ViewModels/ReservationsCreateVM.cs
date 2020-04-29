@@ -8,8 +8,8 @@ namespace Bookings.Models.ViewModels
 {
     public class ReservationsCreateVM
     {
-        [Required(ErrorMessage = "Enter the number of visitors")]
         [Range(1, 5)]
+        [Required(ErrorMessage = "Enter the number of visitors")]
         public int NumberOfPeople { get; set; }
 
         [Required(ErrorMessage = "Enter time")]

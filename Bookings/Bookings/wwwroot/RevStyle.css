@@ -108,7 +108,8 @@ li {
 }
 
 .flex-container {
-   position:center;
+  
+   position:relative;
     display: flex;
     flex-direction: column;
     background-color: #b7ded2;
