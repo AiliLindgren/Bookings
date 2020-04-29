@@ -73,7 +73,7 @@
                             if (!slot.IsFull)
                             {
                                 @*@ TODO: LOOK AT ME(3) - use class not ID.IDs are for things unique in a page @*@
-                    <option id="dataToPass" class="dataToPass" value="@slot.StartDateTime">@slot.StartDateTime.ToString("h:mm")@slot.PlacesLeft</option>
+                    <option id="dataToPass" class="dataToPass" value="@slot.StartDateTime">@slot.StartDateTime.ToString("h:mm") @slot.PlacesLeft</option>
 
                 }
                                                                 else if (slot.IsFull)
