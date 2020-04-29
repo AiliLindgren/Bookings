@@ -39,6 +39,7 @@ namespace Bookings.Controllers
 
          
         }
+
         [Route("create")]
         [HttpGet]
         public IActionResult Create()
@@ -60,6 +61,7 @@ namespace Bookings.Controllers
             return View(model);
 
         }
+
         [Route("CalendarView")]
         [HttpPost]
         public IActionResult CalendarView(ReservationsCreateVM reservation)
@@ -69,7 +71,7 @@ namespace Bookings.Controllers
 
             service.AddReservation(reservation);
 
-            TempData["Message"]= $"Thank you {reservation.Contact.ToString()},Your order has been submitted! Reservation for {reservation.NumberOfPeople} people { reservation.StartDateTime}";
+            TempData["Message"]= $"Thank you {reservation.Contact.ToString()}! Your order has been submitted! Reservation for {reservation.NumberOfPeople} people on { reservation.StartDateTime.Date.ToString("ddd")} { reservation.StartDateTime.Date.ToString("d.MM.yyyy")} at { reservation.StartDateTime.ToString("H:mm")}.";
            
             return RedirectToAction(nameof(Confirmation));
         }
