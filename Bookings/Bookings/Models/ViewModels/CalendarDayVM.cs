@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,8 +16,8 @@ namespace Bookings.Models.ViewModels
         public DateTime Month { get; set; }
         public DateTime Year { get; set; }
 
-        
-        
+
+
 
 
         //public int OpeningHours { get; set; }
