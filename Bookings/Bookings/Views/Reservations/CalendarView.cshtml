@@ -24,8 +24,8 @@
          
     <div class="flex-container"
 
+            @*<div><span><b>Ticket price:</b></span> <span id="ticketPrice">100</span> <span>kr</span></div>*@
         <div class="flex-container">
-            <div><span><b>Ticket price:</b></span> <span id="ticketPrice">100</span> <span>kr</span></div>
             <div>
                 <span>
                     <b>Number of people: </b><button onclick="changeAmount('-', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">-</button>
@@ -53,12 +53,12 @@
                         <input type="hidden" name="StartDateTime" value="@Model.StartDateTime" id="chosenDateAndTimeHidden" />
                         <label asp-for="Contact"></label>
                         <input asp-for="Contact" />
-                        <span asp-validation-for="Contact"></span>                        
+                        <span asp-validation-for="Contact"></span>
                     </div>
-
-                    <div>
-                        <input type="submit" value="Confirm booking" />
-                    </div>
+                       <br />
+                   
+                        <div >
+                             <input type="submit" value="Confirm booking"  /></div>
                 </form>
             </div>
         </div>
