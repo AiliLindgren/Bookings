@@ -33,12 +33,10 @@ namespace Bookings.Controllers
         [Route("Confirm")]
         [HttpGet]
         public IActionResult Confirmation()
-        {
-            
-            return Content((string)TempData["Message"]);
-
-         
+        {            
+            return Content((string)TempData["Message"]);         
         }
+
         [Route("create")]
         [HttpGet]
         public IActionResult Create()
@@ -69,7 +67,7 @@ namespace Bookings.Controllers
 
             service.AddReservation(reservation);
 
-            TempData["Message"]= $"Thank you {reservation.Contact.ToString()},Your order has been submitted! Reservation for {reservation.NumberOfPeople} people { reservation.StartDateTime}";
+            TempData["Message"]= $"Thank you {reservation.Contact.ToString()}, your order has been submitted! Reservation for {reservation.NumberOfPeople} people { reservation.StartDateTime}";
            
             return RedirectToAction(nameof(Confirmation));
         }
