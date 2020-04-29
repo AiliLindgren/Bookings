@@ -23,6 +23,8 @@ namespace Bookings.Models
         {
             var reservations = context.Reservation.ToArray();
             var result = new List<CalendarDayVM>();
+            var format = new CultureInfo("en-US");
+
 
             //DateTime date = DateTime.Now;
             DateTime date = new DateTime(2020, month, 1);
@@ -39,7 +41,7 @@ namespace Bookings.Models
                         StartDateTime = calendarDate,
                         FakeDay = false,
                         IsWeekend = (calendarDate.DayOfWeek == DayOfWeek.Saturday || calendarDate.DayOfWeek == DayOfWeek.Sunday),
-                        IsClosed = (calendarDate.DayOfWeek == DayOfWeek.Monday),
+                        IsClosed = (calendarDate.DayOfWeek == DayOfWeek.Monday), 
                         CalendarTimeSlots = new List<CalendarTimeSlotVM>()
                     };
 
@@ -52,8 +54,9 @@ namespace Bookings.Models
                         if (day.IsWeekend)
                         {
                             day.StartDateTime = day.StartDateTime.AddHours(10);
-                            //day.EndDateTime = day.StartDateTime.AddHours(1);
-                            day.EndDateTime = day.StartDateTime.AddMinutes(60);
+                            day.EndDateTime = day.StartDateTime.AddHours(6).AddMinutes(30);
+                            
+
 
                             for (var start = day.StartDateTime; start <= day.EndDateTime; start = start.AddMinutes(15))
                             {
@@ -79,9 +82,9 @@ namespace Bookings.Models
                         }
                         else
                         {
-                            day.StartDateTime = day.StartDateTime.AddHours(10);
-                            //day.EndDateTime = day.StartDateTime.AddHours(1);
-                            day.EndDateTime = day.StartDateTime.AddMinutes(30);
+                            day.StartDateTime = day.StartDateTime.AddHours(12);
+                            day.EndDateTime = day.StartDateTime.AddHours(6).AddMinutes(30);
+
 
                             for (var start = day.StartDateTime; start <= day.EndDateTime; start = start.AddMinutes(15))
                             {
