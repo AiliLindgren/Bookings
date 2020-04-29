@@ -23,45 +23,44 @@
     <div class="column"
     <div class="flex-container">
 
-          
-        <div class="flex-container">
+    <div class="flex-container">
+        <div>
             <div><span><b>Ticket price:</b></span> <span id="ticketPrice">100</span> <span>kr</span></div>
-            <div>
-                <span>
-                    <b>Number of people: </b><button onclick="changeAmount('-', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">-</button>
-                    <span id="numberOfPeople">0</span>
-                    <button onclick="changeAmount('+', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">+</button>
-                    <span asp-validation-for="NumberOfPeople"></span>
-                </span>
-            </div>
+            <span>
+                <b>Number of people: </b><button onclick="changeAmount('-', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">-</button>
+                <span id="numberOfPeople">0</span>
+                <button onclick="changeAmount('+', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">+</button>
+                <span asp-validation-for="NumberOfPeople"></span>
+            </span>
+        </div>
 
-            @* TODO: LOOK AT ME (1) prerender value from model/server *@
-            @*<div>
+        @* TODO: LOOK AT ME (1) prerender value from model/server *@
+        @*<div>
 
         </div>*@
-            <div>
-                <span><b>Date and time:</b> </span> <span id="chosenDateAndTime">@Model.StartDateTime </span>
+        <div>
+            <span><b>Date and time:</b> </span> <span id="chosenDateAndTime">@Model.StartDateTime </span>
+            <br />
+            <span><b>Total number of people:</b></span> <span id="totalPeople">0</span>
+            <br />
+            <span><b>Total amount to pay:</b></span> <span id="totalPrice">0</span> <span>kr</span>
+        </div>
+        <div>
+            <form asp-controller="Reservations" asp-action="CalendarView">
+                <div>
+                    <input asp-for="NumberOfPeople" type="hidden" name="NumberOfPeople" value="@Model.NumberOfPeople" id="totalPeopleHidden" />
+                    <input type="hidden" name="StartDateTime" value="@Model.StartDateTime" id="chosenDateAndTimeHidden" />
+                    <label asp-for="Contact"></label>
+                    <input asp-for="Contact" />
+                    <span asp-validation-for="Contact"></span>
+                </div>
                 <br />
-                <span><b>Total number of people:</b></span> <span id="totalPeople">0</span>
-                <br />
-                <span><b>Total amount to pay:</b></span> <span id="totalPrice">0</span> <span>kr</span>
-            </div>
-            <div>
-                <form asp-controller="Reservations" asp-action="CalendarView">
-                    <div>
-                        <input asp-for="NumberOfPeople" type="hidden" name="NumberOfPeople" value="@Model.NumberOfPeople" id="totalPeopleHidden" />
-                        <input type="hidden" name="StartDateTime" value="@Model.StartDateTime" id="chosenDateAndTimeHidden" />
-                        <label asp-for="Contact"></label>
-                        <input asp-for="Contact" />
-                        <span asp-validation-for="Contact"></span>
-                    </div>
-                    <br />
 
-                    <div style="position:center">
-                        <input type="submit" value="Confirm booking" />
-                    </div>
-                </form>
-            </div>
+                <div style="position:center">
+                    <input type="submit" value="Confirm booking" />
+                </div>
+            </form>
+        </div>
         </div>
     </div>
         </div>
