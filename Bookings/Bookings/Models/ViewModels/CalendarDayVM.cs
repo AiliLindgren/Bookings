@@ -35,7 +35,7 @@ namespace Bookings.Models.ViewModels
         public bool IsFull { get; set; }
         public DateTime StartDateTime { get; set; } 
         public DateTime EndDateTime { get; set; }
-
+        public int PlacesLeft { get; set; }
         public override string ToString()
         {
             return $"{StartDateTime}";

@@ -100,8 +100,11 @@ namespace Bookings.Models
                                     slot.EndDateTime = start.AddHours(2);
 
                                 slot.IsFull = reservations.Where(r => r.StartDateTime == slot.StartDateTime).Select(r => r.NumberOfPeople).Sum() > 4;
+                                slot.PlacesLeft= 5 - CheckForPeople(slot.StartDateTime);
 
                                 day.CalendarTimeSlots.Add(slot);
+                                
+                               
                             }
                         }
 
@@ -167,6 +170,11 @@ namespace Bookings.Models
 
 
 
+        }
+        public int CheckForPeople(DateTime Timeslot)
+        {
+            var result = context.Reservation.Where(o => o.StartDateTime == Timeslot).Select(o => o.NumberOfPeople).Sum();
+            return result;
         }
         //public CalendarDayVM[] GetCalendarView(int people)
         //{

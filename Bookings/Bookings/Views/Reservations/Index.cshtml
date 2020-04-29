@@ -44,20 +44,10 @@
         </div>
 
     </div>
-    <script>
-        fetch("/Confirm",
-            {
-                method: "GET",
-            })
-            .then(res => res.text())
-            .then(html =>
-                document.getElementById("divResults").innerHTML = html);
-    </script>
-
-
-
-
-
+    <textarea id="myText">
+    Lorem ipsum...
+</textarea>
+    <button onclick="sendMail(); return false">Send</button>
 
 </body>
 </html>
