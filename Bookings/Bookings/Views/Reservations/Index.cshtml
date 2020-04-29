@@ -18,11 +18,11 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            font-size: 45px;
+            font-size: 25px;
         }
 
         .img1 {
-            opacity: 0.5;
+            opacity: 0.15;
         }
 
         .img2 {
@@ -32,22 +32,45 @@
         .img3 {
             opacity: 0.15;
         }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Create two equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 35%;
+            padding: 100px;
+            height: 1000px; /* Should be removed. Only for demonstration */
+            position: center;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
     </style>
-
-    @*<div id=divResults</div>*@
-<div class="w3-container w3-center w3-animate-bottom">
     <div class="flex-container.index"
-        style="padding-left:250px">
-        <img class="img1" src="~/ansikte.jpg" alt="Mona" width="560" height="760">
-        <img class="img2" src="~/ansikte.jpg" alt="Mona" width="560" height="760">
-        @*<img class="img3" src="~/ansikte.jpg" alt="Mona" width="560" height="760">*@
-    </div>
-</div>
-    
-    @*<textarea id="myText">
-    Lorem ipsum...
-</textarea>
-    <button onclick="sendMail(); return false">Send</button>*@
+         @*<div class="row">*@
+         style="float:right">
+        <img class="img1" src="~/ansikte.jpg" alt="Mona" width="650" height="750">
+        <div class="column" style="background-color:whitesmoke">
+            <h2>Dear visitor!</h2>
+            <p Welcome to the Museum of Museum!>
+                We are open as usual
+                Weekdays: 12:00 - 18.00
+                Weekends: 10.00 - 18.00
+                Please book your visit on the Book site!
+            </p>
+            <img class="img2" src="~/ansikte.jpg" alt="Mona" width="660" height="760">
 
+        </div>
+    <div class="footer">
+
+    </div>
+    </div>
 </body>
 </html>
