@@ -18,14 +18,14 @@
         body {
             font-family: 'Roboto', sans-serif;
         }
-        
     </style>
 
-         
-    <div class="flex-container"
+    <div class="column"
+    <div class="flex-container">
 
-            @*<div><span><b>Ticket price:</b></span> <span id="ticketPrice">100</span> <span>kr</span></div>*@
+          
         <div class="flex-container">
+            <div><span><b>Ticket price:</b></span> <span id="ticketPrice">100</span> <span>kr</span></div>
             <div>
                 <span>
                     <b>Number of people: </b><button onclick="changeAmount('-', '100', 'numberOfPeople', 'totalPrice', 'totalPeople')">-</button>
@@ -55,12 +55,15 @@
                         <input asp-for="Contact" />
                         <span asp-validation-for="Contact"></span>
                     </div>
-                       <br />
-                   
-                        <div style="position:center">
-                             <input type="submit" value="Confirm booking"  /></div>
+                    <br />
+
+                    <div style="position:center">
+                        <input type="submit" value="Confirm booking" />
+                    </div>
                 </form>
             </div>
+        </div>
+    </div>
         </div>
             <div style="float:left" id="divResult"></div>
     </div>
@@ -83,7 +86,7 @@
 
         </script>
 
-       
+
     }
 
     <!-- Optional JavaScript -->
