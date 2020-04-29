@@ -54,7 +54,7 @@ namespace Bookings.Models
                         if (day.IsWeekend)
                         {
                             day.StartDateTime = day.StartDateTime.AddHours(10);
-                            day.EndDateTime = day.StartDateTime.AddHours(6).AddMinutes(30);
+                            day.EndDateTime = day.StartDateTime.AddHours(4).AddMinutes(30);
                             
 
 
@@ -83,7 +83,7 @@ namespace Bookings.Models
                         else
                         {
                             day.StartDateTime = day.StartDateTime.AddHours(12);
-                            day.EndDateTime = day.StartDateTime.AddHours(6).AddMinutes(30);
+                            day.EndDateTime = day.StartDateTime.AddHours(4).AddMinutes(30);
 
 
                             for (var start = day.StartDateTime; start <= day.EndDateTime; start = start.AddMinutes(15))

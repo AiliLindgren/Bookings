@@ -8,28 +8,29 @@
 
 
     <div class="w3-container w3-center w3-animate-left">
-        <div style="float:right" class="dropdown">
-            <button class="dropbtn" style="position:center">Pick Month</button>
-            <div class="dropdown-content">
-
-                <a href="javascript:ChangeMonth(1)">Jan</a>
-                <a href="javascript:ChangeMonth(2)">Feb</a>
-                <a href="javascript:ChangeMonth(3)">Mar</a>
-                <a href="javascript:ChangeMonth(4)">Apr</a>
-                <a href="javascript:ChangeMonth(5)">May</a>
-                <a href="javascript:ChangeMonth(6)">Jun</a>
-                <a href="javascript:ChangeMonth(7)">Jul</a>
-                <a href="javascript:ChangeMonth(8)">Aug</a>
-                <a href="javascript:ChangeMonth(9)">Sep</a>
-                <a href="javascript:ChangeMonth(10)">Oct</a>
-                <a href="javascript:ChangeMonth(11)">Nov</a>
-                <a href="javascript:ChangeMonth(12)">Dec</a>
-            </div>
-        </div>
+       
       <div class="column"
-            <div class="card">
-            <span style="font-size:30px">@Model[10].StartDateTime.ToString("MMMM")</span>
-            </div>
+          <div class="card">
+              <div style="float:right" class="dropdown">
+                  <button class="dropbtn" style="position:center">Pick Month</button>
+                  <div class="dropdown-content">
+
+                      <a href="javascript:ChangeMonth(1)">Jan</a>
+                      <a href="javascript:ChangeMonth(2)">Feb</a>
+                      <a href="javascript:ChangeMonth(3)">Mar</a>
+                      <a href="javascript:ChangeMonth(4)">Apr</a>
+                      <a href="javascript:ChangeMonth(5)">May</a>
+                      <a href="javascript:ChangeMonth(6)">Jun</a>
+                      <a href="javascript:ChangeMonth(7)">Jul</a>
+                      <a href="javascript:ChangeMonth(8)">Aug</a>
+                      <a href="javascript:ChangeMonth(9)">Sep</a>
+                      <a href="javascript:ChangeMonth(10)">Oct</a>
+                      <a href="javascript:ChangeMonth(11)">Nov</a>
+                      <a href="javascript:ChangeMonth(12)">Dec</a>
+                  </div>
+              </div>
+              <span style="font-size:30px">@Model[10].StartDateTime.ToString("MMMM")</span>
+          </div>
             <div class="column"
             <table class="t1">
             <div class="grid-container">
@@ -76,7 +77,7 @@
                             if (!slot.IsFull)
                             {
                                 @*@ TODO: LOOK AT ME(3) - use class not ID.IDs are for things unique in a page @*@
-                            <option id="dataToPass" class="dataToPass" value="@slot.StartDateTime">@slot.StartDateTime.ToString("H:mm") @slot.PlacesLeft places left</option>
+                            <option id="dataToPass" class="dataToPass" value="@slot.StartDateTime">@slot.StartDateTime.ToString("H:mm")  Places left: @slot.PlacesLeft </option>
 
                             }
                                                                         else if (slot.IsFull)
